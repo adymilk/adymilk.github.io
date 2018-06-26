@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/04/2017-08-04-git-guide/</loc>
-    
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-free-for-dev/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
@@ -31,6 +24,13 @@
   
   <url>
     <loc>https://blog.adymilk.cn/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</loc>
+    
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2017/08/04/2017-08-04-git-guide/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -205,14 +205,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/</loc>
+    <loc>https://blog.adymilk.cn/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/</loc>
+    <loc>https://blog.adymilk.cn/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -324,14 +324,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2016/11/30/%E5%8A%9F%E5%A4%AB%E4%B8%8D%E6%98%AF%E4%BD%93%E5%8A%9B%E8%BF%90%E5%8A%A8/</loc>
+    <loc>https://blog.adymilk.cn/2017/12/31/%E5%86%8D%E8%A7%81%E6%88%91%E7%9A%842017/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/12/31/%E5%86%8D%E8%A7%81%E6%88%91%E7%9A%842017/</loc>
+    <loc>https://blog.adymilk.cn/2016/11/30/%E5%8A%9F%E5%A4%AB%E4%B8%8D%E6%98%AF%E4%BD%93%E5%8A%9B%E8%BF%90%E5%8A%A8/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -436,14 +436,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/05/21/%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%AD%A4%E7%89%88%E6%9C%AC%E7%9A%84%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%8D%E5%85%BC%E5%AE%B9%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91/</loc>
+    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
+    <loc>https://blog.adymilk.cn/2017/05/21/%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%AD%A4%E7%89%88%E6%9C%AC%E7%9A%84%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%8D%E5%85%BC%E5%AE%B9%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -527,14 +527,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/pay/index.html</loc>
+    <loc>https://blog.adymilk.cn/music/index.html</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/music/index.html</loc>
+    <loc>https://blog.adymilk.cn/pay/index.html</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
