@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2018/08/02/20180802-1/</loc>
+    <lastmod>2018-08-02T15:56:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>道德经的“道”，到底是什么？</title>
+        <pubTime>2018-08-02T13:40:23.000Z</pubTime>
+        
+        <tag>道德经</tag>
+         
+        <tag>老子</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2018/07/29/20180729-1/</loc>
     <lastmod>2018-07-30T14:39:47.000Z</lastmod>
     <data>
@@ -33,9 +55,9 @@
         <title>金无足赤，人无完人</title>
         <pubTime>2018-07-30T08:15:00.000Z</pubTime>
         
-        <tag>管理</tag>
-         
         <tag>老子</tag>
+         
+        <tag>管理</tag>
          
          
            
@@ -111,16 +133,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>ubuntu无法打开software-center</title>
-        <pubTime>2017-07-08T08:20:27.000Z</pubTime>
+        <title>ubuntu解决dpkg: 处理软件包 **** (--configure)时出错</title>
+        <pubTime>2017-07-07T14:39:48.000Z</pubTime>
         
-        <tag>ubuntu</tag>
-         
-        <tag>software-center</tag>
+        <tag>python</tag>
          
          
            
@@ -133,16 +153,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/09/2017-08-09-push-hexo-to-baidu/</loc>
+    <loc>https://blog.adymilk.cn/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>hexo 向百度主动推送链接</title>
-        <pubTime>2017-08-09T02:59:16.000Z</pubTime>
+        <title>Android-Studio 多渠道打包</title>
+        <pubTime>2017-10-06T07:13:55.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
-        <tag>百度站长</tag>
+        <tag>Android</tag>
          
          
            
@@ -199,19 +217,21 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/</loc>
+    <loc>https://blog.adymilk.cn/2017/11/18/2017-11-18-%E5%AD%A6%E4%BC%9A%E8%B7%9F%E8%87%AA%E5%B7%B1%E7%9B%B8%E5%A4%84/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>Android-Studio 多渠道打包</title>
-        <pubTime>2017-10-06T07:13:55.000Z</pubTime>
+        <title>我们总要学会与自己相处</title>
+        <pubTime>2017-11-18T10:47:41.000Z</pubTime>
         
-        <tag>Android</tag>
+        <tag>独立思考</tag>
+         
+        <tag>写作</tag>
          
          
            
              
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -283,16 +303,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/05/18/20180518-2/</loc>
+    <loc>https://blog.adymilk.cn/2018/05/18/20180518-3/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>两行代码实现网页统计功能</title>
-        <pubTime>2018-05-18T06:36:18.000Z</pubTime>
+        <title>用Python 开发一个小游戏</title>
+        <pubTime>2018-05-18T07:01:55.000Z</pubTime>
         
-        <tag>统计</tag>
+        <tag>Python</tag>
          
-        <tag>网页</tag>
+        <tag>game</tag>
          
          
            
@@ -305,16 +325,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/05/18/20180518-3/</loc>
+    <loc>https://blog.adymilk.cn/2018/05/18/20180518-2/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>用Python 开发一个小游戏</title>
-        <pubTime>2018-05-18T07:01:55.000Z</pubTime>
+        <title>两行代码实现网页统计功能</title>
+        <pubTime>2018-05-18T06:36:18.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>统计</tag>
          
-        <tag>game</tag>
+        <tag>网页</tag>
          
          
            
@@ -368,6 +388,28 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2018/06/03/20180603-1/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>太极阴阳（攻与守）的思考</title>
+        <pubTime>2018-06-03T01:45:41.000Z</pubTime>
+        
+        <tag>太极</tag>
+         
+        <tag>阴阳</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2018/06/02/20180602-1/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -392,41 +434,21 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/06/03/20180603-1/</loc>
+    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-Linux-server-setup/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>太极阴阳（攻与守）的思考</title>
-        <pubTime>2018-06-03T01:45:41.000Z</pubTime>
+        <title>Linux服务器的初步配置流程</title>
+        <pubTime>2017-08-02T04:40:48.000Z</pubTime>
         
-        <tag>太极</tag>
+        <tag>Linux</tag>
          
-        <tag>阴阳</tag>
+        <tag>server</tag>
          
          
            
              
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2016/12/01/2016-12-01/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>不为人知的互联网</title>
-        <pubTime>2016-12-01T12:21:55.000Z</pubTime>
-        
-        <tag>vpn</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -442,70 +464,6 @@
         <pubTime>2017-08-02T04:47:42.000Z</pubTime>
         
         <tag>web</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>完美的 Ubuntu16.04 优化方案</title>
-        <pubTime>2017-10-19T12:27:40.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-        <tag>开源</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/07/18/FATAL-watch-home-jack-blog-source-ENOSPC/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>FATAL watch /home/jack/blog/source/ ENOSPC</title>
-        <pubTime>2017-07-18T07:55:10.000Z</pubTime>
-        
-        <tag>解决办法</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>3分钟轻松学会编译安卓 APK</title>
-        <pubTime>2017-07-30T04:08:15.000Z</pubTime>
-        
-        <tag>开源</tag>
-         
-        <tag>android</tag>
          
          
            
@@ -540,6 +498,50 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>完美的 Ubuntu16.04 优化方案</title>
+        <pubTime>2017-10-19T12:27:40.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
+         
+        <tag>开源</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>3分钟轻松学会编译安卓 APK</title>
+        <pubTime>2017-07-30T04:08:15.000Z</pubTime>
+        
+        <tag>开源</tag>
+         
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2017/08/04/2017-08-04-what-is-git/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -550,6 +552,48 @@
         <tag>git</tag>
          
         <tag>翻译</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2017/07/18/FATAL-watch-home-jack-blog-source-ENOSPC/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>FATAL watch /home/jack/blog/source/ ENOSPC</title>
+        <pubTime>2017-07-18T07:55:10.000Z</pubTime>
+        
+        <tag>解决办法</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2017/08/09/2017-08-09-push-hexo-to-baidu/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo 向百度主动推送链接</title>
+        <pubTime>2017-08-09T02:59:16.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>百度站长</tag>
          
          
            
@@ -668,28 +712,6 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/11/18/2017-11-18-%E5%AD%A6%E4%BC%9A%E8%B7%9F%E8%87%AA%E5%B7%B1%E7%9B%B8%E5%A4%84/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>我们总要学会与自己相处</title>
-        <pubTime>2017-11-18T10:47:41.000Z</pubTime>
-        
-        <tag>独立思考</tag>
-         
-        <tag>写作</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://blog.adymilk.cn/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -727,52 +749,6 @@
            
              
               <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>Node版本切换n</title>
-        <pubTime>2017-06-14T06:14:04.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>node.js</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/04/10/ShenZhenVideo/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>深圳自由行（图文 + 视频）</title>
-        <pubTime>2017-04-10T14:48:57.000Z</pubTime>
-        
-        <tag>深圳</tag>
-         
-        <tag>旅行</tag>
-         
-        <tag>华强北</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -844,6 +820,30 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2017/04/10/ShenZhenVideo/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>深圳自由行（图文 + 视频）</title>
+        <pubTime>2017-04-10T14:48:57.000Z</pubTime>
+        
+        <tag>深圳</tag>
+         
+        <tag>旅行</tag>
+         
+        <tag>华强北</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2016/09/23/hexo%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -904,21 +904,41 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-Linux-server-setup/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>Linux服务器的初步配置流程</title>
-        <pubTime>2017-08-02T04:40:48.000Z</pubTime>
+        <title>ubuntu无法打开software-center</title>
+        <pubTime>2017-07-08T08:20:27.000Z</pubTime>
         
-        <tag>Linux</tag>
+        <tag>ubuntu</tag>
          
-        <tag>server</tag>
+        <tag>software-center</tag>
          
          
            
              
               <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2016/12/01/2016-12-01/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>不为人知的互联网</title>
+        <pubTime>2016-12-01T12:21:55.000Z</pubTime>
+        
+        <tag>vpn</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -936,26 +956,6 @@
         <tag>IDE</tag>
          
         <tag>atom</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu解决dpkg: 处理软件包 **** (--configure)时出错</title>
-        <pubTime>2017-07-07T14:39:48.000Z</pubTime>
-        
-        <tag>python</tag>
          
          
            
@@ -988,16 +988,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/02/18/%E4%BB%96%E4%BB%AC%E6%98%AF%E9%A6%99%E6%B8%AF%E7%AC%AC%E4%B8%80%E4%BB%A3%E5%81%B6%E5%83%8F%E5%B7%A8%E6%98%9F-%E5%8D%B4%E5%85%A8%E9%83%BD%E8%8B%B1%E5%B9%B4%E6%97%A9%E9%80%9D/</loc>
+    <loc>https://blog.adymilk.cn/2017/05/30/%E5%81%A5%E8%BA%AB%E5%8F%AF%E6%98%AF%E6%9C%89%E5%A4%A7%E5%AD%A6%E9%97%AE%E5%91%A2/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>他们是香港第一代偶像巨星,却全都英年早逝</title>
-        <pubTime>2017-02-17T18:49:38.000Z</pubTime>
+        <title>欲速则不达-国术</title>
+        <pubTime>2017-05-30T09:15:53.000Z</pubTime>
         
-        <tag>李小龙</tag>
+        <tag>健身</tag>
          
-        <tag>张国荣</tag>
+        <tag>功夫</tag>
          
          
            
@@ -1010,16 +1010,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/05/30/%E5%81%A5%E8%BA%AB%E5%8F%AF%E6%98%AF%E6%9C%89%E5%A4%A7%E5%AD%A6%E9%97%AE%E5%91%A2/</loc>
+    <loc>https://blog.adymilk.cn/2017/02/18/%E4%BB%96%E4%BB%AC%E6%98%AF%E9%A6%99%E6%B8%AF%E7%AC%AC%E4%B8%80%E4%BB%A3%E5%81%B6%E5%83%8F%E5%B7%A8%E6%98%9F-%E5%8D%B4%E5%85%A8%E9%83%BD%E8%8B%B1%E5%B9%B4%E6%97%A9%E9%80%9D/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>欲速则不达-国术</title>
-        <pubTime>2017-05-30T09:15:53.000Z</pubTime>
+        <title>他们是香港第一代偶像巨星,却全都英年早逝</title>
+        <pubTime>2017-02-17T18:49:38.000Z</pubTime>
         
-        <tag>健身</tag>
+        <tag>李小龙</tag>
          
-        <tag>功夫</tag>
+        <tag>张国荣</tag>
          
          
            
@@ -1094,6 +1094,28 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>Node版本切换n</title>
+        <pubTime>2017-06-14T06:14:04.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>node.js</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2016/11/30/%E5%8A%9F%E5%A4%AB%E4%B8%8D%E6%98%AF%E4%BD%93%E5%8A%9B%E8%BF%90%E5%8A%A8/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -1102,6 +1124,28 @@
         <pubTime>2016-11-30T10:46:27.000Z</pubTime>
         
         <tag>截拳道</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2018/05/29/%E5%90%AC%E8%AF%B4%E4%B8%80%E5%91%A8%E4%B8%8D%E7%94%A8%E5%BE%AE%E4%BF%A1%E4%BA%BA%E4%BC%9A%E7%96%AF%E6%8E%89%EF%BC%9F/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>听说一周不用微信人会疯掉？(完结)</title>
+        <pubTime>2018-05-28T17:48:51.000Z</pubTime>
+        
+        <tag>wechat</tag>
+         
+        <tag>微信</tag>
          
          
            
@@ -1129,6 +1173,28 @@
            
              
               <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2017/06/26/%E5%9C%A8Ubuntu%E4%B8%8B%E8%A7%A3%E5%86%B3-adb-devices-xx-no-permission/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>在Ubuntu下解决 adb devices:xx no permission </title>
+        <pubTime>2017-06-26T10:11:44.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
+         
+        <tag>adb</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1176,16 +1242,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/05/29/%E5%90%AC%E8%AF%B4%E4%B8%80%E5%91%A8%E4%B8%8D%E7%94%A8%E5%BE%AE%E4%BF%A1%E4%BA%BA%E4%BC%9A%E7%96%AF%E6%8E%89%EF%BC%9F/</loc>
+    <loc>https://blog.adymilk.cn/2016/11/11/%E5%B9%B8%E8%BF%90%E7%9A%84%E5%AE%9E%E4%B9%A0%E7%94%9F/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>听说一周不用微信人会疯掉？(完结)</title>
-        <pubTime>2018-05-28T17:48:51.000Z</pubTime>
+        <title>幸运的实习生【精】</title>
+        <pubTime>2016-11-11T10:48:44.000Z</pubTime>
         
-        <tag>wechat</tag>
-         
-        <tag>微信</tag>
+        <tag>实习</tag>
          
          
            
@@ -1234,41 +1298,19 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2016/11/11/%E5%B9%B8%E8%BF%90%E7%9A%84%E5%AE%9E%E4%B9%A0%E7%94%9F/</loc>
+    <loc>https://blog.adymilk.cn/2017/04/24/%E6%89%8B%E6%8A%84@%E9%AC%BC%E8%84%9A%E4%B8%83%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>幸运的实习生【精】</title>
-        <pubTime>2016-11-11T10:48:44.000Z</pubTime>
+        <title>手抄@鬼脚七深度好文</title>
+        <pubTime>2017-04-24T15:44:56.000Z</pubTime>
         
-        <tag>实习</tag>
+        <tag>鬼脚七</tag>
          
          
            
              
               <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/06/26/%E5%9C%A8Ubuntu%E4%B8%8B%E8%A7%A3%E5%86%B3-adb-devices-xx-no-permission/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>在Ubuntu下解决 adb devices:xx no permission </title>
-        <pubTime>2017-06-26T10:11:44.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-        <tag>adb</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1284,26 +1326,6 @@
         <pubTime>2018-05-20T13:57:46.000Z</pubTime>
         
         <tag>游记</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/04/24/%E6%89%8B%E6%8A%84@%E9%AC%BC%E8%84%9A%E4%B8%83%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>手抄@鬼脚七深度好文</title>
-        <pubTime>2017-04-24T15:44:56.000Z</pubTime>
-        
-        <tag>鬼脚七</tag>
          
          
            
@@ -1400,6 +1422,26 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2017/05/21/%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%AD%A4%E7%89%88%E6%9C%AC%E7%9A%84%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%8D%E5%85%BC%E5%AE%B9%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu 网络管理器不兼容【已解决】</title>
+        <pubTime>2017-05-21T14:11:49.000Z</pubTime>
+        
+        <tag>NetworkManager</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -1415,26 +1457,6 @@
            
              
               <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/05/21/%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%AD%A4%E7%89%88%E6%9C%AC%E7%9A%84%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%8D%E5%85%BC%E5%AE%B9%E3%80%90%E5%B7%B2%E8%A7%A3%E5%86%B3%E3%80%91/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu 网络管理器不兼容【已解决】</title>
-        <pubTime>2017-05-21T14:11:49.000Z</pubTime>
-        
-        <tag>NetworkManager</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1502,6 +1524,26 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2016/10/08/%E8%BD%BB%E6%9D%BE%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>轻松安装系统教程</title>
+        <pubTime>2016-10-08T10:28:12.000Z</pubTime>
+        
+        <tag>装系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2016/10/01/%E8%B7%9F%E5%AF%82%E5%AF%9E%E5%86%8D%E5%92%8C%E5%A5%BD/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -1524,19 +1566,19 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2016/10/08/%E8%BD%BB%E6%9D%BE%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://blog.adymilk.cn/2016/11/25/%E9%9A%8F%E6%97%B6%E9%9A%8F%E5%9C%B0%E5%88%86%E4%BA%AB%E6%96%B0%E9%B2%9C%E4%BA%8B/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>轻松安装系统教程</title>
-        <pubTime>2016-10-08T10:28:12.000Z</pubTime>
+        <title>随时随地分享新鲜事</title>
+        <pubTime>2016-11-25T06:09:09.000Z</pubTime>
         
-        <tag>装系统</tag>
+        <tag>微博、粉丝通</tag>
          
          
            
              
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1552,26 +1594,6 @@
         <pubTime>2016-12-03T09:34:06.000Z</pubTime>
         
         <tag>旅行</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2016/11/25/%E9%9A%8F%E6%97%B6%E9%9A%8F%E5%9C%B0%E5%88%86%E4%BA%AB%E6%96%B0%E9%B2%9C%E4%BA%8B/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>随时随地分享新鲜事</title>
-        <pubTime>2016-11-25T06:09:09.000Z</pubTime>
-        
-        <tag>微博、粉丝通</tag>
          
          
            
