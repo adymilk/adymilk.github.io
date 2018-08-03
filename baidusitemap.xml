@@ -606,6 +606,26 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2016/10/25/JavaScript-callback-function-%E7%90%86%E8%A7%A3/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript callback function 理解</title>
+        <pubTime>2016-10-25T13:56:19.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2017/04/13/Instagram_Youtube_google/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
@@ -623,26 +643,6 @@
            
              
               <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2016/10/25/JavaScript-callback-function-%E7%90%86%E8%A7%A3/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>JavaScript callback function 理解</title>
-        <pubTime>2016-10-25T13:56:19.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -692,14 +692,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/</loc>
+    <loc>https://blog.adymilk.cn/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>Linux 作死自救历险记</title>
-        <pubTime>2017-07-18T10:49:12.000Z</pubTime>
+        <title>Linux把PHP版本从7.0降级到5.6</title>
+        <pubTime>2017-06-07T10:57:57.000Z</pubTime>
         
-        <tag>sudoers</tag>
+        <tag>php</tag>
          
          
            
@@ -712,14 +712,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>Linux把PHP版本从7.0降级到5.6</title>
-        <pubTime>2017-06-07T10:57:57.000Z</pubTime>
+        <title>Linux 作死自救历险记</title>
+        <pubTime>2017-07-18T10:49:12.000Z</pubTime>
         
-        <tag>php</tag>
+        <tag>sudoers</tag>
          
          
            
@@ -1402,16 +1402,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
+    <loc>https://blog.adymilk.cn/2017/03/29/%E6%98%8E%E6%98%8E%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BA%BA%EF%BC%8C%E5%81%8F%E8%A6%81%E5%83%8F%E6%9C%BA%E5%99%A8%E4%B8%80%E6%A0%B7%E6%B4%BB%E7%9D%80/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>没长毛的爱情</title>
-        <pubTime>2018-03-08T12:29:12.000Z</pubTime>
+        <title>明明是一个人，偏要像机器一样活着</title>
+        <pubTime>2017-03-29T09:02:00.000Z</pubTime>
         
-        <tag>写作</tag>
-         
-        <tag>爱情</tag>
+        <tag>旅游</tag>
          
          
            
@@ -1424,14 +1422,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/03/29/%E6%98%8E%E6%98%8E%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BA%BA%EF%BC%8C%E5%81%8F%E8%A6%81%E5%83%8F%E6%9C%BA%E5%99%A8%E4%B8%80%E6%A0%B7%E6%B4%BB%E7%9D%80/</loc>
+    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>明明是一个人，偏要像机器一样活着</title>
-        <pubTime>2017-03-29T09:02:00.000Z</pubTime>
+        <title>没长毛的爱情</title>
+        <pubTime>2018-03-08T12:29:12.000Z</pubTime>
         
-        <tag>旅游</tag>
+        <tag>写作</tag>
+         
+        <tag>爱情</tag>
          
          
            
