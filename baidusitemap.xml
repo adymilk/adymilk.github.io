@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>https://blog.adymilk.cn/2018/11/26/20181126/</loc>
     <lastmod>2018-11-26T14:23:47.000Z</lastmod>
@@ -12,6 +13,28 @@
         <pubTime>2018-11-26T12:33:00.000Z</pubTime>
         
         <tag>微信小程序</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://blog.adymilk.cn/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2018-11-25T03:36:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 暴力破解WIFI密码</title>
+        <pubTime>2017-10-07T06:21:47.000Z</pubTime>
+        
+        <tag>破解</tag>
+         
+        <tag>网络安全</tag>
          
          
            
@@ -46,41 +69,23 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/</loc>
-    <lastmod>2018-11-25T03:36:45.000Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 暴力破解WIFI密码</title>
-        <pubTime>2017-10-07T06:21:47.000Z</pubTime>
-        
-        <tag>破解</tag>
-         
-        <tag>网络安全</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/04/23/so-powerful-mobile-silde-framwork-swiper/</loc>
+    <loc>https://blog.adymilk.cn/2017/05/01/%E6%91%98%E5%BD%95-%E9%AC%BC%E8%84%9A%E4%B8%83-%E6%97%85%E6%B8%B8-%E6%80%9D%E8%80%83-%E7%8B%AC%E5%A4%84-%E5%BF%99%E7%A2%8C/</loc>
     <lastmod>2018-11-25T03:36:44.000Z</lastmod>
     <data>
         <display>
-        <title>Swiper.js </title>
-        <pubTime>2017-04-23T02:10:59.000Z</pubTime>
+        <title>摘录@鬼脚七|旅游-思考-独处-忙碌</title>
+        <pubTime>2017-04-30T16:07:12.000Z</pubTime>
         
-        <tag>swiper.js</tag>
+        <tag>鬼脚七</tag>
+         
+        <tag>思考</tag>
+         
+        <tag>旅游</tag>
          
          
            
              
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -110,6 +115,26 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2017/04/23/so-powerful-mobile-silde-framwork-swiper/</loc>
+    <lastmod>2018-11-25T03:36:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swiper.js </title>
+        <pubTime>2017-04-23T02:10:59.000Z</pubTime>
+        
+        <tag>swiper.js</tag>
+         
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2018/06/26/20180624-1/</loc>
     <lastmod>2018-11-25T03:36:44.000Z</lastmod>
     <data>
@@ -129,45 +154,23 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/05/01/%E6%91%98%E5%BD%95-%E9%AC%BC%E8%84%9A%E4%B8%83-%E6%97%85%E6%B8%B8-%E6%80%9D%E8%80%83-%E7%8B%AC%E5%A4%84-%E5%BF%99%E7%A2%8C/</loc>
-    <lastmod>2018-11-25T03:36:44.000Z</lastmod>
+    <loc>https://blog.adymilk.cn/2017/04/10/ShenZhenVideo/</loc>
+    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>摘录@鬼脚七|旅游-思考-独处-忙碌</title>
-        <pubTime>2017-04-30T16:07:12.000Z</pubTime>
+        <title>深圳自由行（图文 + 视频）</title>
+        <pubTime>2017-04-10T14:48:57.000Z</pubTime>
         
-        <tag>鬼脚七</tag>
+        <tag>深圳</tag>
          
-        <tag>思考</tag>
+        <tag>旅行</tag>
          
-        <tag>旅游</tag>
+        <tag>华强北</tag>
          
          
            
              
               <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2018/05/18/20180518-1/</loc>
-    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>Linux 桌面版录制GIF动画</title>
-        <pubTime>2018-05-18T02:17:46.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>gif</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -185,28 +188,6 @@
         <tag>Python</tag>
          
         <tag>game</tag>
-         
-         
-           
-             
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2018/05/27/20180527-1/</loc>
-    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>视频原理了解一下（压缩）</title>
-        <pubTime>2018-05-27T09:17:46.000Z</pubTime>
-        
-        <tag>video</tag>
-         
-        <tag>压缩</tag>
          
          
            
@@ -284,14 +265,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/12/19/2017-12-19-%E4%BF%AE%E5%A4%8DUbuntu%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://blog.adymilk.cn/2018/05/18/20180518-1/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>修复Ubuntu系统引导丢失问题</title>
-        <pubTime>2017-12-19T01:26:08.000Z</pubTime>
+        <title>Linux 桌面版录制GIF动画</title>
+        <pubTime>2018-05-18T02:17:46.000Z</pubTime>
         
-        <tag>ubuntu</tag>
+        <tag>Linux</tag>
+         
+        <tag>gif</tag>
          
          
            
@@ -348,14 +331,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/</loc>
+    <loc>https://blog.adymilk.cn/2018/05/18/20180518-2/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>Android-Studio 多渠道打包</title>
-        <pubTime>2017-10-06T07:13:55.000Z</pubTime>
+        <title>两行代码实现网页统计功能</title>
+        <pubTime>2018-05-18T06:36:18.000Z</pubTime>
         
-        <tag>Android</tag>
+        <tag>统计</tag>
+         
+        <tag>网页</tag>
          
          
            
@@ -434,6 +419,28 @@
 
     
   <url>
+    <loc>https://blog.adymilk.cn/2018/08/02/20180802-1/</loc>
+    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>道德经的“道”，到底是什么？</title>
+        <pubTime>2018-08-02T13:40:23.000Z</pubTime>
+        
+        <tag>老子</tag>
+         
+        <tag>道德经</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://blog.adymilk.cn/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
@@ -449,30 +456,6 @@
            
              
               <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://blog.adymilk.cn/2017/04/13/Instagram_Youtube_google/</loc>
-    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>国外这么好玩的网站你知道吗？</title>
-        <pubTime>2017-04-13T12:21:38.000Z</pubTime>
-        
-        <tag>vpn</tag>
-         
-        <tag>Instagram</tag>
-         
-        <tag>Facebook</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -500,21 +483,19 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
+    <loc>https://blog.adymilk.cn/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>没长毛的爱情</title>
-        <pubTime>2018-03-08T12:29:12.000Z</pubTime>
+        <title>Android-Studio 多渠道打包</title>
+        <pubTime>2017-10-06T07:13:55.000Z</pubTime>
         
-        <tag>写作</tag>
-         
-        <tag>爱情</tag>
+        <tag>Android</tag>
          
          
            
              
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -546,23 +527,21 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2017/04/10/ShenZhenVideo/</loc>
+    <loc>https://blog.adymilk.cn/2018/05/27/20180527-1/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>深圳自由行（图文 + 视频）</title>
-        <pubTime>2017-04-10T14:48:57.000Z</pubTime>
+        <title>视频原理了解一下（压缩）</title>
+        <pubTime>2018-05-27T09:17:46.000Z</pubTime>
         
-        <tag>深圳</tag>
+        <tag>video</tag>
          
-        <tag>旅行</tag>
-         
-        <tag>华强北</tag>
+        <tag>压缩</tag>
          
          
            
              
-              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -820,16 +799,14 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/05/18/20180518-2/</loc>
+    <loc>https://blog.adymilk.cn/2017/12/19/2017-12-19-%E4%BF%AE%E5%A4%8DUbuntu%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>两行代码实现网页统计功能</title>
-        <pubTime>2018-05-18T06:36:18.000Z</pubTime>
+        <title>修复Ubuntu系统引导丢失问题</title>
+        <pubTime>2017-12-19T01:26:08.000Z</pubTime>
         
-        <tag>统计</tag>
-         
-        <tag>网页</tag>
+        <tag>ubuntu</tag>
          
          
            
@@ -862,16 +839,16 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2018/08/02/20180802-1/</loc>
+    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
     <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>道德经的“道”，到底是什么？</title>
-        <pubTime>2018-08-02T13:40:23.000Z</pubTime>
+        <title>没长毛的爱情</title>
+        <pubTime>2018-03-08T12:29:12.000Z</pubTime>
         
-        <tag>老子</tag>
+        <tag>写作</tag>
          
-        <tag>道德经</tag>
+        <tag>爱情</tag>
          
          
            
@@ -884,17 +861,23 @@
 
     
   <url>
-    <loc>https://blog.adymilk.cn/2016/09/23/hexo%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <loc>https://blog.adymilk.cn/2017/04/13/Instagram_Youtube_google/</loc>
+    <lastmod>2018-11-25T03:36:43.000Z</lastmod>
     <data>
         <display>
-        <title>hexo部署失败解决方案</title>
-        <pubTime>2016-09-23T07:48:20.000Z</pubTime>
+        <title>国外这么好玩的网站你知道吗？</title>
+        <pubTime>2017-04-13T12:21:38.000Z</pubTime>
         
+        <tag>vpn</tag>
+         
+        <tag>Instagram</tag>
+         
+        <tag>Facebook</tag>
+         
          
            
              
-              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="生活笔记" url="https://blog.adymilk.cn/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
@@ -1652,6 +1635,23 @@
     
     
     
+  <url>
+    <loc>https://blog.adymilk.cn/2016/09/23/hexo%E9%83%A8%E7%BD%B2%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>hexo部署失败解决方案</title>
+        <pubTime>2016-09-23T07:48:20.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="代码笔记" url="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
     
     
