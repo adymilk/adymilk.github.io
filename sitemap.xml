@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.adymilk.cn/2019/11/16/20191116-1/</loc>
+    <loc>https://blog.adymilk.cn/2020/01/01/20200101-1/</loc>
     
-    <lastmod>2019-11-16T13:06:11.000Z</lastmod>
+    <lastmod>2020-01-01T06:01:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2018/06/03/20180603-1/</loc>
+    
+    <lastmod>2019-11-17T01:36:59.000Z</lastmod>
     
   </url>
   
@@ -16,21 +23,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2016/11/21/JetBrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2017/11/18/2017-11-18-%E5%AD%A6%E4%BC%9A%E8%B7%9F%E8%87%AA%E5%B7%B1%E7%9B%B8%E5%A4%84/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2017/12/19/2017-12-19-%E4%BF%AE%E5%A4%8DUbuntu%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -38,6 +31,13 @@
   
   <url>
     <loc>https://blog.adymilk.cn/2018/05/27/20180512/</loc>
+    
+    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2017/12/19/2017-12-19-%E4%BF%AE%E5%A4%8DUbuntu%E7%B3%BB%E7%BB%9F%E5%BC%95%E5%AF%BC%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -52,6 +52,13 @@
   
   <url>
     <loc>https://blog.adymilk.cn/2018/05/18/20180518-2/</loc>
+    
+    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2018/05/18/20180518-3/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2018/06/03/20180603-1/</loc>
+    <loc>https://blog.adymilk.cn/2017/04/13/Instagram_Youtube_google/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -100,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2018/07/20/20180720-1/</loc>
+    <loc>https://blog.adymilk.cn/2018/07/29/20180729-1/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2018/07/29/20180729-1/</loc>
+    <loc>https://blog.adymilk.cn/2018/07/20/20180720-1/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -135,21 +142,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/</loc>
+    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2017/04/13/Instagram_Youtube_google/</loc>
+    <loc>https://blog.adymilk.cn/2017/11/18/2017-11-18-%E5%AD%A6%E4%BC%9A%E8%B7%9F%E8%87%AA%E5%B7%B1%E7%9B%B8%E5%A4%84/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -164,6 +164,20 @@
   
   <url>
     <loc>https://blog.adymilk.cn/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</loc>
+    
+    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2016/11/21/JetBrains%E7%B3%BB%E5%88%97%E4%BA%A7%E5%93%81%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -282,13 +296,6 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/04/24/%E6%89%8B%E6%8A%84@%E9%AC%BC%E8%84%9A%E4%B8%83%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.adymilk.cn/2017/05/01/%E6%91%98%E5%BD%95-%E9%AC%BC%E8%84%9A%E4%B8%83-%E6%97%85%E6%B8%B8-%E6%80%9D%E8%80%83-%E7%8B%AC%E5%A4%84-%E5%BF%99%E7%A2%8C/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
@@ -296,21 +303,14 @@
   </url>
   
   <url>
+    <loc>https://blog.adymilk.cn/2017/04/24/%E6%89%8B%E6%8A%84@%E9%AC%BC%E8%84%9A%E4%B8%83%E6%B7%B1%E5%BA%A6%E5%A5%BD%E6%96%87/</loc>
+    
+    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.adymilk.cn/2017/03/29/%E6%98%8E%E6%98%8E%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BA%BA%EF%BC%8C%E5%81%8F%E8%A6%81%E5%83%8F%E6%9C%BA%E5%99%A8%E4%B8%80%E6%A0%B7%E6%B4%BB%E7%9D%80/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2018/03/08/%E6%B2%A1%E9%95%BF%E6%AF%9B%E7%9A%84%E7%88%B1%E6%83%85/</loc>
-    
-    <lastmod>2019-11-16T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2018/05/18/20180518-3/</loc>
     
     <lastmod>2019-11-16T12:27:38.000Z</lastmod>
     
@@ -345,6 +345,20 @@
   </url>
   
   <url>
+    <loc>https://blog.adymilk.cn/2017/08/10/2017-08-10-StudyPythonFirstDay/</loc>
+    
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.adymilk.cn/2017/08/15/2017-08-15-HTML-template-separation/</loc>
+    
+    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.adymilk.cn/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
@@ -366,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/09/2017-08-09-push-hexo-to-baidu/</loc>
+    <loc>https://blog.adymilk.cn/2016/12/01/2016-12-01/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -387,14 +401,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/15/2017-08-15-HTML-template-separation/</loc>
+    <loc>https://blog.adymilk.cn/2017/06/26/%E5%9C%A8Ubuntu%E4%B8%8B%E8%A7%A3%E5%86%B3-adb-devices-xx-no-permission/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/06/26/%E5%9C%A8Ubuntu%E4%B8%8B%E8%A7%A3%E5%86%B3-adb-devices-xx-no-permission/</loc>
+    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-free-for-dev/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -436,14 +450,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2016/10/01/hexo%E5%90%8C%E6%AD%A5%E5%88%B0github%E6%97%B6%E5%85%8D%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81/</loc>
+    <loc>https://blog.adymilk.cn/2017/08/04/2017-08-04-what-is-git/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2016/12/01/2016-12-01/</loc>
+    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-Linux-server-setup/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -471,14 +485,14 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-free-for-dev/</loc>
+    <loc>https://blog.adymilk.cn/2017/08/09/2017-08-09-push-hexo-to-baidu/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/02/2017-08-02-Linux-server-setup/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -541,13 +555,6 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/</loc>
-    
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.adymilk.cn/2017/08/02/Open-Android-lib/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
@@ -555,21 +562,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2016/10/25/JavaScript-callback-function-%E7%90%86%E8%A7%A3/</loc>
-    
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/404.html</loc>
-    
-    <lastmod>2018-06-25T16:32:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.adymilk.cn/2017/08/04/2017-08-04-what-is-git/</loc>
+    <loc>https://blog.adymilk.cn/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -590,7 +583,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/08/10/2017-08-10-StudyPythonFirstDay/</loc>
+    <loc>https://blog.adymilk.cn/2016/10/25/JavaScript-callback-function-%E7%90%86%E8%A7%A3/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
@@ -611,7 +604,7 @@
   </url>
   
   <url>
-    <loc>https://blog.adymilk.cn/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/</loc>
+    <loc>https://blog.adymilk.cn/2016/10/01/hexo%E5%90%8C%E6%AD%A5%E5%88%B0github%E6%97%B6%E5%85%8D%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81/</loc>
     
     <lastmod>2018-06-25T16:32:37.000Z</lastmod>
     
