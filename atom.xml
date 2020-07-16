@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.adymilk.cn/"/>
-  <updated>2020-05-14T14:13:38.000Z</updated>
+  <updated>2020-07-16T21:15:48.000Z</updated>
   <id>https://blog.adymilk.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://blog.adymilk.cn/2020/07/17/20200715-1/"/>
+    <id>https://blog.adymilk.cn/2020/07/17/20200715-1/</id>
+    <published>2020-07-16T21:15:48.000Z</published>
+    <updated>2020-07-16T21:15:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>sssss.md</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;sssss.md&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>信息大爆炸的时代</title>
@@ -525,33 +547,6 @@
       <category term="Python" scheme="https://blog.adymilk.cn/tags/Python/"/>
     
       <category term="game" scheme="https://blog.adymilk.cn/tags/game/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>两行代码实现网页统计功能</title>
-    <link href="https://blog.adymilk.cn/2018/05/18/20180518-2/"/>
-    <id>https://blog.adymilk.cn/2018/05/18/20180518-2/</id>
-    <published>2018-05-18T06:36:18.000Z</published>
-    <updated>2019-11-16T12:27:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="不蒜子官网介绍"><a href="#不蒜子官网介绍" class="headerlink" title="不蒜子官网介绍"></a><a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子官网介绍</a></h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;不蒜子官网介绍&quot;&gt;&lt;a href=&quot;#不蒜子官网介绍&quot; class=&quot;headerlink&quot; title=&quot;不蒜子官网介绍&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://busuanzi.ibruce.info/&quot; target=&quot;_blank&quot; rel=&quot;noope
-      
-    
-    </summary>
-    
-      <category term="代码笔记" scheme="https://blog.adymilk.cn/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="统计" scheme="https://blog.adymilk.cn/tags/%E7%BB%9F%E8%AE%A1/"/>
-    
-      <category term="网页" scheme="https://blog.adymilk.cn/tags/%E7%BD%91%E9%A1%B5/"/>
     
   </entry>
   
