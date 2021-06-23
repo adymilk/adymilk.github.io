@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git recipes in Chinese. 高质量的Git中文教程. | 三步枫的个人网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">三步枫的个人网站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三步枫的个人网站</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2017-08-04-what-is-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/04/2017-08-04-what-is-git/" class="article-date">
+  <time class="dt-published" datetime="2017-08-03T16:52:45.000Z" itemprop="datePublished">2017-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Git recipes in Chinese. 高质量的Git中文教程.
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-图解"><a href="#Git-图解" class="headerlink" title="Git 图解"></a>Git 图解</h1><blockquote>
+<p>BY 童仲毅（<a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/">geeeeeeeeek@github</a>）</p>
+<p>这是一篇在<a target="_blank" rel="noopener" href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">原文</a>基础上演绎的文章。原作者 <a href="lodatom@gmail.com">Mark Lodato</a>，译者 <a href="ellrywych@gmail.com">wych</a>。原文采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/3.0/us/">创用 CC 姓名标示-非商业性-相同方式分享 3.0 美国授权条款</a>授权。</p>
+</blockquote>
+<p>此页图解 git 中的最常用命令。如果你稍微理解 git 的工作原理，这篇文章能够让你理解的更透彻。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><img src="http://marklodato.github.io/visual-git-guide/basic-usage.svg" alt="enter image description here"></p>
+<p>上面的四条命令在工作目录、stage 缓存(也叫做索引)和 commit 历史之间复制文件。</p>
+<ul>
+<li><code>git add files</code> 把工作目录中的文件加入 stage 缓存</li>
+<li><code>git commit</code> 把 stage 缓存生成一次 commit，并加入 commit 历史</li>
+<li><code>git reset -- files</code> 撤销最后一次 <code>git add files</code>，你也可以用 <code>git reset</code> 撤销所有 stage 缓存文件</li>
+<li><code>git checkout -- files</code> 把文件从 stage 缓存复制到工作目录，用来丢弃本地修改</li>
+</ul>
+<p>你可以用 <code>git reset -p</code>、<code>git checkout -p</code> 或 <code>git add -p</code> 进入交互模式，也可以跳过 stage 缓存直接从  commit历史取出文件或者直接提交代码。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/basic-usage-2.svg" alt="enter image description here"></p>
+<ul>
+<li><code>git commit -a </code> 相当于运行 <code>git add</code> 把所有当前目录下的文件加入 stage 缓存再运行 <code>git commit</code>。</li>
+<li><code>git commit files</code> 进行一次包含最后一次提交加上工作目录中文件快照的提交，并且文件被添加到 stage 缓存。</li>
+<li><code>git checkout HEAD -- files</code> 回滚到复制最后一次提交。</li>
+</ul>
+<h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>后文中以下面的形式使用图片：</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/conventions.svg" alt="enter image description here"></p>
+<p>绿色的5位字符表示提交的 ID，分别指向父节点。分支用橙色显示，分别指向特定的提交。当前分支由附在其上的 <code>_HEAD_</code> 标识。</p>
+<p>这张图片里显示最后 5 次提交，<code>_ed489_</code> 是最新提交。 <code>_master_</code> 分支指向此次提交，另一个 <code>_maint_</code> 分支指向祖父提交节点。</p>
+<h2 id="命令详解"><a href="#命令详解" class="headerlink" title="命令详解"></a>命令详解</h2><h3 id="Diff"><a href="#Diff" class="headerlink" title="Diff"></a>Diff</h3><p>有许多种方法查看两次提交之间的变动，下面是其中一些例子。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/diff.svg" alt="enter image description here"></p>
+<h3 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h3><p>提交时，Git 用 stage 缓存中的文件创建一个新的提交，并把此时的节点设为父节点。然后把当前分支指向新的提交节点。下图中，当前分支是 <code>_master_</code>。</p>
+<p>在运行命令之前，<code>_master_</code> 指向 <code>_ed489_</code>，提交后，<code>_master_</code> 指向新的节点<code>_f0cec_</code> 并以 <code>_ed489_</code> 作为父节点。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-master.svg" alt="enter image description here"></p>
+<p>即便当前分支是某次提交的祖父节点，Git 会同样操作。下图中，在 <code>_master_</code> 分支的祖父节点 <code>_maint_</code> 分支进行一次提交，生成了 <code>_1800b_</code>。</p>
+<p>这样，<code>_maint_ </code>分支就不再是 <code>_master_</code> 分支的祖父节点。此时，<a href="#merge">merge</a> 或者 <a href="#rebase">rebase</a> 是必须的。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-maint.svg" alt="enter image description here"></p>
+<p>如果想更改一次提交，使用 <code>git commit --amend</code>。Git 会使用与当前提交相同的父节点进行一次新提交，旧的提交会被取消。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-amend.svg" alt="enter image description here"></p>
+<p>另一个例子是<a href="#detached">分离HEAD提交</a>，在后面的章节中介绍。</p>
+<h3 id="Checkout"><a href="#Checkout" class="headerlink" title="Checkout"></a>Checkout</h3><p><code>git checkout</code> 命令用于从历史提交（或者 stage 缓存）中拷贝文件到工作目录，也可用于切换分支。</p>
+<p>当给定某个文件名（或者打开 <code>-p</code> 选项，或者文件名和-p选项同时打开）时，Git 会从指定的提交中拷贝文件到 stage 缓存和工作目录。比如，<code>git checkout HEAD~ foo.c</code> 会将提交节点 <code>_HEAD~_</code>（即当前提交节点的父节点）中的 <code>foo.c</code> 复制到工作目录并且加到 stage 缓存中。如果命令中没有指定提交节点，则会从 stage 缓存中拷贝内容。注意当前分支不会发生变化。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-files.svg" alt="enter image description here"></p>
+<p>当不指定文件名，而是给出一个（本地）分支时，那么 <code>_HEAD_</code> 标识会移动到那个分支（也就是说，我们「切换」到那个分支了），然后 stage 缓存和工作目录中的内容会和 <code>_HEAD_</code> 对应的提交节点一致。新提交节点（下图中的 <code>a47c3</code>）中的所有文件都会被复制（到 stage 缓存和工作目录中）；只存在于老的提交节点（<code>ed489</code>）中的文件会被删除；不属于上述两者的文件会被忽略，不受影响。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-branch.svg" alt="enter image description here"></p>
+<p>如果既没有指定文件名，也没有指定分支名，而是一个标签、远程分支、SHA-1 值或者是像 <code>_master~3_</code> 类似的东西，就得到一个匿名分支，称作 <code>_detached HEAD_</code>（被分离的 <code>_HEAD_</code> 标识）。这样可以很方便地在历史版本之间互相切换。比如说你想要编译 1.6.6.1 版本的 Git，你可以运行 <code>git checkout v1.6.6.1</code>（这是一个标签，而非分支名），编译，安装，然后切换回另一个分支，比如说 <code>git checkout master</code>。然而，当提交操作涉及到「分离的 HEAD」时，其行为会略有不同，详情见在<a href="#detached">下面</a>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-detached.svg" alt="enter image description here"></p>
+<h3 id="HEAD-标识处于分离状态时的提交操作"><a href="#HEAD-标识处于分离状态时的提交操作" class="headerlink" title="HEAD 标识处于分离状态时的提交操作"></a>HEAD 标识处于分离状态时的提交操作</h3><p>当 <code>_HEAD_</code> 处于分离状态（不依附于任一分支）时，提交操作可以正常进行，但是不会更新任何已命名的分支。你可以认为这是在更新一个匿名分支。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-detached.svg" alt="enter image description here"></p>
+<p>一旦此后你切换到别的分支，比如说 <code>_master_</code>，那么这个提交节点（可能）再也不会被引用到，然后就会被丢弃掉了。注意这个命令之后就不会有东西引用 <code>_2eecb_</code>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-after-detached.svg" alt="enter image description here"></p>
+<p>但是，如果你想保存这个状态，可以用命令 <code>git checkout -b name</code> 来创建一个新的分支。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-b-detached.svg" alt="enter image description here"></p>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><p><code>git reset</code> 命令把当前分支指向另一个位置，并且有选择的变动工作目录和索引。也用来在从历史commit历史中复制文件到索引，而不动工作目录。</p>
+<p>如果不给选项，那么当前分支指向到那个提交。如果用 <code>--hard</code> 选项，那么工作目录也更新，如果用 <code>--soft</code> 选项，那么都不变。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset-commit.svg" alt="enter image description here"></p>
+<p>如果没有给出提交点的版本号，那么默认用 <code>_HEAD_</code>。这样，分支指向不变，但是索引会回滚到最后一次提交，如果用 <code>--hard</code> 选项，工作目录也同样。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset.svg" alt="enter image description here"></p>
+<p>如果给了文件名(或者 <code>-p</code> 选项), 那么工作效果和带文件名的<a href="#checkout">checkout</a>差不多，除了索引被更新。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset-files.svg" alt="enter image description here"></p>
+<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p><code>git merge</code> 命令把不同分支合并起来。合并前，索引必须和当前提交相同。如果另一个分支是当前提交的祖父节点，那么合并命令将什么也不做。</p>
+<p>另一种情况是如果当前提交是另一个分支的祖父节点，就导致 <code>_fast-forward_</code> 合并。指向只是简单的移动，并生成一个新的提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/merge-ff.svg" alt="enter image description here"></p>
+<p>否则就是一次真正的合并。默认把当前提交（<code>_ed489_</code> 如下所示）和另一个提交（<code>_33104_</code>）以及他们的共同祖父节点（<code>_b325c_</code>）进行一次<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Three-way_merge">三方合并</a>。结果是先保存当前目录和索引，然后和父节点 <code>_33104_</code> 一起做一次新提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/merge.svg" alt="enter image description here"></p>
+<h3 id="Cherry-Pick"><a href="#Cherry-Pick" class="headerlink" title="Cherry Pick"></a>Cherry Pick</h3><p><code>git cherry-pick</code> 命令「复制」一个提交节点并在当前分支做一次完全一样的新提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/cherry-pick.svg" alt="enter image description here"></p>
+<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p><code>git rebase</code> 是合并命令的另一种选择。合并把两个父分支合并进行一次提交，提交历史不是线性的。rebase 在当前分支上重演另一个分支的历史，提交历史是线性的。</p>
+<p>本质上，这是线性化的自动的 <a href="#cherry-pick">cherry-pick</a>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/rebase.svg" alt="enter image description here"></p>
+<p>上面的命令都在 <code>_topic_</code> 分支中进行，而不是 <code>_master_</code> 分支，在 <code>_master_</code> 分支上重演，并且把分支指向新的节点。注意旧提交没有被引用，将被回收。</p>
+<p>要限制回滚范围，使用 <code>--onto</code> 选项。下面的命令在 <code>_master_</code> 分支上重演当前分支从 <code>_169a6_</code> 以来的最近几个提交，即 <code>_2c33a_</code>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/rebase-onto.svg" alt="enter image description here"></p>
+<p>同样有 <code>git rebase --interactive</code> 让你更方便的完成一些复杂操作，比如丢弃、重排、修改、合并提交。</p>
+<blockquote>
+<p>这篇文章是<a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/"><strong>「git-recipes」</strong></a>的一部分，点击 <a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/wiki/"><strong>目录</strong></a> 查看所有章节。</p>
+<p>如果你觉得文章对你有帮助，欢迎点击右上角的 <strong>Star</strong> :star2: 或 <strong>Fork</strong> :fork_and_knife:。</p>
+<p>如果你发现了错误，或是想要加入协作，请参阅 <a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/issues/1">Wiki 协作说明</a>。</p>
+</blockquote>
+<p>`</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/04/2017-08-04-what-is-git/" data-id="ckq8u0dx30003nm2y2wrj0b9q" data-title="Git recipes in Chinese. 高质量的Git中文教程." class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/09/2017-08-09-push-hexo-to-baidu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          hexo 向百度主动推送链接
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/02/2017-08-02-free-for-dev/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">免费的互联网开发者服务一览</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/14/20200715-1/">数据科学</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/26/20181126/">微信小程序入门唠嗑第一课</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/20180720-1/">手淘首页的3大核心权重</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/30/20180630-1/">人工智能Ai人脸融合技术</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/26/20180624-1/">安装黑苹果系统是一种什么体验？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

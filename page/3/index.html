@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>三步枫的个人网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">三步枫的个人网站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三步枫的个人网站</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2017-08-02-Linux-server-setup" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/02/2017-08-02-Linux-server-setup/" class="article-date">
+  <time class="dt-published" datetime="2017-08-02T04:40:48.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/02/2017-08-02-Linux-server-setup/">Linux服务器的初步配置流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>开发网站的时候，常常需要自己配置Linux服务器。</p>
+<p>本文记录配置Linux服务器的初步流程，也就是系统安装完成后，下一步要做的事情。这主要是我自己的总结和备忘，如果有遗漏，欢迎大家补充。</p>
+<p>下面的操作针对Debian/Ubuntu系统，其他Linux系统也类似，就是部分命令稍有不同。</p>
+<p><img src="http://image.beekka.com/blog/2014/bg2014031401.jpg"></p>
+<h2 id="第一步：root用户登录"><a href="#第一步：root用户登录" class="headerlink" title="第一步：root用户登录"></a>第一步：root用户登录</h2><p>首先，使用root用户登录远程主机（假定IP地址是128.199.209.242）。</p>
+<blockquote><pre><code class="language-bash">
+ssh root@128.199.209.242
+
+<p></code></pre></blockquote></p>
+<p>这时，命令行会出现警告，表示这是一个新的地址，存在安全风险。键入yes，表示接受。然后，就应该可以顺利登入远程主机。</p>
+<p>接着，修改root用户的密码。</p>
+<blockquote><pre><code class="language-bash">
+passwd
+
+<p></code></pre></blockquote></p>
+<h2 id="第二步：新建用户"><a href="#第二步：新建用户" class="headerlink" title="第二步：新建用户"></a>第二步：新建用户</h2><p>首先，添加一个用户组（这里假定为admin用户组）。</p>
+<blockquote><pre><code class="language-bash">
+addgroup admin
+
+<p></code></pre></blockquote></p>
+<p>然后，添加一个新用户（假定为bill）。</p>
+<blockquote><pre><code class="language-bash">
+useradd -d /home/bill -s /bin/bash -m bill 
+
+<p></code></pre></blockquote></p>
+<p>上面命令中，参数d指定用户的主目录，参数s指定用户的shell，参数m表示如果该目录不存在，则创建该目录。</p>
+<p>接着，设置新用户的密码。</p>
+<blockquote><pre><code class="language-bash">
+passwd bill 
+
+<p></code></pre></blockquote></p>
+<p>将新用户（bill）添加到用户组（admin）。</p>
+<blockquote><pre><code class="language-bash">
+usermod -a -G admin bill 
+
+<p></code></pre></blockquote></p>
+<p>接着，为新用户设定sudo权限。</p>
+<blockquote><pre><code class="language-bash">
+visudo 
+
+<p></code></pre></blockquote></p>
+<p>visudo命令会打开sudo设置文件/etc/sudoers，找到下面这一行。</p>
+<blockquote><pre><code class="language-bash">
+root    ALL=(ALL:ALL) ALL
+
+<p></code></pre></blockquote></p>
+<p>在这一行的下面，再添加一行。</p>
+<blockquote><pre><code class="language-bash">
+root    ALL=(ALL:ALL) ALL
+bill    ALL=(ALL) NOPASSWD: ALL
+
+<p></code></pre></blockquote></p>
+<p>上面的NOPASSWD表示，切换sudo的时候，不需要输入密码，我喜欢这样比较省事。如果出于安全考虑，也可以强制要求输入密码。</p>
+<blockquote><pre><code class="language-bash">
+root    ALL=(ALL:ALL) ALL
+bill    ALL=(ALL:ALL) ALL
+
+<p></code></pre></blockquote></p>
+<p>然后，先退出root用户的登录，再用新用户的身份登录，检查到这一步为止，是否一切正常。</p>
+<blockquote><pre><code class="language-bash">
+exit
+ssh bill@128.199.209.242
+
+<p></code></pre></blockquote></p>
+<h2 id="第三步：SSH设置"><a href="#第三步：SSH设置" class="headerlink" title="第三步：SSH设置"></a>第三步：SSH设置</h2><p>首先，确定本机有SSH公钥（一般是文件~/.ssh/id_rsa.pub），如果没有的话，使用ssh-keygen命令生成一个（可参考我写的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html">SSH教程</a>）。</p>
+<p>在本机上另开一个shell窗口，将本机的公钥拷贝到服务器的authorized_keys文件。</p>
+<blockquote><pre><code class="language-bash">
+cat ~/.ssh/id_rsa.pub | ssh bill@128.199.209.242 'mkdir -p .ssh && cat - >> ~/.ssh/authorized_keys'
+
+<h1 id="或者在服务器端，运行下面命令"><a href="#或者在服务器端，运行下面命令" class="headerlink" title="或者在服务器端，运行下面命令"></a>或者在服务器端，运行下面命令</h1><p>echo “ssh-rsa [your public key]” &gt; ~/.ssh/authorized_keys</p>
+<p></code></pre></blockquote></p>
+<p>然后，进入服务器，编辑SSH配置文件/etc/ssh/sshd_config。</p>
+<blockquote><pre><code class="language-bash">
+sudo cp /etc/ssh/sshd_config ~
+sudo nano /etc/ssh/sshd_config
+
+<p></code></pre></blockquote></p>
+<p>在配置文件中，将SSH的默认端口23改掉，可以改成从1025到65536之间的任意一个整数（这里假定为25000）。</p>
+<blockquote><pre><code class="language-bash">
+Port 25000
+
+<p></code></pre></blockquote></p>
+<p>然后，检查几个设置是否设成下面这样，确保去除前面的#号。</p>
+<blockquote><pre><code class="language-bash">
+Protocol 2
+
+<p>PermitRootLogin no<br>PermitEmptyPasswords no<br>PasswordAuthentication no</p>
+<p>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile .ssh/authorized_keys</p>
+<p>UseDNS no</p>
+<p></code></pre></blockquote></p>
+<p>上面主要是禁止root用户登录，以及禁止用密码方式登录。</p>
+<p>接着，在配置文件的末尾，指定允许登陆的用户。</p>
+<blockquote><pre><code class="language-bash">
+AllowUsers bill
+
+<p></code></pre></blockquote></p>
+<p>保存后，退出文件编辑。</p>
+<p>接着，改变authorized_keys文件的权限。</p>
+<blockquote><pre><code class="language-bash">
+sudo chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh/
+
+<p></code></pre></blockquote></p>
+<p>然后，重启SSHD。</p>
+<blockquote><pre><code class="language-bash">
+sudo service ssh restart
+
+<h1 id="或者"><a href="#或者" class="headerlink" title="或者"></a>或者</h1><p>sudo /etc/init.d/ssh restart</p>
+<p></code></pre></blockquote></p>
+<p>下面的一步是可选的。在本机~/.ssh文件夹下创建config文件，内容如下。</p>
+<blockquote><pre><code class="language-bash">
+Host s1
+HostName 128.199.209.242
+User bill
+Port 25000
+
+<p></code></pre></blockquote></p>
+<p>最后，在本机另开一个shell窗口，测试SSH能否顺利登录。</p>
+<blockquote><pre><code class="language-bash">
+ssh s1
+
+<p></code></pre></blockquote></p>
+<h2 id="第四步：运行环境配置"><a href="#第四步：运行环境配置" class="headerlink" title="第四步：运行环境配置"></a>第四步：运行环境配置</h2><p>首先，检查服务器的区域设置。</p>
+<blockquote><pre><code class="language-bash">
+locale
+
+<p></code></pre></blockquote></p>
+<p>如果结果不是en_US.UTF-8，建议都设成它。</p>
+<blockquote><pre><code class="language-bash">
+sudo locale-gen en_US en_US.UTF-8 en_CA.UTF-8
+sudo dpkg-reconfigure locales
+
+<p></code></pre></blockquote></p>
+<p>然后，更新软件。</p>
+<blockquote><pre><code class="language-bash">
+sudo apt-get update
+sudo apt-get upgrade
+
+<p></code></pre></blockquote></p>
+<p>最后，再根据需要，做一些安全设置，比如搭建防火墙，关闭HTTP、HTTPs、SSH以外的端口，再比如安装Fail2Ban，详细可参考这篇<a target="_blank" rel="noopener" href="http://spenserj.com/blog/2013/07/15/securing-a-linux-server/">《Securing a Linux Server》</a>。</p>
+<p>（完）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/02/2017-08-02-Linux-server-setup/" data-id="ckq8t6ww3000b2w2y77f38auj" data-title="Linux服务器的初步配置流程" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/" rel="tag">server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Open-Android-lib" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/02/Open-Android-lib/" class="article-date">
+  <time class="dt-published" datetime="2017-08-02T04:12:47.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/02/Open-Android-lib/">优秀的 Android 开源库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>awesome-github-android-ui 是由<a target="_blank" rel="noopener" href="http://www.opendigg.com/">OpenDigg</a>整理并维护的安卓UI相关开源项目库集合。我们会定期同步<a target="_blank" rel="noopener" href="http://www.opendigg.com/tags/android-ui">OpenDigg</a>上的项目到这里，也欢迎各位<a target="_blank" rel="noopener" href="https://github.com/opendigg/opending-share-projects">提交项目</a>给我们。 </p>
+<p>如果收录的项目有错误，可以通过<a target="_blank" rel="noopener" href="https://github.com/opendigg/awesome-github-android-ui/issues">issue</a>反馈给我们。这里的项目Star数不是实时更新的，一般是一周更新一次。 </p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/02/Open-Android-lib/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/02/Open-Android-lib/" data-id="ckq8u4qtw0031oy2yh0uy8sop" data-title="优秀的 Android 开源库" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-3分钟轻松学会编译安卓-APK" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/" class="article-date">
+  <time class="dt-published" datetime="2017-07-30T04:08:15.000Z" itemprop="datePublished">2017-07-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/">3分钟轻松学会编译安卓 APK</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/https://developer.coolapk.com.png"></p>
+<p>简单说下，如何快速利用别人的开源项目快速编译一个apk。通过阅读优秀的开源项目源码，学习优秀的设计思路。提高自己的编码能力！编程高手的必经之路—–从学会阅读别人的代码开始！<br>好了，让我们马上开始把！</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/" data-id="ckq8t6wvv00002w2yf1oagwfl" data-title="3分钟轻松学会编译安卓 APK" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-解决安装curl依赖错误" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/" class="article-date">
+  <time class="dt-published" datetime="2017-07-19T10:19:14.000Z" itemprop="datePublished">2017-07-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/">解决安装curl依赖错误</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo apt-get install curl<br></code></pre></td></tr></table></figure>
+
+
+<p>ubuntu 安装软件报依赖问题是比较让人头疼的问题。就比如前几天在安装 <code>curl</code> 报出的这条错误/</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl : 依赖: libcurl3-gnutls (= 7.47.0-1ubuntu2) 但是 7.47.0-1ubuntu2.2 正要被安装<br></code></pre></td></tr></table></figure>
+
+<p>一开始不清楚原因，执行了$ sudo apt-get update，出现了如下错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E: 无法获得锁 /var/lib/apt/lists/lock - open (11: 资源暂时不可用) <br>E: 无法对目录 /var/lib/apt/lists/ 加锁<br></code></pre></td></tr></table></figure>
+
+<h3 id="解决方法，强制删除"><a href="#解决方法，强制删除" class="headerlink" title="解决方法，强制删除"></a>解决方法，强制删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo rm /var/cache/apt/archives/lock<br>$ sudo rm /var/lib/dpkg/lock<br></code></pre></td></tr></table></figure>
+
+<h3 id="重新安装-libccurl3-gnutls"><a href="#重新安装-libccurl3-gnutls" class="headerlink" title="重新安装 libccurl3-gnutls"></a>重新安装 <code>libccurl3-gnutls</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo apt-get install libcurl3-gnutls=7.47.0-1ubuntu2<br></code></pre></td></tr></table></figure>
+
+<p>安装完后再执行一下 <code>$ sudo apt-get install curl</code> 即可</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/" data-id="ckq8u24sx0048nm2yemz76y0r" data-title="解决安装curl依赖错误" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curl/" rel="tag">curl</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux-作死自救历险记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-07-18T10:49:12.000Z" itemprop="datePublished">2017-07-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/">Linux 作死自救历险记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天作死不小心修改了系统 <code>/etc/sudoers</code> 文件<br>然后每次使用 <code>sudo</code> 的时候都会报如下错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">用户名不在sudoers文件中，此事将被报告<br><br></code></pre></td></tr></table></figure>
+
+<p>谷歌之后发现为了保护系统安全，sudoers文件一但被修改以后任何 <code>sudo</code> 命令都会被拒绝。现在我连把重新进 <code>/etc/sudoers</code> 文件的权限都没有了。更别提改回原文件了。啊啊啊啊啊～感觉自己仿佛在作死。。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/" data-id="ckq8u4qts002soy2y9o67d80c" data-title="Linux 作死自救历险记" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu无法打开software-center" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/" class="article-date">
+  <time class="dt-published" datetime="2017-07-08T08:20:27.000Z" itemprop="datePublished">2017-07-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/">ubuntu无法打开software-center</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1-1-报错"><a href="#1-1-报错" class="headerlink" title="1.1 报错"></a>1.1 报错</h3><p>在ubuntu14.04LTS版本下，点击软件中心图标，过了一会软件未能启动，没有动静。用命令行启动报如下错误:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">perrin@LittleBlack:~/Desktop$ sudo software-center<br>  File &quot;/usr/bin/software-center&quot;, line 140<br>    print time.time()<br>             ^<br>SyntaxError: invalid syntax<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-原因"><a href="#1-2-原因" class="headerlink" title="1.2 原因"></a>1.2 原因</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">即ubuntu下有多个版本python共存时，默认使用的Python版本还是保持原样，<br>不能修改为最新的python版本。若修改为最新版本，原有依赖旧版本python的应用可能会找不到相应的包从而导致出错。<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-解决办法"><a href="#1-3-解决办法" class="headerlink" title="1.3 解决办法"></a>1.3 解决办法</h3><p>将python链接默认指向Python2.7版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo mv /usr/bin/python /usr/bin/python_backup<br>sudo ln -s /usr/bin/python2.7 /usr/bin/python<br></code></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/08/ubuntu%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80software-center/" data-id="ckq8u533w003loy2y3fq16uzc" data-title="ubuntu无法打开software-center" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu解决dpkg-处理软件包-configure-时出错" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/" class="article-date">
+  <time class="dt-published" datetime="2017-07-07T14:39:48.000Z" itemprop="datePublished">2017-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/">ubuntu解决dpkg: 处理软件包 **** (--configure)时出错</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>原因：之前ubuntu误卸载了自带的python,导致这个问题、</p>
+<p>dpkg: 处理软件包 update-notifier-common (–configure)时出错：<br>子进程 已安装 post-installation 脚本 返回错误状态 1<br>dpkg: 依赖关系问题使得 ttf-mscorefonts-installer 的配置工作不能继续：</p>
+<p>1.$ sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名</p>
+<p>2.$ sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹</p>
+<p>3.$ sudo apt-get update</p>
+<p>4.$ apt-get -f install</p>
+<p>5.$ sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old //执行完上一步操作后会在新的info文件夹下生成一些文件，现将这些文件全部移到info_old文件夹下</p>
+<p>6.$ sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉</p>
+<p>7.$ sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info //把以前的info文件夹重新改回名字</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/07/07/ubuntu%E8%A7%A3%E5%86%B3dpkg-%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85-configure-%E6%97%B6%E5%87%BA%E9%94%99/" data-id="ckq8u4qtt002toy2y62j94yii" data-title="ubuntu解决dpkg: 处理软件包 **** (--configure)时出错" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Node版本切换n" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/" class="article-date">
+  <time class="dt-published" datetime="2017-06-14T06:14:04.000Z" itemprop="datePublished">2017-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/">Node版本切换n</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="n是什么？"><a href="#n是什么？" class="headerlink" title="n是什么？"></a>n是什么？</h3><p>de的一个模块，作者是TJ Holowaychuk（鼎鼎大名的Express框架作者），就像它的名字一样，它的理念就是简单：</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">npm install -g n<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>安装完成之后</li>
+</ul>
+<p>直接输入n<br>后输出当前已经安装的node版本以及正在使用的版本（前面有一个o<br>），你可以通过移动上下方向键来选择要使用的版本，最后按回车生效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">n<br>    0.10.1<br>    0.10.15<br>o   0.10.21<br>    0.11.8<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果没有出现版本，请先执行下面的代码安装指定的版本</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sudo n 版本号<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="安装最新版本"><a href="#安装最新版本" class="headerlink" title="安装最新版本"></a>安装最新版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">n latest<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装稳定版本"><a href="#安装稳定版本" class="headerlink" title="安装稳定版本"></a>安装稳定版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">n stable<br></code></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/06/14/Node%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2n/" data-id="ckq8u4qtd0022oy2yhmqd2m0x" data-title="Node版本切换n" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux把PHP版本从7-0降级到5-6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/" class="article-date">
+  <time class="dt-published" datetime="2017-06-07T10:57:57.000Z" itemprop="datePublished">2017-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/">Linux把PHP版本从7.0降级到5.6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在您的系统上，如果您已安装了多个版本的PHP（例如PHP 7.1和PHP 5.6两者）。 PHP 7.1作为Apache和CLI的默认PHP运行。对于任何需求，您需要使用PHP 5.6。然后你不需要删除php 7.1。你可以简单地切换php版本为默认用于Apache和命令行。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/06/07/Linux%E6%8A%8APHP%E7%89%88%E6%9C%AC%E4%BB%8E7-0%E9%99%8D%E7%BA%A7%E5%88%B05-6/" data-id="ckq8u4qtc001zoy2yfygqgdi7" data-title="Linux把PHP版本从7.0降级到5.6" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux系统好玩的命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2017-04-25T09:13:05.000Z" itemprop="datePublished">2017-04-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/">Linux系统那些牛逼的命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="打开Linux-命令行开启装逼模式"><a href="#打开Linux-命令行开启装逼模式" class="headerlink" title="打开Linux 命令行开启装逼模式"></a>打开Linux 命令行开启装逼模式</h3><p><img src="/img/linux-terimal.png"><br>Linux，这个号称“全地球人的操作系统”，以其免费、安全、稳定等优点获得人们的广泛好评！下面yarn就列出几点linux相对于Windows的优势。合法升级到最新版本却不需要花一分钱。(windows或者apple合法升级是需要掏钱的，windows与Linux比较差别大吧！)同一个硬件平台上最新的操作系统却比老的更快。(如果在一硬件平台上运行xp比较卡的话，那运行windows7是不可能的，而linux却相反，Linux与windows相比大大不同)</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/04/25/Linux%E7%B3%BB%E7%BB%9F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%91%BD%E4%BB%A4/" data-id="ckq8u4qtq002poy2y759u3joo" data-title="Linux系统那些牛逼的命令" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Précédent</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Suivant &raquo;</a>
+  </nav>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/14/20200715-1/">数据科学</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/26/20181126/">微信小程序入门唠嗑第一课</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/20180720-1/">手淘首页的3大核心权重</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/30/20180630-1/">人工智能Ai人脸融合技术</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/26/20180624-1/">安装黑苹果系统是一种什么体验？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

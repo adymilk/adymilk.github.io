@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>三步枫的个人网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">三步枫的个人网站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三步枫的个人网站</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-20180518-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/05/18/20180518-2/" class="article-date">
+  <time class="dt-published" datetime="2018-05-18T06:36:18.000Z" itemprop="datePublished">2018-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2018/05/18/20180518-2/">两行代码实现网页统计功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="不蒜子官网介绍"><a href="#不蒜子官网介绍" class="headerlink" title="不蒜子官网介绍"></a><a target="_blank" rel="noopener" href="http://busuanzi.ibruce.info/">不蒜子官网介绍</a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/18/20180518-2/" data-id="ckq8u15lj000znm2yf9ry12vs" data-title="两行代码实现网页统计功能" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-20180518-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/05/18/20180518-1/" class="article-date">
+  <time class="dt-published" datetime="2018-05-18T02:17:46.000Z" itemprop="datePublished">2018-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2018/05/18/20180518-1/">Linux 桌面版录制GIF动画</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="安装-byzanz"><a href="#安装-byzanz" class="headerlink" title="安装 byzanz"></a>安装 byzanz</h2><blockquote>
+<p>sudo apt-get install byzanz</p>
+</blockquote>
+<p>如果软件不存在，先添加下面的软件源再安装</p>
+<blockquote>
+<p>sudo add-apt-repository ppa:fossfreedom/byzanzsudo apt-get update &amp;&amp; sudo apt-get install byzanz</p>
+</blockquote>
+<h2 id="直接录制"><a href="#直接录制" class="headerlink" title="直接录制"></a>直接录制</h2><blockquote>
+<p>byzanz-record –duration=10 –x=100 –y=100 –width=600 –height=600 output.gif</p>
+</blockquote>
+<blockquote>
+<p>–duration 录制时长<br>–x x坐标<br>–y y坐标<br>–width 录制宽度<br>–height 录制高度<br>–output.gif 录制生成文件名</p>
+</blockquote>
+<h2 id="新建脚本byzanz-record-window-sh"><a href="#新建脚本byzanz-record-window-sh" class="headerlink" title="新建脚本byzanz-record-window.sh"></a>新建脚本byzanz-record-window.sh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-comment"># Example: byzanz-record-window 30 -c output.gif</span><br><br><span class="hljs-comment"># Delay before starting</span><br>DELAY=5<br><br><span class="hljs-comment"># Duration and output file</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$#</span> -gt 0 ]; <span class="hljs-keyword">then</span><br>    D=<span class="hljs-string">&quot;--duration=<span class="hljs-variable">$@</span>&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> Default recording duration 5s to /tmp/recorded.gif<br>    D=<span class="hljs-string">&quot;--duration=10 /tmp/recorded.gif&quot;</span><br><span class="hljs-keyword">fi</span><br>XWININFO=$(xwininfo)<br><span class="hljs-built_in">read</span> X &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Absolute upper-left X/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> Y &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Absolute upper-left Y/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> W &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Width/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> H &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Height/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><br><span class="hljs-built_in">echo</span> Delaying <span class="hljs-variable">$DELAY</span> seconds. After that, byzanz will start<br><span class="hljs-keyword">for</span> (( i=<span class="hljs-variable">$DELAY</span>; i&gt;0; --i )) ; <span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br>    sleep 1<br><span class="hljs-keyword">done</span><br><br>byzanz-record --verbose --delay=0 --x=<span class="hljs-variable">$X</span> --y=<span class="hljs-variable">$Y</span> --width=<span class="hljs-variable">$W</span> --height=<span class="hljs-variable">$H</span> <span class="hljs-variable">$D</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>记得加上执行权限</strong></p>
+<blockquote>
+<p>chmod a+x byzanz-record-window.sh</p>
+</blockquote>
+<p><strong>录制视频</strong></p>
+<blockquote>
+<p>./byzanz-record-window 5 -c output.gif</p>
+</blockquote>
+<p><img src="https://github.com/adymilk/Python-demo/blob/master/screenshot/output.gif" alt="示例"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/05/18/20180518-1/" data-id="ckq8u15lg000ynm2y3pc7adf3" data-title="Linux 桌面版录制GIF动画" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gif/" rel="tag">gif</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-04-Install-Beautiful-Ubuntu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" class="article-date">
+  <time class="dt-published" datetime="2017-10-19T12:27:40.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/">完美的 Ubuntu16.04 优化方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。</p>
+<blockquote>
+<p>Ubuntu | 最受欢迎的免费操作系统<br>Fast, secure and stylishly simple, the Ubuntu operating system is used by 20 million people worldwide every day.</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" data-id="ckq8t6ww1000a2w2y26yxgotq" data-title="完美的 Ubuntu16.04 优化方案" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Linux 暴力破解WIFI密码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/" class="article-date">
+  <time class="dt-published" datetime="2017-10-07T06:21:47.000Z" itemprop="datePublished">2017-10-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/">Linux 暴力破解WIFI密码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>请一直相信，任何牛逼的技术都是被苦逼的现实需求逼迫的。<br>当你抱着你的Mac、Iphone、Ipad准备打开王者荣耀，大喊一声“是时候展现真的技术了！”，结果你却发现这TMD没有网！！！啊啊啊啊啊，什么！你说这个世界如果没有了网络，你都找不到活着的意义？no no no，望着周围的一个个加密的wifi。于是，我决定来一场悄无声息的潜入………</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/" data-id="ckq8u4qt3001noy2y9m8q51v8" data-title="Linux 暴力破解WIFI密码" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-10-06-AndroidStudioMultichannelpacking" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/" class="article-date">
+  <time class="dt-published" datetime="2017-10-06T07:13:55.000Z" itemprop="datePublished">2017-10-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/">Android-Studio 多渠道打包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1、图形界面打包"><a href="#1、图形界面打包" class="headerlink" title="1、图形界面打包"></a>1、图形界面打包</h1><h2 id="需求分析（友盟SDK）"><a href="#需求分析（友盟SDK）" class="headerlink" title="#需求分析（友盟SDK）"></a>#需求分析（友盟SDK）</h2><p><a target="_blank" rel="noopener" href="https://dev.umeng.com/analytics/android-doc/integration">友盟SDK</a> 需要在<code>AndroidManifest.xml</code>中配置如下值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;meta-data android:value=&quot;Channel ID&quot; android:name=&quot;UMENG_CHANNEL&quot;/&gt;<br></code></pre></td></tr></table></figure>
+<p>其中<code>Channel ID</code>为软件应用市场标识。为了能够动态的设置<code>Channel ID</code>。可在<code>build.gradle</code>这样配置<code>productFlavors</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml">// 这里假定我们需要打包的渠道为酷安市场、360、小米、百度、豌豆荚<br><br>android &#123;  <br>    productFlavors &#123;<br>        kuan &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;kuan&quot;]<br>        &#125;<br>        xiaomi &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;xiaomi&quot;]<br>        &#125;<br>        qh360 &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;qh360&quot;]<br>        &#125;<br>        baidu &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]<br>        &#125;<br>        wandoujia &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;wandoujia&quot;]<br>        &#125;<br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/" data-id="ckq8u0dxh000lnm2y4m7ghbmv" data-title="Android-Studio 多渠道打包" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-15-HTML-template-separation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/15/2017-08-15-HTML-template-separation/" class="article-date">
+  <time class="dt-published" datetime="2017-08-15T07:08:50.000Z" itemprop="datePublished">2017-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/15/2017-08-15-HTML-template-separation/">网页模板分离的高效方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>网站模板的设计，一般的，我们做网站有一些通用的部分，比如 导航，底部，访问统计代码等等.<br>比如 <code>header.html</code>, <code>footer.html</code>, <code>content.html</code>…..其实我们可以写一个 <code>base.html</code> 来包含这些通用文件。ok,让我们一起学习如何实现的吧。</p>
+</blockquote>
+<h2 id="网页基础"><a href="#网页基础" class="headerlink" title="网页基础"></a>网页基础</h2><p><strong>以前我们这样写网页</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>我的地盘我做主！<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>看完本片博客，你以后可以这样写</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;extend name=&quot;Temp/base&quot;/&gt;<br>&lt;block name=&quot;content&quot;&gt;<br>	我的地盘我做主！<br>&lt;/block&gt;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>WOW, 好腻嗨啊……怎么做到的…</p>
+</blockquote>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><h3 id="新建文件夹和文件"><a href="#新建文件夹和文件" class="headerlink" title="新建文件夹和文件"></a>新建文件夹和文件</h3><p>新建一个文件夹 <code>Temp</code> 模板文件夹的意思。然后在这个 <code>Temp</code> 文件夹里面新建文件<code>head.html</code>、<code>footer.html</code>、<code>index.html</code></p>
+<p>最终目录结构是这样的</p>
+<p>Temp<br>    ├── base.html<br>    ├── footer.html<br>    ├── head.html<br>    └── index.html</p>
+<h3 id="接下来编辑-head-html-文件"><a href="#接下来编辑-head-html-文件" class="headerlink" title="接下来编辑 head.html 文件"></a>接下来编辑 <code>head.html</code> 文件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="继续编辑-footer-html文件"><a href="#继续编辑-footer-html文件" class="headerlink" title="继续编辑 footer.html文件"></a>继续编辑 <code>footer.html</code>文件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="编辑-base-html"><a href="#编辑-base-html" class="headerlink" title="编辑 base.html"></a>编辑 <code>base.html</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;Temp/head&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;Temp/footer&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="这时候-index-html-应该这样来写"><a href="#这时候-index-html-应该这样来写" class="headerlink" title="这时候 index.html 应该这样来写"></a>这时候 <code>index.html</code> 应该这样来写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;extend name=&quot;Temp/base&quot;/&gt;<br>&lt;block name=&quot;content&quot;&gt;<br>	我的地盘我做主！<br>&lt;/block&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="浏览器运行-index-html-看看吧"><a href="#浏览器运行-index-html-看看吧" class="headerlink" title="浏览器运行 index.html 看看吧"></a>浏览器运行 <code>index.html</code> 看看吧</h3><h2 id="为什么要实现模板分离？"><a href="#为什么要实现模板分离？" class="headerlink" title="为什么要实现模板分离？"></a>为什么要实现模板分离？</h2><p>这样我们就完成模板分离的处理。好处在于当一个网站的网页特别多的时候，相同的代码又不可避免。这时候用这个方法可以起到方便管理的作用。使你的代码高效、清晰、明了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/15/2017-08-15-HTML-template-separation/" data-id="ckq8u0dxf000jnm2yf95v3diq" data-title="网页模板分离的高效方法" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-10-StudyPythonFirstDay" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/10/2017-08-10-StudyPythonFirstDay/" class="article-date">
+  <time class="dt-published" datetime="2017-08-10T05:03:03.000Z" itemprop="datePublished">2017-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/10/2017-08-10-StudyPythonFirstDay/">学习Python系列第一天</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Python 是一个高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。被称作写爬虫最好的语言之一！从今天开始让我们一起来学习吧。每天一个小例子，开心学 Python .</p>
+</blockquote>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><blockquote>
+<p>这里我假设你已经安装好了 Python 开发环境，如果你不知道如何安装Python 开发环境。可以点击<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-install.html">这里</a></p>
+</blockquote>
+<h3 id="入门第一课：Hello-Python"><a href="#入门第一课：Hello-Python" class="headerlink" title="入门第一课：Hello Python"></a>入门第一课：Hello Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-comment">#!/usr/bin/python</span><br><br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Hello, Python!&quot;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><blockquote>
+<p>Hello Python</p>
+</blockquote>
+<h3 id="批量下载网站图片示例"><a href="#批量下载网站图片示例" class="headerlink" title="批量下载网站图片示例"></a>批量下载网站图片示例</h3><h4 id="1-1-获取整个页面数据"><a href="#1-1-获取整个页面数据" class="headerlink" title="1.1 获取整个页面数据"></a>1.1 获取整个页面数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> urllib<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2738151262&quot;</span>)<br><br><span class="hljs-built_in">print</span> html<br></code></pre></td></tr></table></figure>
+
+<h4 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h4><blockquote>
+<p>Urllib 模块提供了读取web页面数据的接口，我们可以像读取本地文件一样读取www和ftp上的数据。首先，我们定义了一个getHtml()函数:urllib.urlopen()方法用于打开一个URL地址。read()方法用于读取URL上的数据，向getHtml()函数传递一个网址，并把整个页面下载下来。执行程序就会把整个网页打印输出。</p>
+</blockquote>
+<h4 id="1-2-筛选页面中想要的数据"><a href="#1-2-筛选页面中想要的数据" class="headerlink" title="1.2 筛选页面中想要的数据"></a>1.2 筛选页面中想要的数据</h4><p>Python 提供了非常强大的正则表达式<br>假如我们百度贴吧找到了几张漂亮的壁纸，通过到前段查看工具。找到了图片的地址，如：src=”<a target="_blank" rel="noopener" href="http://imgsrc.baidu.com/forum......jpg%E2%80%9Dpic_ext=%E2%80%9Djpeg%E2%80%9D">http://imgsrc.baidu.com/forum......jpg”pic_ext=”jpeg”</a></p>
+<p><img src="http://images.cnitblog.com/i/311516/201403/020013141657112.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> urllib<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getImg</span>(<span class="hljs-params">html</span>):</span><br>    reg = <span class="hljs-string">r&#x27;src=&quot;(.+?\.jpg)&quot; pic_ext&#x27;</span><br>    imgre = re.<span class="hljs-built_in">compile</span>(reg)<br>    imglist = re.findall(imgre,html)<br>    <span class="hljs-keyword">return</span> imglist      <br>   <br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2460150866&quot;</span>)<br><span class="hljs-built_in">print</span> getImg(html)<br></code></pre></td></tr></table></figure>
+
+<p>我们又创建了getImg()函数，用于在获取的整个页面中筛选需要的图片连接。re模块主要包含了正则表达式：<br>re.compile() 可以把正则表达式编译成一个正则表达式对象.<br>re.findall() 方法读取html 中包含 imgre（正则表达式）的数据。<br>运行脚本将得到整个页面中包含图片的URL地址。</p>
+<h4 id="1-3-将页面筛选的数据保存到本地"><a href="#1-3-将页面筛选的数据保存到本地" class="headerlink" title="1.3 将页面筛选的数据保存到本地"></a>1.3 将页面筛选的数据保存到本地</h4><p>把筛选的图片地址通过for循环遍历并保存到本地，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> urllib<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getImg</span>(<span class="hljs-params">html</span>):</span><br>    reg = <span class="hljs-string">r&#x27;src=&quot;(.+?\.jpg)&quot; pic_ext&#x27;</span><br>    imgre = re.<span class="hljs-built_in">compile</span>(reg)<br>    imglist = re.findall(imgre,html)<br>    x = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> imgurl <span class="hljs-keyword">in</span> imglist:<br>        urllib.urlretrieve(imgurl,<span class="hljs-string">&#x27;%s.jpg&#x27;</span> % x)<br>        x+=<span class="hljs-number">1</span><br><br><br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2460150866&quot;</span>)<br><br><span class="hljs-built_in">print</span> getImg(html)<br></code></pre></td></tr></table></figure>
+<p>这里的核心是用到了urllib.urlretrieve()方法，直接将远程数据下载到本地。</p>
+<p>　　通过一个for循环对获取的图片连接进行遍历，为了使图片的文件名看上去更规范，对其进行重命名，命名规则通过x变量加1。保存的位置默认为程序的存放目录。</p>
+<p>程序运行完成，将在目录下看到下载到本地的文件。</p>
+<p><img src="http://images.cnitblog.com/i/311516/201403/020014265548094.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/10/2017-08-10-StudyPythonFirstDay/" data-id="ckq8u0dwy0000nm2yfow2hytf" data-title="学习Python系列第一天" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-09-push-hexo-to-baidu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/09/2017-08-09-push-hexo-to-baidu/" class="article-date">
+  <time class="dt-published" datetime="2017-08-09T02:59:16.000Z" itemprop="datePublished">2017-08-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/09/2017-08-09-push-hexo-to-baidu/">hexo 向百度主动推送链接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="百度站长工具"><a href="#百度站长工具" class="headerlink" title="百度站长工具"></a>百度站长工具</h3><p>百度站长提供了自动提交和手动提交两种方式。这个我们肯定不用手动提交这个弱智的方式。</p>
+<h3 id="自动提交"><a href="#自动提交" class="headerlink" title="自动提交"></a>自动提交</h3><p>自动提交分为三种方式自动主动推送（实时），自动推送，sitemap三种方式。</p>
+<h4 id="主动推送（实时）"><a href="#主动推送（实时）" class="headerlink" title="主动推送（实时）"></a>主动推送（实时）</h4><p>及时发现：可以缩短百度爬虫发现您站点新链接的时间，使新发布的页面可以在第一时间被百度收录<br>保护原创：对于网站的最新原创内容，使用主动推送功能可以快速通知到百度，使内容可以在转发之前被百度发现。<br>主动推送提供了4种提交的方式，curl,post,php,ruby。这里以curl为例。<br>我们将包含html地址的urls.txt文件提交到接口调用地址。我们的重点是怎么生成urls.txt</p>
+<h4 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h4><p>正如官网所说的那样，将代码复制在html页面的head头里即可，这个自己看百度站长工具吧。</p>
+<h4 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h4><p>sitemap是我们提交一个带有url地址的txt或者xml文件。我们这里也是提交urls.txt这个文件。同样重点也是生成这个文件。</p>
+<h3 id="生成urls-txt文件"><a href="#生成urls-txt文件" class="headerlink" title="生成urls.txt文件"></a>生成urls.txt文件</h3><p>我们知道在执行hexo g的命令后，会在public文件夹下生成Markdown文件对应的html文件，我们的思路先查找出这些html文件，然后放置在urls.txt这个文件里。</p>
+<h4 id="查找html文件"><a href="#查找html文件" class="headerlink" title="查找html文件"></a>查找html文件</h4><p>我们在post-receive这个文件里执行的都是shell命令，那么我们首先用shell命令查找这些html文件的路径。这个就用到了grep这个命令。grep语法参考linux grep命令详解<br>在public的文件夹下，执行下面的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">grep -r -l &#x27;index.html&#x27; * &gt;&gt;1.txt<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>是将查询的记录添加到1.txt中。<br>上面的命令生成的路径没有带域名，我们需要使用sed这个命令，在每个路径上添加域名生成urls.txt。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">ed &#x27;s/^/http:\/\/adymilk.cn\/&amp;/g&#x27; 1.txt &gt;&gt;urls.txt<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的代码是将1.txt里的路径都在开头添加上域名，并把新路径放在urls.txt文件里。</p>
+</blockquote>
+<h3 id="开始主动推送"><a href="#开始主动推送" class="headerlink" title="开始主动推送"></a>开始主动推送</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl -H &#x27;Content-Type:text/plain&#x27; --data-binary @urls.txt &quot;http://data.zz.baidu.com/urls?site=adymilk.cn&amp;token=XXX&quot;<br></code></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/09/2017-08-09-push-hexo-to-baidu/" data-id="ckq8u0dxe000inm2yb00v196w" data-title="hexo 向百度主动推送链接" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-04-what-is-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/04/2017-08-04-what-is-git/" class="article-date">
+  <time class="dt-published" datetime="2017-08-03T16:52:45.000Z" itemprop="datePublished">2017-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/04/2017-08-04-what-is-git/">Git recipes in Chinese. 高质量的Git中文教程.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-图解"><a href="#Git-图解" class="headerlink" title="Git 图解"></a>Git 图解</h1><blockquote>
+<p>BY 童仲毅（<a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/">geeeeeeeeek@github</a>）</p>
+<p>这是一篇在<a target="_blank" rel="noopener" href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">原文</a>基础上演绎的文章。原作者 <a href="lodatom@gmail.com">Mark Lodato</a>，译者 <a href="ellrywych@gmail.com">wych</a>。原文采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/3.0/us/">创用 CC 姓名标示-非商业性-相同方式分享 3.0 美国授权条款</a>授权。</p>
+</blockquote>
+<p>此页图解 git 中的最常用命令。如果你稍微理解 git 的工作原理，这篇文章能够让你理解的更透彻。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><img src="http://marklodato.github.io/visual-git-guide/basic-usage.svg" alt="enter image description here"></p>
+<p>上面的四条命令在工作目录、stage 缓存(也叫做索引)和 commit 历史之间复制文件。</p>
+<ul>
+<li><code>git add files</code> 把工作目录中的文件加入 stage 缓存</li>
+<li><code>git commit</code> 把 stage 缓存生成一次 commit，并加入 commit 历史</li>
+<li><code>git reset -- files</code> 撤销最后一次 <code>git add files</code>，你也可以用 <code>git reset</code> 撤销所有 stage 缓存文件</li>
+<li><code>git checkout -- files</code> 把文件从 stage 缓存复制到工作目录，用来丢弃本地修改</li>
+</ul>
+<p>你可以用 <code>git reset -p</code>、<code>git checkout -p</code> 或 <code>git add -p</code> 进入交互模式，也可以跳过 stage 缓存直接从  commit历史取出文件或者直接提交代码。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/basic-usage-2.svg" alt="enter image description here"></p>
+<ul>
+<li><code>git commit -a </code> 相当于运行 <code>git add</code> 把所有当前目录下的文件加入 stage 缓存再运行 <code>git commit</code>。</li>
+<li><code>git commit files</code> 进行一次包含最后一次提交加上工作目录中文件快照的提交，并且文件被添加到 stage 缓存。</li>
+<li><code>git checkout HEAD -- files</code> 回滚到复制最后一次提交。</li>
+</ul>
+<h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>后文中以下面的形式使用图片：</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/conventions.svg" alt="enter image description here"></p>
+<p>绿色的5位字符表示提交的 ID，分别指向父节点。分支用橙色显示，分别指向特定的提交。当前分支由附在其上的 <code>_HEAD_</code> 标识。</p>
+<p>这张图片里显示最后 5 次提交，<code>_ed489_</code> 是最新提交。 <code>_master_</code> 分支指向此次提交，另一个 <code>_maint_</code> 分支指向祖父提交节点。</p>
+<h2 id="命令详解"><a href="#命令详解" class="headerlink" title="命令详解"></a>命令详解</h2><h3 id="Diff"><a href="#Diff" class="headerlink" title="Diff"></a>Diff</h3><p>有许多种方法查看两次提交之间的变动，下面是其中一些例子。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/diff.svg" alt="enter image description here"></p>
+<h3 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h3><p>提交时，Git 用 stage 缓存中的文件创建一个新的提交，并把此时的节点设为父节点。然后把当前分支指向新的提交节点。下图中，当前分支是 <code>_master_</code>。</p>
+<p>在运行命令之前，<code>_master_</code> 指向 <code>_ed489_</code>，提交后，<code>_master_</code> 指向新的节点<code>_f0cec_</code> 并以 <code>_ed489_</code> 作为父节点。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-master.svg" alt="enter image description here"></p>
+<p>即便当前分支是某次提交的祖父节点，Git 会同样操作。下图中，在 <code>_master_</code> 分支的祖父节点 <code>_maint_</code> 分支进行一次提交，生成了 <code>_1800b_</code>。</p>
+<p>这样，<code>_maint_ </code>分支就不再是 <code>_master_</code> 分支的祖父节点。此时，<a href="#merge">merge</a> 或者 <a href="#rebase">rebase</a> 是必须的。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-maint.svg" alt="enter image description here"></p>
+<p>如果想更改一次提交，使用 <code>git commit --amend</code>。Git 会使用与当前提交相同的父节点进行一次新提交，旧的提交会被取消。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-amend.svg" alt="enter image description here"></p>
+<p>另一个例子是<a href="#detached">分离HEAD提交</a>，在后面的章节中介绍。</p>
+<h3 id="Checkout"><a href="#Checkout" class="headerlink" title="Checkout"></a>Checkout</h3><p><code>git checkout</code> 命令用于从历史提交（或者 stage 缓存）中拷贝文件到工作目录，也可用于切换分支。</p>
+<p>当给定某个文件名（或者打开 <code>-p</code> 选项，或者文件名和-p选项同时打开）时，Git 会从指定的提交中拷贝文件到 stage 缓存和工作目录。比如，<code>git checkout HEAD~ foo.c</code> 会将提交节点 <code>_HEAD~_</code>（即当前提交节点的父节点）中的 <code>foo.c</code> 复制到工作目录并且加到 stage 缓存中。如果命令中没有指定提交节点，则会从 stage 缓存中拷贝内容。注意当前分支不会发生变化。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-files.svg" alt="enter image description here"></p>
+<p>当不指定文件名，而是给出一个（本地）分支时，那么 <code>_HEAD_</code> 标识会移动到那个分支（也就是说，我们「切换」到那个分支了），然后 stage 缓存和工作目录中的内容会和 <code>_HEAD_</code> 对应的提交节点一致。新提交节点（下图中的 <code>a47c3</code>）中的所有文件都会被复制（到 stage 缓存和工作目录中）；只存在于老的提交节点（<code>ed489</code>）中的文件会被删除；不属于上述两者的文件会被忽略，不受影响。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-branch.svg" alt="enter image description here"></p>
+<p>如果既没有指定文件名，也没有指定分支名，而是一个标签、远程分支、SHA-1 值或者是像 <code>_master~3_</code> 类似的东西，就得到一个匿名分支，称作 <code>_detached HEAD_</code>（被分离的 <code>_HEAD_</code> 标识）。这样可以很方便地在历史版本之间互相切换。比如说你想要编译 1.6.6.1 版本的 Git，你可以运行 <code>git checkout v1.6.6.1</code>（这是一个标签，而非分支名），编译，安装，然后切换回另一个分支，比如说 <code>git checkout master</code>。然而，当提交操作涉及到「分离的 HEAD」时，其行为会略有不同，详情见在<a href="#detached">下面</a>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-detached.svg" alt="enter image description here"></p>
+<h3 id="HEAD-标识处于分离状态时的提交操作"><a href="#HEAD-标识处于分离状态时的提交操作" class="headerlink" title="HEAD 标识处于分离状态时的提交操作"></a>HEAD 标识处于分离状态时的提交操作</h3><p>当 <code>_HEAD_</code> 处于分离状态（不依附于任一分支）时，提交操作可以正常进行，但是不会更新任何已命名的分支。你可以认为这是在更新一个匿名分支。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/commit-detached.svg" alt="enter image description here"></p>
+<p>一旦此后你切换到别的分支，比如说 <code>_master_</code>，那么这个提交节点（可能）再也不会被引用到，然后就会被丢弃掉了。注意这个命令之后就不会有东西引用 <code>_2eecb_</code>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-after-detached.svg" alt="enter image description here"></p>
+<p>但是，如果你想保存这个状态，可以用命令 <code>git checkout -b name</code> 来创建一个新的分支。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/checkout-b-detached.svg" alt="enter image description here"></p>
+<h3 id="Reset"><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3><p><code>git reset</code> 命令把当前分支指向另一个位置，并且有选择的变动工作目录和索引。也用来在从历史commit历史中复制文件到索引，而不动工作目录。</p>
+<p>如果不给选项，那么当前分支指向到那个提交。如果用 <code>--hard</code> 选项，那么工作目录也更新，如果用 <code>--soft</code> 选项，那么都不变。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset-commit.svg" alt="enter image description here"></p>
+<p>如果没有给出提交点的版本号，那么默认用 <code>_HEAD_</code>。这样，分支指向不变，但是索引会回滚到最后一次提交，如果用 <code>--hard</code> 选项，工作目录也同样。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset.svg" alt="enter image description here"></p>
+<p>如果给了文件名(或者 <code>-p</code> 选项), 那么工作效果和带文件名的<a href="#checkout">checkout</a>差不多，除了索引被更新。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/reset-files.svg" alt="enter image description here"></p>
+<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p><code>git merge</code> 命令把不同分支合并起来。合并前，索引必须和当前提交相同。如果另一个分支是当前提交的祖父节点，那么合并命令将什么也不做。</p>
+<p>另一种情况是如果当前提交是另一个分支的祖父节点，就导致 <code>_fast-forward_</code> 合并。指向只是简单的移动，并生成一个新的提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/merge-ff.svg" alt="enter image description here"></p>
+<p>否则就是一次真正的合并。默认把当前提交（<code>_ed489_</code> 如下所示）和另一个提交（<code>_33104_</code>）以及他们的共同祖父节点（<code>_b325c_</code>）进行一次<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Three-way_merge">三方合并</a>。结果是先保存当前目录和索引，然后和父节点 <code>_33104_</code> 一起做一次新提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/merge.svg" alt="enter image description here"></p>
+<h3 id="Cherry-Pick"><a href="#Cherry-Pick" class="headerlink" title="Cherry Pick"></a>Cherry Pick</h3><p><code>git cherry-pick</code> 命令「复制」一个提交节点并在当前分支做一次完全一样的新提交。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/cherry-pick.svg" alt="enter image description here"></p>
+<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p><code>git rebase</code> 是合并命令的另一种选择。合并把两个父分支合并进行一次提交，提交历史不是线性的。rebase 在当前分支上重演另一个分支的历史，提交历史是线性的。</p>
+<p>本质上，这是线性化的自动的 <a href="#cherry-pick">cherry-pick</a>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/rebase.svg" alt="enter image description here"></p>
+<p>上面的命令都在 <code>_topic_</code> 分支中进行，而不是 <code>_master_</code> 分支，在 <code>_master_</code> 分支上重演，并且把分支指向新的节点。注意旧提交没有被引用，将被回收。</p>
+<p>要限制回滚范围，使用 <code>--onto</code> 选项。下面的命令在 <code>_master_</code> 分支上重演当前分支从 <code>_169a6_</code> 以来的最近几个提交，即 <code>_2c33a_</code>。</p>
+<p><img src="http://marklodato.github.io/visual-git-guide/rebase-onto.svg" alt="enter image description here"></p>
+<p>同样有 <code>git rebase --interactive</code> 让你更方便的完成一些复杂操作，比如丢弃、重排、修改、合并提交。</p>
+<blockquote>
+<p>这篇文章是<a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/"><strong>「git-recipes」</strong></a>的一部分，点击 <a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/wiki/"><strong>目录</strong></a> 查看所有章节。</p>
+<p>如果你觉得文章对你有帮助，欢迎点击右上角的 <strong>Star</strong> :star2: 或 <strong>Fork</strong> :fork_and_knife:。</p>
+<p>如果你发现了错误，或是想要加入协作，请参阅 <a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/issues/1">Wiki 协作说明</a>。</p>
+</blockquote>
+<p>`</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/04/2017-08-04-what-is-git/" data-id="ckq8u0dx30003nm2y2wrj0b9q" data-title="Git recipes in Chinese. 高质量的Git中文教程." class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2017-08-02-free-for-dev" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/02/2017-08-02-free-for-dev/" class="article-date">
+  <time class="dt-published" datetime="2017-08-02T04:47:42.000Z" itemprop="datePublished">2017-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/02/2017-08-02-free-for-dev/">免费的互联网开发者服务一览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="免费的互联网开发者服务一览"><a href="#免费的互联网开发者服务一览" class="headerlink" title="免费的互联网开发者服务一览"></a>免费的互联网开发者服务一览</h1><p>克隆自 <a target="_blank" rel="noopener" href="https://github.com/ripienaar/free-for-dev">https://github.com/ripienaar/free-for-dev</a></p>
+<h2 id="Source-Code-Repos"><a href="#Source-Code-Repos" class="headerlink" title="Source Code Repos"></a>Source Code Repos</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://bitbucket.org/">https://bitbucket.org/</a> - Unlimited public and private git repos for small teams</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a> - Free for an unlimited number of public repositories</li>
+<li><a target="_blank" rel="noopener" href="https://about.gitlab.com/">https://about.gitlab.com/</a> - Unlimited public and private git repos with unlimited collaborators</li>
+<li><a target="_blank" rel="noopener" href="https://hub.jazz.net/">https://hub.jazz.net/</a> - Unlimited public repos, private repos free for up to 3 accounts.</li>
+</ul>
+<h2 id="Tools-for-teams-amp-Collaboration"><a href="#Tools-for-teams-amp-Collaboration" class="headerlink" title="Tools for teams &amp; Collaboration"></a>Tools for teams &amp; Collaboration</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://appear.in/">http://appear.in/</a> - One click video conversations, for free</li>
+<li><a target="_blank" rel="noopener" href="http://www.hall.com/">http://www.hall.com/</a> - Free for unlimited users with some feature limitations</li>
+<li><a target="_blank" rel="noopener" href="https://www.flowdock.com/">https://www.flowdock.com/</a> - Chat and inbox, free for teams of 5 or less</li>
+<li><a target="_blank" rel="noopener" href="https://slack.com/">https://slack.com</a> - Free for unlimited users with some feature limitations</li>
+<li><a target="_blank" rel="noopener" href="https://hipchat.com/">https://hipchat.com</a> - Free for unlimited users with some feature limitations</li>
+<li><a target="_blank" rel="noopener" href="https://gitter.im/">https://gitter.im</a> - “Chat, for GitHub”. Unlimited public &amp; private rooms, free for teams of up to 25</li>
+<li><a target="_blank" rel="noopener" href="http://www.google.com/hangouts/">http://www.google.com/hangouts/</a> - One place for all your Conversations, for free (Need Google Account)</li>
+<li><a target="_blank" rel="noopener" href="https://kato.im/">https://kato.im</a> - Team Chat &amp; Collaboration, free for unlimited users with some feature limitations</li>
+<li><a target="_blank" rel="noopener" href="http://seafile.com/">http://seafile.com/</a> - Private or cloud storage, file sharing, sync, discussions. Private version is full. Cloud version has just 1 GB.</li>
+<li><a target="_blank" rel="noopener" href="https://sameroom.io/">https://sameroom.io</a> - Free for unlimited users with some feature limitations</li>
+<li><a target="_blank" rel="noopener" href="https://yammer.com/">https://yammer.com/</a> - Private social network standalone or for M$ Office 365. Free, just a bit less admin tools and users management features.</li>
+<li><a target="_blank" rel="noopener" href="https://www.blockspring.com/">https://www.blockspring.com/</a> - Share scripts with anyone on your team: cross language and with spreadsheet users. Free for 5 million runs a month.</li>
+</ul>
+<h2 id="Code-Quality"><a href="#Code-Quality" class="headerlink" title="Code Quality"></a>Code Quality</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://tachikoma.io/">http://tachikoma.io</a> - Dependency Update for Ruby, Node.js, Perl projects - free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://landscape.io/">https://landscape.io/</a> - Code Quality for Python projects, free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://codeclimate.com/">https://codeclimate.com/</a> - Automated code review, free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://houndci.com/">https://houndci.com/</a> - Comments on github commits about code quality - free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://coveralls.io/">https://coveralls.io/</a> - Display test coverage reports - free for open source</li>
+<li><a target="_blank" rel="noopener" href="https://scrutinizer-ci.com/">https://scrutinizer-ci.com/</a> - Continuous inspection platform - free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://codecov.io/">https://codecov.io/</a> - Code coverage tool (SaaS), free for 1 private project and no restrictions for publics repos</li>
+<li><a target="_blank" rel="noopener" href="https://insight.sensiolabs.com/">https://insight.sensiolabs.com/</a> - Code Quality for PHP/Symfony projects, free for Open Source</li>
+</ul>
+<h2 id="Code-Search-and-Browsing"><a href="#Code-Search-and-Browsing" class="headerlink" title="Code Search and Browsing"></a>Code Search and Browsing</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://sourcegraph.com/">https://sourcegraph.com/</a> - Java, Go, Python, Node.js, etc., code search/cross-references - free for open source</li>
+<li><a target="_blank" rel="noopener" href="https://searchcode.com/">https://searchcode.com/</a> - comprehensive text-based code search - free for open source</li>
+</ul>
+<h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI / CD"></a>CI / CD</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://codeship.com/">https://codeship.com/</a> - 100 private builds / month, 5 private projects.  Unlimited for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://circleci.com/">https://circleci.com</a> - Free for one concurrent build</li>
+<li><a target="_blank" rel="noopener" href="https://travis-ci.org/">https://travis-ci.org</a> - Free for public Github repositories.</li>
+<li><a target="_blank" rel="noopener" href="http://wercker.com/">http://wercker.com/</a> - Free for public and private repositories</li>
+<li><a target="_blank" rel="noopener" href="https://drone.io/">https://drone.io/</a> - CI platform that includes browser testing, free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="https://semaphoreci.com/">https://semaphoreci.com/</a> - 100 private builds / month. Unlimited for Open Source.</li>
+<li><a target="_blank" rel="noopener" href="http://www.shippable.com/">http://www.shippable.com/</a> - Free for 1 build container, private and public repos, unlimited builds.</li>
+<li><a target="_blank" rel="noopener" href="https://snap-ci.com/">https://snap-ci.com</a> - Free for public repositories, 1 build at the time</li>
+<li><a target="_blank" rel="noopener" href="http://www.appveyor.com/">http://www.appveyor.com/</a> - CD service for Windows. Free for open-source projects.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ligurio/Continuous-Integration-services">Comparison of Continuous Integration services</a></li>
+<li><a target="_blank" rel="noopener" href="https://saucelabs.com/">https://saucelabs.com/</a> - CI with scalable testing for mobile and web apps, free for Open Source</li>
+<li><a target="_blank" rel="noopener" href="http://ftploy.com/">http://ftploy.com/</a> - 1 project w/ unlimited deployments</li>
+<li><a target="_blank" rel="noopener" href="https://deployhq.com/">https://deployhq.com/</a> - 1 project w/ 10 daily deployments</li>
+<li><a target="_blank" rel="noopener" href="https://hub.jazz.net/">https://hub.jazz.net/</a> - 60 minutes of free build time / month.</li>
+</ul>
+<h2 id="Security-and-PKI"><a href="#Security-and-PKI" class="headerlink" title="Security and PKI"></a>Security and PKI</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://vaddy.net/">http://vaddy.net</a> - Continuous web security testing with continuous integration (CI) tools. 3 domains, 10 scan history for free</li>
+<li><a target="_blank" rel="noopener" href="https://www.globalsign.com/en/ssl/ssl-open-source/">https://www.globalsign.com/en/ssl/ssl-open-source/</a> - Free SSL certs for Open Source projects</li>
+<li><a target="_blank" rel="noopener" href="https://www.startssl.com/">https://www.startssl.com/</a> - Free SSL certs</li>
+<li><a target="_blank" rel="noopener" href="https://stormpath.com/">https://stormpath.com/</a> - Free user management, authentication, social login, and SSO.</li>
+<li><a target="_blank" rel="noopener" href="https://auth0.com/">https://auth0.com/</a> - Hosted free for development SSO</li>
+<li><a target="_blank" rel="noopener" href="https://getclef.com/">https://getclef.com/</a> - New take on auth unlimited free tier for anyone not using premium features</li>
+<li><a target="_blank" rel="noopener" href="https://ringcaptcha.com/">https://ringcaptcha.com/</a> - Tools to use phone number as id, available for free</li>
+<li><a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a> - Very deep analysis of the configuration of any SSL web server</li>
+<li><a target="_blank" rel="noopener" href="https://qualys.com/forms/freescan/owasp/">https://qualys.com/forms/freescan/owasp/</a> - Find web app vulnerabilities, audit for OWASP Risks</li>
+<li><a target="_blank" rel="noopener" href="https://www.alienvault.com/open-threat-exchange/threatfinder">alienvault.com ThreatFinder</a> - Uncovers compromised systems in your network</li>
+<li><a target="_blank" rel="noopener" href="https://duosecurity.com/">https://duosecurity.com</a> - Two-factor authentication (2FA) for website or app. Free 10 users, all authentication methods, unlimited, integrations, hardware tokens.</li>
+</ul>
+<h2 id="Management-Systems"><a href="#Management-Systems" class="headerlink" title="Management Systems"></a>Management Systems</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://opbeat.com/">https://opbeat.com/</a> - Release, deploy, monitor.  Free for 3 users</li>
+</ul>
+<h2 id="Log-Management"><a href="#Log-Management" class="headerlink" title="Log Management"></a>Log Management</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://papertrailapp.com/">https://papertrailapp.com/</a> - 48 hours search, 7 day archive, 100MB/month</li>
+<li><a target="_blank" rel="noopener" href="https://logentries.com/">https://logentries.com/</a> - Free up to 5GB/month with 7 day retention</li>
+<li><a target="_blank" rel="noopener" href="https://www.loggly.com/">https://www.loggly.com/</a> - Free for a single user, see the <code>lite</code> option</li>
+<li><a target="_blank" rel="noopener" href="http://sematext.com/logsene">http://sematext.com/logsene</a> - Free for 1M logs, unlimited retention</li>
+</ul>
+<h2 id="Analytics"><a href="#Analytics" class="headerlink" title="Analytics"></a>Analytics</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.splunk.com/en_us/products/splunk-cloud.html">http://www.splunk.com/en_us/products/splunk-cloud.html</a> - Upload 5GB of data per day up to 28GB of total data stored</li>
+<li><a target="_blank" rel="noopener" href="https://parse.com/">https://parse.com</a> - Unlimited free analytics</li>
+</ul>
+<h2 id="Monitoring"><a href="#Monitoring" class="headerlink" title="Monitoring"></a>Monitoring</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.thousandeyes.com/">https://www.thousandeyes.com</a>  - Network &amp; user experience monitoring. 3 locations, plus 20 data feeds of major web services free.</li>
+<li><a target="_blank" rel="noopener" href="https://www.datadoghq.com/">https://www.datadoghq.com/</a> - Free for up to 5 nodes</li>
+<li><a target="_blank" rel="noopener" href="http://www.stackdriver.com/">http://www.stackdriver.com/</a> - Free for up to 10 nodes/services</li>
+<li><a target="_blank" rel="noopener" href="https://keymetrics.io/">https://keymetrics.io/</a> - Free for 2 servers with 7 days data retention</li>
+<li><a target="_blank" rel="noopener" href="http://newrelic.com/">http://newrelic.com/</a> - Free with 24 hour data retention</li>
+<li><a target="_blank" rel="noopener" href="https://nodequery.com/">https://nodequery.com/</a> - Free basic server monitor up to 10 servers</li>
+<li><a target="_blank" rel="noopener" href="https://www.pingdom.com/free/">https://www.pingdom.com/free/</a> - 1 site free</li>
+<li><a target="_blank" rel="noopener" href="https://www.opsgenie.com/">https://www.opsgenie.com/</a> - Alert management with mobile push. 600 free alerts for 2 users a month</li>
+<li><a target="_blank" rel="noopener" href="https://www.runscope.com/">https://www.runscope.com/</a> - Monitor and log API usage.  Single user 10,000 request/month free</li>
+<li><a target="_blank" rel="noopener" href="http://www.circonus.com/">http://www.circonus.com/</a> - Free for 20 metrics</li>
+<li><a target="_blank" rel="noopener" href="https://uptimerobot.com/">https://uptimerobot.com/</a> - Website monitoring, 50 monitors free</li>
+<li><a target="_blank" rel="noopener" href="https://www.statuscake.com/">https://www.statuscake.com/</a> - Website monitoring, unlimited tests free with limitations</li>
+<li><a target="_blank" rel="noopener" href="http://www.boundary.com/">http://www.boundary.com/</a> - Free 1 second resolution for up to 10 servers</li>
+<li><a target="_blank" rel="noopener" href="https://ghostinspector.com/">https://ghostinspector.com/</a> - Free website and web application monitoring. Single user, 100 test runs per month</li>
+<li><a target="_blank" rel="noopener" href="http://java-monitor.com/">http://java-monitor.com/</a> - Free monitoring of JVM’s and uptime</li>
+<li><a target="_blank" rel="noopener" href="http://sematext.com/spm">http://sematext.com/spm</a> - Free for 24h metrics, unlimited number of servers, 10 custom metrics, 500K custom metrics data points, unlimited dashboards, users, etc.</li>
+<li><a target="_blank" rel="noopener" href="https://sealion.com/">https://sealion.com/</a> - Free up to 2 servers, 3 days data retention, graphs and raw command output history (<code>top</code>, <code>ps</code>, <code>ifconfig</code>, <code>netstat</code>, <code>iostat</code>, <code>free</code>, custom, etc.)</li>
+<li><a target="_blank" rel="noopener" href="https://www.stathat.com/">https://www.stathat.com</a> - Get started with ten stats for free, no expiration.</li>
+<li><a target="_blank" rel="noopener" href="https://www.skylight.io/">https://www.skylight.io</a> - Free for first 100k requests</li>
+</ul>
+<h2 id="Crash-Exception-handling"><a href="#Crash-Exception-handling" class="headerlink" title="Crash / Exception handling"></a>Crash / Exception handling</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://rollbar.com/">https://rollbar.com/</a> - Exception and error monitoring, free plan - 5000 errors/month, unlimited users, 30 days retention.</li>
+<li><a target="_blank" rel="noopener" href="https://bugsnag.com/">https://bugsnag.com/</a> - Free for up to 2000 errors a month after the initial trial</li>
+<li><a target="_blank" rel="noopener" href="https://airbrake.io/">https://airbrake.io/</a> - Free for 1 project, 1 user, 2 errors per minute, 2 day retention</li>
+<li><a target="_blank" rel="noopener" href="http://getsentry.com/">http://getsentry.com/</a> - Sentry tracks app exceptions in realtime, has a small free plan</li>
+</ul>
+<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.algolia.com/">https://www.algolia.com</a> - Hosted search-as-you-type (instant). Free hacker plan up to 1,000 documents and 50,000 operations. Bigger free plans available for community/open source projects.</li>
+<li><a target="_blank" rel="noopener" href="https://swiftype.com/">https://swiftype.com</a> - hosted search solution (API and crawler). Free for a single search engine with up to 1000 documents. Free upgrade to Premium level for open-source projects.</li>
+<li><a target="_blank" rel="noopener" href="https://bonsai.io/">https://bonsai.io</a> - Free 1GB memory and 1GB storage.</li>
+<li><a target="_blank" rel="noopener" href="http://www.searchly.com/">http://www.searchly.com</a> - Free 2 Indices and 5MB storage.</li>
+</ul>
+<h2 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.sparkpost.com/">http://www.sparkpost.com/</a> - First 10,000 emails per month are free</li>
+<li><a target="_blank" rel="noopener" href="http://www.mailgun.com/">http://www.mailgun.com/</a> - First 10,000 emails per month are free</li>
+<li><a target="_blank" rel="noopener" href="http://mailchimp.com/">http://mailchimp.com/</a> - Send 12,000 emails to 2,000 subscribers for free</li>
+<li><a target="_blank" rel="noopener" href="https://sendloop.com/">https://sendloop.com/</a> - 2,000 subscribers and 10,000 email delivery every month is free</li>
+<li><a target="_blank" rel="noopener" href="http://sendgrid.com/">http://sendgrid.com/</a> - 400 emails per day for free</li>
+<li><a target="_blank" rel="noopener" href="http://mandrill.com/">http://mandrill.com/</a> - First 12,000 emails are free</li>
+<li><a target="_blank" rel="noopener" href="https://www.phplist.com/">https://www.phplist.com/</a> - Hosted version allow 300 mails per month for free</li>
+<li><a target="_blank" rel="noopener" href="https://www.mailjet.com/">https://www.mailjet.com/</a> - 6000 mails per month for free</li>
+<li><a target="_blank" rel="noopener" href="https://www.sendinblue.com/">https://www.sendinblue.com/</a> - 9000 mails per month for free</li>
+<li><a target="_blank" rel="noopener" href="https://mailtrap.io/">https://mailtrap.io</a> - fake SMTP server for development, free plan with 1 inbox, 50 messages, no team members, 2 emails/sec, no forward rules</li>
+<li><a target="_blank" rel="noopener" href="https://mailstache.io/">https://mailstache.io</a> - 4 Mailboxes @ 1GB each for up to 2 custom domains. </li>
+</ul>
+<h2 id="CDN-and-Protection"><a href="#CDN-and-Protection" class="headerlink" title="CDN and Protection"></a>CDN and Protection</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.cloudflare.com/">http://www.cloudflare.com/</a> - Basic service is free, good for a blog</li>
+<li><a target="_blank" rel="noopener" href="http://www.bootstrapcdn.com/">http://www.bootstrapcdn.com/</a> - CDN for bootstrap, bootswatch and font awesome</li>
+<li><a target="_blank" rel="noopener" href="https://surge.sh/">https://surge.sh</a> - Zero-bullshit, single–command, bring your own source control web publishing CDN.</li>
+<li><a target="_blank" rel="noopener" href="https://cdnjs.com/">https://cdnjs.com/</a> - CDN for JavaScript libraries, CSS libraries, SWF, images, etc!</li>
+<li><a target="_blank" rel="noopener" href="http://www.jsdelivr.com/">http://www.jsdelivr.com/</a> - A free super-fast CDN for developers and webmasters</li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/speed/libraries/">https://developers.google.com/speed/libraries/</a> - The Google Hosted Libraries is a content distribution network for the most popular, open-source JavaScript libraries.</li>
+<li><a target="_blank" rel="noopener" href="https://www.asp.net/ajax/cdn">https://www.asp.net/ajax/cdn</a> - The Microsoft Ajax Content Delivery Network (CDN) hosts popular third party JavaScript libraries such as jQuery and enables you to easily add them to your Web application</li>
+<li><a target="_blank" rel="noopener" href="https://toranproxy.com/">https://toranproxy.com/</a> - Proxy for Packagist and GitHub. Never fail CD. Free for personal use, 1 developer, no support.</li>
+</ul>
+<h2 id="PaaS"><a href="#PaaS" class="headerlink" title="PaaS"></a>PaaS</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://aws.amazon.com/free/">http://aws.amazon.com/free/</a> - AWS Free Tier - Free for 12 months</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/">https://cloud.google.com/appengine/</a> - Google App Engine gives 28 instance hours free, 1Gb NoSQL Database and more.</li>
+<li><a target="_blank" rel="noopener" href="https://www.engineyard.com/">https://www.engineyard.com</a> - Engine Yard provides 500 free hours</li>
+<li><a target="_blank" rel="noopener" href="http://azure.microsoft.com/">http://azure.microsoft.com/</a> - MS Azure gives $200 worth of free usage for a trial</li>
+<li><a target="_blank" rel="noopener" href="http://hpcloud.com/">http://hpcloud.com/</a> - $300 credit over 90 days.</li>
+<li><a target="_blank" rel="noopener" href="https://appharbor.com/">https://appharbor.com/</a> - A .Net PaaS that provides 1 free worker</li>
+<li><a target="_blank" rel="noopener" href="https://www.heroku.com/">https://www.heroku.com/</a> - Host your apps in the cloud, free for single process apps</li>
+<li><a target="_blank" rel="noopener" href="https://www.firebase.com/">https://www.firebase.com/</a> - Build realtime apps, free plan has 50 Max Connections, 5 GB Data Transfer, 100 MB Data Storage.<br>1 GB Hosting Storage and 100 GB Hosting Transfer.</li>
+<li><a target="_blank" rel="noopener" href="https://bluemix.net/">https://bluemix.net/</a> - IBM PaaS with a monthly free allowance</li>
+<li><a target="_blank" rel="noopener" href="https://www.openshift.com/">https://www.openshift.com/</a> - RedHat OpenShift offers 3 free hosted apps</li>
+<li><a target="_blank" rel="noopener" href="https://bitnami.com/">https://bitnami.com/</a> - One free small app</li>
+<li><a target="_blank" rel="noopener" href="https://scalingo.com/">https://scalingo.com</a> - Free Tier, up to 3 apps, 1 container each, combined with data store addons free tier</li>
+<li><a target="_blank" rel="noopener" href="https://algorithmia.com/">https://algorithmia.com</a> - Host algorithms for free - includes 10,000 credits (seconds of on-demand execution time) free</li>
+<li><a target="_blank" rel="noopener" href="https://bigml.com/">https://bigml.com/</a> - Hosted machine learning algorithms. Unlimited free tasks for development, limit of 16MB data per task</li>
+<li><a target="_blank" rel="noopener" href="https://www.activestate.com/stackato/">https://www.activestate.com/stackato/</a> - Enterprise-hardened Cloud Foundry PaaS from ActiveState, for private, public and hybrid cloud, free up to 20GB</li>
+<li><a target="_blank" rel="noopener" href="http://www.outsystems.com/">http://www.outsystems.com/</a> - Enterprise web development PaaS for on-premise or cloud, free “personal environment” offering allows for unlimited code and up to 1GB database.</li>
+<li><a target="_blank" rel="noopener" href="https://platform.telerik.com/">https://platform.telerik.com/</a> - Build and deploy mobile applications using Javascript. Free plan has 100 MB Data Storage, 1GB File storage, 5GB Bandwidth, 1 million push notifications for BaaS offering, 100 active devices for analytics.</li>
+</ul>
+<h2 id="BaaS"><a href="#BaaS" class="headerlink" title="BaaS"></a>BaaS</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.parse.com/">https://www.parse.com</a> - Mobile backends, free plan has 30 requests per second, with 20 GB of file and database storage, as well as push notifications for up to 1,000,000 unique recipients.</li>
+<li><a target="_blank" rel="noopener" href="http://appacitive.com/">http://appacitive.com/</a> - Mobile backend, free for the first 3 months with 100k API calls,Push notifications.</li>
+<li><a target="_blank" rel="noopener" href="https://www.contentful.com/">https://www.contentful.com</a> - Content as a Service. Content Management &amp; Delivery APIs in the cloud. 3 users, 3 spaces (repositories) and 1,000,000 API requests per month for free.</li>
+<li><a target="_blank" rel="noopener" href="http://konacloud.io/">http://konacloud.io</a> Web and Mobile Backend as a Service, with 5 GB free account.</li>
+<li><a target="_blank" rel="noopener" href="https://www.blockspring.com/">https://www.blockspring.com/</a> - Cloud functions. Free for 5 million runs a month.</li>
+</ul>
+<h2 id="Web-Hosting"><a href="#Web-Hosting" class="headerlink" title="Web Hosting"></a>Web Hosting</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.simplybuilt.com/">https://www.simplybuilt.com</a> - SimplyBuilt offers free website building and hosting for open source projects (<a target="_blank" rel="noopener" href="http://www.simplybuilt.com/explore/free-websites-for-open-source-projects">http://www.simplybuilt.com/explore/free-websites-for-open-source-projects</a>). Simple alternative to GitHub Pages.</li>
+<li><a target="_blank" rel="noopener" href="http://www.devport.co/">http://www.devport.co</a> - Turn GitHub projects, Apps, and websites into a personal developer portfolio.</li>
+</ul>
+<h2 id="IaaS"><a href="#IaaS" class="headerlink" title="IaaS"></a>IaaS</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://exoscale.ch/">https://exoscale.ch/</a> - Free resources for Open Source projects</li>
+<li><a target="_blank" rel="noopener" href="https://developer.rackspace.com/">https://developer.rackspace.com/</a> - Rackspace Cloud gives $50/month for 12 months</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/compute/">https://cloud.google.com/compute/</a> - Google Compute Engine gives $300 over 60 days</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/container-engine/">https://cloud.google.com/container-engine/</a> - Google Container Engine for run Docker containers(Alpha). Pricing: same of Google Compute Engine.</li>
+<li><a target="_blank" rel="noopener" href="https://nsone.net/">https://nsone.net/</a> - Data Driven DNS, automatic traffic management, 1M free Queries</li>
+</ul>
+<h2 id="DBaaS"><a href="#DBaaS" class="headerlink" title="DBaaS"></a>DBaaS</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mongolab.com/">https://mongolab.com/</a> - MongoDB as a service (500mb free)</li>
+<li><a target="_blank" rel="noopener" href="https://cloudant.com/">https://cloudant.com/</a> - Hosted database from IBM, free if usage is below $50/month</li>
+<li><a target="_blank" rel="noopener" href="https://realm.io/">https://realm.io</a> - Free to use even for commercial projects, under Apache 2.0 License</li>
+<li><a target="_blank" rel="noopener" href="https://orchestrate.io/">https://orchestrate.io/</a> - 1 application free</li>
+<li><a target="_blank" rel="noopener" href="https://redislabs.com/redis-cloud">https://redislabs.com/redis-cloud</a> - Redis as a Service (25 mb free)</li>
+<li><a target="_blank" rel="noopener" href="https://www.backand.com/">https://www.backand.com/</a> - Back-end as a service (for AngularJS)</li>
+<li><a target="_blank" rel="noopener" href="http://www.zenginehq.com/">http://www.zenginehq.com</a> - Build business workflow apps in minutes - free for single users</li>
+<li><a target="_blank" rel="noopener" href="https://parsehub.com/">https://parsehub.com/</a> — Extract data from dynamic sites, turn dynamic websites into APIs, 5 projects free.</li>
+<li><a target="_blank" rel="noopener" href="https://import.io/">https://import.io/</a> - Easily turn websites into APIs, completely free for life.</li>
+<li><a target="_blank" rel="noopener" href="https://redsmin.com/">https://redsmin.com/</a> - Online real-time monitoring and administration service for Redis, 1 Redis instance free</li>
+</ul>
+<h2 id="STUN-WebRTC-Web-Socket-Servers-and-other-Routers"><a href="#STUN-WebRTC-Web-Socket-Servers-and-other-Routers" class="headerlink" title="STUN, WebRTC, Web Socket Servers and other Routers"></a>STUN, WebRTC, Web Socket Servers and other Routers</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://pusher.com/">https://pusher.com</a>. Hosted Web Sockets broker. Free for up to 20 simultaneous connections and 100k messages a day.</li>
+<li>stun:stun.l.google.com:19302 - Google STUN</li>
+<li>stun:global.stun.twilio.com:3478?transport=udp - Twilio STUN</li>
+<li><a target="_blank" rel="noopener" href="https://www.segment.com/">https://www.segment.com</a>. Hub to translate and route events to other third party services. 100k events a month free.</li>
+</ul>
+<h2 id="Issue-tracking-Project-management"><a href="#Issue-tracking-Project-management" class="headerlink" title="Issue tracking / Project management"></a>Issue tracking / Project management</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.pivotaltracker.com/community/public-projects">https://www.pivotaltracker.com/community/public-projects</a> - Pivotal Tracker. Free for public projects.</li>
+<li><a target="_blank" rel="noopener" href="https://www.atlassian.com/opensource/overview">https://www.atlassian.com/opensource/overview</a> - Free Jira etc for Open Source projects</li>
+<li><a target="_blank" rel="noopener" href="https://kanbanflow.com/">https://kanbanflow.com/</a> - Board based project management. Free (premium version with more options).</li>
+<li><a target="_blank" rel="noopener" href="https://kanbanpad.com/">https://kanbanpad.com/</a> - Board based project management. Free (premium version with more options).</li>
+<li><a target="_blank" rel="noopener" href="https://kanbanery.com/">https://kanbanery.com/</a> - Board based project management. Free for 2 users (premium tiers with more options).</li>
+<li><a target="_blank" rel="noopener" href="https://zenhub.io/">https://zenhub.io/</a> - The only project management solution inside GitHub. Free for public repos, OSS, and non-profits.</li>
+<li><a target="_blank" rel="noopener" href="https://trello.com/">https://trello.com/</a> - Board based project management. Free</li>
+<li><a target="_blank" rel="noopener" href="https://waffle.io/">https://waffle.io/</a> - Board based project management solution from your existing GitHub Issues. Free for open-source.</li>
+<li><a target="_blank" rel="noopener" href="https://huboard.com/">https://huboard.com/</a> - Instant project management for your GitHub issues. Free for open-source.</li>
+<li><a target="_blank" rel="noopener" href="https://taiga.io/">https://taiga.io/</a> - Project management platform for startups and agile developers. Free for open-source.</li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/youtrack/buy/open_source_incloud.jsp">https://www.jetbrains.com/youtrack/buy/open_source_incloud.jsp</a> - Free hosted YouTrack (InCloud) for FOSS projects (private projects free for 10 users: <a target="_blank" rel="noopener" href="https://www.jetbrains.com/youtrack/buy/">https://www.jetbrains.com/youtrack/buy/</a>)</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a> - In addition to its git storage facility, github offers basic issue tracking</li>
+<li><a target="_blank" rel="noopener" href="https://asana.com/">https://asana.com</a> - Free for private project with collaborators.</li>
+<li><a target="_blank" rel="noopener" href="http://www.acunote.com/">http://www.acunote.com/</a> - Free project management and SCRUM software for up to 5 team members.</li>
+<li><a target="_blank" rel="noopener" href="http://gliffy.com/">http://gliffy.com/</a> - Online diagrams: flowchart, UML, wireframe… Also Plugins for Jira &amp; Confluence. 5 diagrams and 2 MB free.</li>
+<li><a target="_blank" rel="noopener" href="https://cacoo.com/">https://cacoo.com/</a> - Online diagrams in real time: flowchart, UML, network. Free max. 15 users/diagram, 25 sheets.</li>
+<li><a target="_blank" rel="noopener" href="https://hub.jazz.net/">https://hub.jazz.net/</a> - IBM Bluemix’s project management services. Free for public projects, free for up to 3 users for private projects.</li>
+</ul>
+<h2 id="Storage-and-Media-Processing"><a href="#Storage-and-Media-Processing" class="headerlink" title="Storage and Media Processing"></a>Storage and Media Processing</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.aerofs.com/">https://www.aerofs.com/</a> - P2P file syncing, free for up to 30 users</li>
+<li><a target="_blank" rel="noopener" href="http://cloudinary.com/">http://cloudinary.com</a> - Image upload, powerful manipulations, storage, and delivery for sites and apps, with libraries for Ruby, Python, Java, PHP, Objective-C and more. Perpetual free tier includes 7500 images/month, 2gb storage, 5gb bandwidth.</li>
+<li><a target="_blank" rel="noopener" href="https://plot.ly/">https://plot.ly</a> - graph and share your data. Free tier includes unlimited public files and 10 private files.</li>
+<li><a target="_blank" rel="noopener" href="https://transloadit.com/">https://transloadit.com</a> - Handles file uploads &amp; encoding of video, audio, images, documents. Free for open source &amp; other do-gooders. Commercial applications get the first GB free for testdriving.</li>
+<li><a target="_blank" rel="noopener" href="https://cartodb.com/">https://cartodb.com</a> - create maps and geospatial APIs from your data and public data</li>
+</ul>
+<h2 id="Package-Build-Systems"><a href="#Package-Build-Systems" class="headerlink" title="Package Build Systems"></a>Package Build Systems</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://build.opensuse.org/">https://build.opensuse.org/</a> - package build service for multiple distros (SUSE, EL, Fedora, Debian etc.)</li>
+<li><a target="_blank" rel="noopener" href="https://copr.fedoraproject.org/">https://copr.fedoraproject.org/</a> - mock-based RPM build service for Fedora and EL</li>
+<li><a target="_blank" rel="noopener" href="https://help.launchpad.net/Packaging">https://help.launchpad.net/Packaging</a> - Ubuntu and Debian build service</li>
+</ul>
+<h2 id="IDE-and-Code-Editing"><a href="#IDE-and-Code-Editing" class="headerlink" title="IDE and Code Editing"></a>IDE and Code Editing</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c9.io/">https://c9.io</a> - IDE in a browser. Incorporates an Ubuntu virtual machine and in-browser terminal access. Integrates with github and bitbucket, but also adds SFTP and generic Git access.</li>
+<li><a target="_blank" rel="noopener" href="https://koding.com/">https://koding.com</a> - IDE in a browser. Features: Full sudo access - VMs hosted on Amazon EC2 - SSH Access - Real EC2 VM, no LXCs/hypervising - Custom sub-domains - Publicly accessible IP - Ubuntu 14.04 - IDE/Terminal/Collaboration</li>
+<li><a target="_blank" rel="noopener" href="https://www.nitrous.io/">https://www.nitrous.io</a> - Private Linux instance(s) with interactive collaboration {<a target="_blank" rel="noopener" href="http://goo.gl/J1Zbsg">More Details</a>}</li>
+<li><a target="_blank" rel="noopener" href="http://visualstudio.com/free">http://visualstudio.com/free</a> - Fully-featured IDE with thousands of extensions, cross-platform app development (Microsoft extensions available for download for iOS and Android), desktop, web and cloud development, multi-language support (C#, C++, JavaScript, Python, PHP and more).</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.sagemath.com/">https://cloud.sagemath.com</a> - Collaborative mathematics-oriented IDE in a browser, with support for Python, LaTeX, IPython Notebooks, etc.</li>
+<li><a target="_blank" rel="noopener" href="https://wakatime.com/">https://wakatime.com</a> - quantified self metrics about your coding activity, using text editor plugins - Limited plan for free.</li>
+<li><a target="_blank" rel="noopener" href="https://codenvy.com/">https://codenvy.com/</a> - IDE in a browser, collaborative, git integration, build and run your app in customizable Docker-based runners (free 512Mb RAM to distribute between you runners), pre-integrated deploy to Google Apps.</li>
+<li><a target="_blank" rel="noopener" href="https://apiary.io/">https://apiary.io/</a> - Collaborative design API with instant API mock and generated documentation (Free for unlimited API blueprints and unlimited user with one admin account and hosted documentation)</li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/products.html">https://www.jetbrains.com/products.html</a> - Productivity tools, IDEs and deploy tools. Free license for students, teachers, open source projects, and user groups.</li>
+</ul>
+<h2 id="Analytics-Events-and-Statistics"><a href="#Analytics-Events-and-Statistics" class="headerlink" title="Analytics, Events and  Statistics"></a>Analytics, Events and  Statistics</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.librato.com/">https://www.librato.com/</a> - Event/Data collection service with analysis and graphs. Limited plan for free.</li>
+<li><a target="_blank" rel="noopener" href="https://google.com/analytics/">https://google.com/analytics/</a> - Google Analytics</li>
+<li><a target="_blank" rel="noopener" href="https://heapanalytics.com/">https://heapanalytics.com/</a> - Automatically captures every user action in iOS or web apps. Free for up to 5,000 visits per month.</li>
+<li><a target="_blank" rel="noopener" href="http://sematext.com/search-analytics">http://sematext.com/search-analytics</a> - Free for up to 50K actions/month, 1 day data retention, unlimited dashboards, users, etc.</li>
+<li><a target="_blank" rel="noopener" href="https://usabilityhub.com/">https://usabilityhub.com</a> - Test designs and mockups on real people, track visitors. Free for one user, unlimited tests.</li>
+</ul>
+<h2 id="International-Mobile-number-verification-API-and-SDK"><a href="#International-Mobile-number-verification-API-and-SDK" class="headerlink" title="International Mobile number verification API and SDK"></a>International Mobile number verification API and SDK</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cognalys.com/">https://www.cognalys.com</a> - Freemium mobile number verification through an innovative and relaible  method than using SMS gateway. Free accounts will have 70 Tries and 50 verifications per day .  {<a target="_blank" rel="noopener" href="https://www.cognalys.com/signup/1">Signup</a>}</li>
+</ul>
+<h2 id="Payment-Billing-Integration"><a href="#Payment-Billing-Integration" class="headerlink" title="Payment / Billing Integration"></a>Payment / Billing Integration</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.braintreepayments.com/">https://www.braintreepayments.com</a> - Credit Card, Paypal, Venmo, Bitcoin, Apple Pay (, …) integration. Single and Recurrent Payments. First $ 50.000 are free of charge.</li>
+</ul>
+<h2 id="Other-Packs"><a href="#Other-Packs" class="headerlink" title="Other Packs"></a>Other Packs</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://education.github.com/pack">https://education.github.com/pack</a> - As long as you’re a student at a recognized university</li>
+</ul>
+<h2 id="Docker-Related"><a href="#Docker-Related" class="headerlink" title="Docker Related"></a>Docker Related</h2><h3 id="Alternate-container-hosting"><a href="#Alternate-container-hosting" class="headerlink" title="Alternate container hosting"></a>Alternate container hosting</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://quay.io/">https://quay.io/</a> - Unlimited free public containers</li>
+</ul>
+<h2 id="Vagrant-Related"><a href="#Vagrant-Related" class="headerlink" title="Vagrant Related"></a>Vagrant Related</h2><h3 id="Vagrant-box-indexes"><a href="#Vagrant-box-indexes" class="headerlink" title="Vagrant box indexes"></a>Vagrant box indexes</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a> - HashiCorp’s index of boxes</li>
+<li><a target="_blank" rel="noopener" href="http://vagrantbox.es/">http://vagrantbox.es</a> - An alternative public box index</li>
+</ul>
+<h2 id="Data-mining"><a href="#Data-mining" class="headerlink" title="Data mining"></a>Data mining</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.monkeylearn.com/">http://www.monkeylearn.com/</a> - Text mining in the cloud, 1,000 queries for free per month.</li>
+</ul>
+<p>（完）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/02/2017-08-02-free-for-dev/" data-id="ckq8t6ww4000d2w2y5cu68m84" data-title="免费的互联网开发者服务一览" class="article-share-link">Partager</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Précédent</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Suivant &raquo;</a>
+  </nav>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/14/20200715-1/">数据科学</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/26/20181126/">微信小程序入门唠嗑第一课</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/20180720-1/">手淘首页的3大核心权重</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/30/20180630-1/">人工智能Ai人脸融合技术</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/26/20180624-1/">安装黑苹果系统是一种什么体验？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
