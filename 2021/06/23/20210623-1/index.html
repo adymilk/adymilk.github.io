@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="referrer" content="no-referrer" />
   
-  <title>解决安装curl依赖错误 | 三步枫的个人网站</title>
+  <title>微信公众号token 验证失败解决方案 | 三步枫的个人网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -50,14 +50,14 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-解决安装curl依赖错误" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-20210623-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/" class="article-date">
-  <time class="dt-published" datetime="2017-07-19T10:19:14.000Z" itemprop="datePublished">2017-07-19</time>
+    <a href="/2021/06/23/20210623-1/" class="article-date">
+  <time class="dt-published" datetime="2021-06-23T03:21:32.000Z" itemprop="datePublished">2021-06-23</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+    <a class="article-category-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a>
   </div>
 
   </div>
@@ -68,7 +68,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      解决安装curl依赖错误
+      微信公众号token 验证失败解决方案
     </h1>
   
 
@@ -76,29 +76,20 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo apt-get install curl<br></code></pre></td></tr></table></figure>
-
-
-<p>ubuntu 安装软件报依赖问题是比较让人头疼的问题。就比如前几天在安装 <code>curl</code> 报出的这条错误/</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl : 依赖: libcurl3-gnutls (= 7.47.0-1ubuntu2) 但是 7.47.0-1ubuntu2.2 正要被安装<br></code></pre></td></tr></table></figure>
-
-<p>一开始不清楚原因，执行了$ sudo apt-get update，出现了如下错误</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E: 无法获得锁 /var/lib/apt/lists/lock - open (11: 资源暂时不可用) <br>E: 无法对目录 /var/lib/apt/lists/ 加锁<br></code></pre></td></tr></table></figure>
-
-<h3 id="解决方法，强制删除"><a href="#解决方法，强制删除" class="headerlink" title="解决方法，强制删除"></a>解决方法，强制删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo rm /var/cache/apt/archives/lock<br>$ sudo rm /var/lib/dpkg/lock<br></code></pre></td></tr></table></figure>
-
-<h3 id="重新安装-libccurl3-gnutls"><a href="#重新安装-libccurl3-gnutls" class="headerlink" title="重新安装 libccurl3-gnutls"></a>重新安装 <code>libccurl3-gnutls</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ sudo apt-get install libcurl3-gnutls=7.47.0-1ubuntu2<br></code></pre></td></tr></table></figure>
-
-<p>安装完后再执行一下 <code>$ sudo apt-get install curl</code> 即可</p>
+        <p>最近在做微信公众号开发的时候遇到一个token 验证失败的问题，折腾了好久。最终解决了。这里特别记录一下，给接下来的小伙伴填坑，少走弯路。</p>
 <span id="more"></span>
+<p>token 验证失败 其实官网论坛发现遇到这个问题的人有很多，我最终是把 https 换成 http 之后，微信服务器验证通过。</p>
+<p>估计是我用的是证书不行吧，后来我又试了宝塔上面的免费证书，也没有任何问题！</p>
+<p>微信公众号开发，推荐使用 easyWechat 这个框架，简单易用。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/07/19/%E8%A7%A3%E5%86%B3%E5%AE%89%E8%A3%85curl%E4%BE%9D%E8%B5%96%E9%94%99%E8%AF%AF/" data-id="ckqacpkrr005wj52y1hhga1l4" data-title="解决安装curl依赖错误" class="article-share-link">Compartir</a>
+      <a data-url="https://adymilk.github.io/2021/06/23/20210623-1/" data-id="ckqahx1et00008k2ye10043xw" data-title="微信公众号token 验证失败解决方案" class="article-share-link">Compartir</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curl/" rel="tag">curl</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li></ul>
 
     </footer>
   </div>
@@ -106,19 +97,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/30/3%E5%88%86%E9%92%9F%E8%BD%BB%E6%9D%BE%E5%AD%A6%E4%BC%9A%E7%BC%96%E8%AF%91%E5%AE%89%E5%8D%93-APK/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/23/20210623-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Nuevo</strong>
       <div class="article-nav-title">
         
-          3分钟轻松学会编译安卓 APK
+          Laravel8 配置修改不生效，缓存问题解决方案
         
       </div>
     </a>
   
   
-    <a href="/2017/07/18/Linux-%E4%BD%9C%E6%AD%BB%E8%87%AA%E6%95%91%E5%8E%86%E9%99%A9%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/07/14/20200715-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Viejo</strong>
-      <div class="article-nav-title">Linux 作死自救历险记</div>
+      <div class="article-nav-title">数据科学</div>
     </a>
   
 </nav>

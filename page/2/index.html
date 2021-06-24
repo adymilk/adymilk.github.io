@@ -111,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2018/05/27/20180527-1/" data-id="ckqacpkr30014j52ybeph5fxm" data-title="视频原理了解一下（压缩）" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2018/05/27/20180527-1/" data-id="ckqacpkr30014j52ybeph5fxm" data-title="视频原理了解一下（压缩）" class="article-share-link">Compartir</a>
       
       
       
@@ -168,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2018/05/26/nodejs_pachong/" data-id="ckqacpkrb002rj52y4ijz03ak" data-title="nodejs编写蜘蛛爬虫程序" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2018/05/26/nodejs_pachong/" data-id="ckqacpkrb002rj52y4ijz03ak" data-title="nodejs编写蜘蛛爬虫程序" class="article-share-link">Compartir</a>
       
       
       
@@ -209,82 +209,19 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这个游戏没有华丽界面，也没有刺激的过渡动画。初始界面是这样的..</p>
-<p><img src="https://raw.githubusercontent.com/adymilk/Python-demo/master/screenshot/compare-game.png" alt="游戏截图"></p>
-<p>如果你是一个把 <code>terminal</code> 玩的飞起的极客，你一定会非常喜欢这种黑白搭配。很神秘是吧？今天我们的游戏设计就从这样的一个命令行界面开始。</p>
-<h2 id="游戏分析"><a href="#游戏分析" class="headerlink" title="游戏分析"></a>游戏分析</h2><p>游戏的玩法很简单，上面的截图一看大家可能就会联想到我们平时玩过的一个猜数字游戏。我们公司在晨会上这个游戏玩的概率就非常高，也是我非常喜欢的一个互动游戏。现在我们来分析下游戏的逻辑！</p>
-<blockquote>
-<p>1、首先，系统需要在一个数字区间内随机选中一个数字作为神秘数。<br>2、假如用户第一次没猜中，系统需要根据用户没猜中的数字缩小数字区间。游戏继续，用户根据系统最新提供的数字区间继续猜。以此类推！<br>3、用户猜中，游戏结束！</p>
-</blockquote>
-<h2 id="关键点分析"><a href="#关键点分析" class="headerlink" title="关键点分析"></a>关键点分析</h2><p><strong>随机数是如何产生的？</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><br><span class="hljs-comment"># 获取一个随机整数</span><br>random_num = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>)<br></code></pre></td></tr></table></figure>
-
-<p>这里的 <code>random_num</code> 存储的值即是随机数。接下来我们会用到！</p>
-<p>** 假如用户第一次没猜中，系统是如何自动缩小数字区间的呢？**</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 这里需要声明3个变量</span><br><br>key_status = <span class="hljs-number">0</span> <span class="hljs-comment"># 随机数是否被猜中</span><br><span class="hljs-built_in">max</span> = <span class="hljs-number">100</span> <span class="hljs-comment"># 默认数字区间的最大值</span><br><span class="hljs-built_in">min</span> = <span class="hljs-number">0</span> <span class="hljs-comment"># 默认数字区间的最小值</span><br><br></code></pre></td></tr></table></figure>
-
-<p>这样我们就可以在用户没猜中的情况下，使用用户猜测的数字和系统随机数进行比较。</p>
-<ul>
-<li>如果用户猜测的数字大于系统随机数。那么<code>max</code> = 用户猜测的数字，<code>min</code> = 0。紧接着把区间最大值赋值变量<code>max</code>，<code>max</code> = 用户猜测的数字。</li>
-<li>如果用户猜测的数字小于系统随机数。那么<code>max</code> = 100，<code>min</code> = 用户猜测的数字。紧接着把区间最小值赋值给变量<code>min</code>，<code>min</code> = 用户猜测的数字。</li>
-<li>接下来循环判断这个逻辑，直到用户猜中系统随机数，游戏结束！</li>
-</ul>
-<p><strong>完整代码如下</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取一个随机整数</span><br>	random_num = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>)<br>	<span class="hljs-comment"># 记录当前的时间</span><br>	start_time = time.time();<br>	key_status = <span class="hljs-number">0</span><br>	count = <span class="hljs-number">0</span><br>	<span class="hljs-built_in">max</span> = <span class="hljs-number">100</span><br>	<span class="hljs-built_in">min</span> = <span class="hljs-number">0</span> <br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;请输入一个 0-100 的整数&#x27;</span>)<br>	<span class="hljs-keyword">while</span> (key_status == <span class="hljs-number">0</span>):<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n\n&#x27;</span>)<br>		user_input = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;请输入：&#x27;</span>)<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)<br>		<span class="hljs-keyword">if</span> (user_input.isdigit() <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(user_input) &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(user_input) &lt;= <span class="hljs-number">100</span>):<br><br>			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">int</span>(user_input) != random_num):<br>				<span class="hljs-keyword">if</span> (<span class="hljs-built_in">int</span>(user_input) &lt; random_num):<br>					<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;很遗憾，没猜对哦！给你个提示：&#x27;</span> + <span class="hljs-built_in">str</span>(user_input) + <span class="hljs-string">&#x27; —— &#x27;</span> + <span class="hljs-built_in">str</span>(<span class="hljs-built_in">max</span>))<br>					<span class="hljs-built_in">min</span> = <span class="hljs-built_in">int</span>(user_input)					<br>				<span class="hljs-keyword">else</span>:<br>					<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;很遗憾，没猜对哦！给你个提示：&#x27;</span> + <span class="hljs-built_in">str</span>(<span class="hljs-built_in">min</span>) + <span class="hljs-string">&#x27; —— &#x27;</span> + <span class="hljs-built_in">str</span>(user_input))<br>					<span class="hljs-built_in">max</span> = <span class="hljs-built_in">int</span>(user_input)<br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;————————————再试一次———————————————&#x27;</span>)<br>				key_status = <span class="hljs-number">0</span><br>				count = count + <span class="hljs-number">1</span><br>			<span class="hljs-keyword">else</span>:<br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;————————————————————————————————————————猜对啦！———————————————————————————————————————————————————————\n\n&#x27;</span>)<br><br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;！！！恭喜你猜中了！！！快去买彩票吧！\n\n&#x27;</span>)<br><br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;————————————————————————————————————————猜对啦！———————————————————————————————————————————————————————\n\n&#x27;</span>)<br>				end_time = time.time()<br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;游戏总共耗时：&#x27;</span>,<span class="hljs-built_in">int</span>(end_time - start_time),<span class="hljs-string">&#x27;秒&#x27;</span>)<br>				<span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(end_time - start_time) &lt; <span class="hljs-number">8</span>:<br>					<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;游戏总共有效尝试次数：&#x27;</span>,count + <span class="hljs-number">1</span>,<span class="hljs-string">&#x27; 次，&#x27;</span>,<span class="hljs-string">&#x27;击败了全国 95% 的选手&#x27;</span>)<br>				<span class="hljs-keyword">elif</span> <span class="hljs-built_in">int</span>(end_time - start_time) &gt;<span class="hljs-number">8</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(end_time - start_time) &lt; <span class="hljs-number">15</span>:<br>					<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;游戏总共有效尝试次数：&#x27;</span>,count + <span class="hljs-number">1</span>,<span class="hljs-string">&#x27; 次，&#x27;</span>,<span class="hljs-string">&#x27;击败了全国 85% 的选手&#x27;</span>)<br>				<span class="hljs-keyword">else</span>:<br>					<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;游戏总共有效尝试次数：&#x27;</span>,count + <span class="hljs-number">1</span>,<span class="hljs-string">&#x27; 次，&#x27;</span>,<span class="hljs-string">&#x27;击败了全国 60% 的选手&#x27;</span>)<br><br>				key_status = <span class="hljs-number">1</span><br>				<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;\n\n游戏结束！&#x27;</span>)<br>		<span class="hljs-keyword">else</span>:<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;输入的数据不合法！请输入一个 0 —— 100 的整数&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
-<h2 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h2><p><img src="https://raw.githubusercontent.com/adymilk/Python-demo/master/screenshot/output.gif" alt="演示"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/05/18/20180518-3/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2018/05/18/20180518-3/" data-id="ckqacpkr20011j52y69wm7c6q" data-title="用Python 开发一个小游戏" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2018/05/18/20180518-3/" data-id="ckqacpkr20011j52y69wm7c6q" data-title="用Python 开发一个小游戏" class="article-share-link">Compartir</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/game/" rel="tag">game</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-20180518-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2018/05/18/20180518-2/" class="article-date">
-  <time class="dt-published" datetime="2018-05-18T06:36:18.000Z" itemprop="datePublished">2018-05-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2018/05/18/20180518-2/">两行代码实现网页统计功能</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="不蒜子官网介绍"><a href="#不蒜子官网介绍" class="headerlink" title="不蒜子官网介绍"></a><a target="_blank" rel="noopener" href="http://busuanzi.ibruce.info/">不蒜子官网介绍</a></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2018/05/18/20180518-2/" data-id="ckqacpkr0000wj52yficn4x4r" data-title="两行代码实现网页统计功能" class="article-share-link">Teilen</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li></ul>
 
     </footer>
   </div>
@@ -324,31 +261,15 @@
 <p>sudo apt-get install byzanz</p>
 </blockquote>
 <p>如果软件不存在，先添加下面的软件源再安装</p>
-<blockquote>
-<p>sudo add-apt-repository ppa:fossfreedom/byzanzsudo apt-get update &amp;&amp; sudo apt-get install byzanz</p>
-</blockquote>
-<h2 id="直接录制"><a href="#直接录制" class="headerlink" title="直接录制"></a>直接录制</h2><blockquote>
-<p>byzanz-record –duration=10 –x=100 –y=100 –width=600 –height=600 output.gif</p>
-</blockquote>
-<blockquote>
-<p>–duration 录制时长<br>–x x坐标<br>–y y坐标<br>–width 录制宽度<br>–height 录制高度<br>–output.gif 录制生成文件名</p>
-</blockquote>
-<h2 id="新建脚本byzanz-record-window-sh"><a href="#新建脚本byzanz-record-window-sh" class="headerlink" title="新建脚本byzanz-record-window.sh"></a>新建脚本byzanz-record-window.sh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-comment"># Example: byzanz-record-window 30 -c output.gif</span><br><br><span class="hljs-comment"># Delay before starting</span><br>DELAY=5<br><br><span class="hljs-comment"># Duration and output file</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$#</span> -gt 0 ]; <span class="hljs-keyword">then</span><br>    D=<span class="hljs-string">&quot;--duration=<span class="hljs-variable">$@</span>&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> Default recording duration 5s to /tmp/recorded.gif<br>    D=<span class="hljs-string">&quot;--duration=10 /tmp/recorded.gif&quot;</span><br><span class="hljs-keyword">fi</span><br>XWININFO=$(xwininfo)<br><span class="hljs-built_in">read</span> X &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Absolute upper-left X/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> Y &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Absolute upper-left Y/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> W &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Width/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><span class="hljs-built_in">read</span> H &lt; &lt;(awk -F: <span class="hljs-string">&#x27;/Height/&#123;print $2&#125;&#x27;</span> &lt;&lt;&lt; <span class="hljs-string">&quot;<span class="hljs-variable">$XWININFO</span>&quot;</span>)<br><br><span class="hljs-built_in">echo</span> Delaying <span class="hljs-variable">$DELAY</span> seconds. After that, byzanz will start<br><span class="hljs-keyword">for</span> (( i=<span class="hljs-variable">$DELAY</span>; i&gt;0; --i )) ; <span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br>    sleep 1<br><span class="hljs-keyword">done</span><br><br>byzanz-record --verbose --delay=0 --x=<span class="hljs-variable">$X</span> --y=<span class="hljs-variable">$Y</span> --width=<span class="hljs-variable">$W</span> --height=<span class="hljs-variable">$H</span> <span class="hljs-variable">$D</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>记得加上执行权限</strong></p>
-<blockquote>
-<p>chmod a+x byzanz-record-window.sh</p>
-</blockquote>
-<p><strong>录制视频</strong></p>
-<blockquote>
-<p>./byzanz-record-window 5 -c output.gif</p>
-</blockquote>
-<p><img src="https://github.com/adymilk/Python-demo/blob/master/screenshot/output.gif" alt="示例"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/05/18/20180518-1/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2018/05/18/20180518-1/" data-id="ckqacpkr0000tj52y6ldpdre3" data-title="Linux 桌面版录制GIF动画" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2018/05/18/20180518-1/" data-id="ckqacpkr0000tj52y6ldpdre3" data-title="Linux 桌面版录制GIF动画" class="article-share-link">Compartir</a>
       
       
       
@@ -389,9 +310,6 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。</p>
-<blockquote>
-<p>Ubuntu | 最受欢迎的免费操作系统<br>Fast, secure and stylishly simple, the Ubuntu operating system is used by 20 million people worldwide every day.</p>
-</blockquote>
         
           <p class="article-more-link">
             <a href="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/#more">Read More</a>
@@ -400,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" data-id="ckqacpkqv0009j52y2pw35uym" data-title="完美的 Ubuntu16.04 优化方案" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" data-id="ckqacpkqv0009j52y2pw35uym" data-title="完美的 Ubuntu16.04 优化方案" class="article-share-link">Compartir</a>
       
       
       
@@ -449,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/" data-id="ckqacpkr9002bj52y38z72nsp" data-title="Linux 暴力破解WIFI密码" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/" data-id="ckqacpkr9002bj52y38z72nsp" data-title="Linux 暴力破解WIFI密码" class="article-share-link">Compartir</a>
       
       
       
@@ -490,9 +408,6 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="1、图形界面打包"><a href="#1、图形界面打包" class="headerlink" title="1、图形界面打包"></a>1、图形界面打包</h1><h2 id="需求分析（友盟SDK）"><a href="#需求分析（友盟SDK）" class="headerlink" title="#需求分析（友盟SDK）"></a>#需求分析（友盟SDK）</h2><p><a target="_blank" rel="noopener" href="https://dev.umeng.com/analytics/android-doc/integration">友盟SDK</a> 需要在<code>AndroidManifest.xml</code>中配置如下值：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;meta-data android:value=&quot;Channel ID&quot; android:name=&quot;UMENG_CHANNEL&quot;/&gt;<br></code></pre></td></tr></table></figure>
-<p>其中<code>Channel ID</code>为软件应用市场标识。为了能够动态的设置<code>Channel ID</code>。可在<code>build.gradle</code>这样配置<code>productFlavors</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml">// 这里假定我们需要打包的渠道为酷安市场、360、小米、百度、豌豆荚<br><br>android &#123;  <br>    productFlavors &#123;<br>        kuan &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;kuan&quot;]<br>        &#125;<br>        xiaomi &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;xiaomi&quot;]<br>        &#125;<br>        qh360 &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;qh360&quot;]<br>        &#125;<br>        baidu &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]<br>        &#125;<br>        wandoujia &#123;<br>            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;wandoujia&quot;]<br>        &#125;<br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/#more">Read More</a>
@@ -501,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/" data-id="ckqacpkqz000pj52yfsv8bvlr" data-title="Android-Studio 多渠道打包" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2017/10/06/2017-10-06-AndroidStudioMultichannelpacking/" data-id="ckqacpkqz000pj52yfsv8bvlr" data-title="Android-Studio 多渠道打包" class="article-share-link">Compartir</a>
       
       
       
@@ -544,31 +459,15 @@
         <blockquote>
 <p>网站模板的设计，一般的，我们做网站有一些通用的部分，比如 导航，底部，访问统计代码等等.<br>比如 <code>header.html</code>, <code>footer.html</code>, <code>content.html</code>…..其实我们可以写一个 <code>base.html</code> 来包含这些通用文件。ok,让我们一起学习如何实现的吧。</p>
 </blockquote>
-<h2 id="网页基础"><a href="#网页基础" class="headerlink" title="网页基础"></a>网页基础</h2><p><strong>以前我们这样写网页</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>我的地盘我做主！<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>看完本片博客，你以后可以这样写</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;extend name=&quot;Temp/base&quot;/&gt;<br>&lt;block name=&quot;content&quot;&gt;<br>	我的地盘我做主！<br>&lt;/block&gt;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>WOW, 好腻嗨啊……怎么做到的…</p>
-</blockquote>
-<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><h3 id="新建文件夹和文件"><a href="#新建文件夹和文件" class="headerlink" title="新建文件夹和文件"></a>新建文件夹和文件</h3><p>新建一个文件夹 <code>Temp</code> 模板文件夹的意思。然后在这个 <code>Temp</code> 文件夹里面新建文件<code>head.html</code>、<code>footer.html</code>、<code>index.html</code></p>
-<p>最终目录结构是这样的</p>
-<p>Temp<br>    ├── base.html<br>    ├── footer.html<br>    ├── head.html<br>    └── index.html</p>
-<h3 id="接下来编辑-head-html-文件"><a href="#接下来编辑-head-html-文件" class="headerlink" title="接下来编辑 head.html 文件"></a>接下来编辑 <code>head.html</code> 文件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
-
-<h3 id="继续编辑-footer-html文件"><a href="#继续编辑-footer-html文件" class="headerlink" title="继续编辑 footer.html文件"></a>继续编辑 <code>footer.html</code>文件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="编辑-base-html"><a href="#编辑-base-html" class="headerlink" title="编辑 base.html"></a>编辑 <code>base.html</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;Temp/head&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;Temp/footer&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="这时候-index-html-应该这样来写"><a href="#这时候-index-html-应该这样来写" class="headerlink" title="这时候 index.html 应该这样来写"></a>这时候 <code>index.html</code> 应该这样来写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&lt;extend name=&quot;Temp/base&quot;/&gt;<br>&lt;block name=&quot;content&quot;&gt;<br>	我的地盘我做主！<br>&lt;/block&gt;<br></code></pre></td></tr></table></figure>
-
-<h3 id="浏览器运行-index-html-看看吧"><a href="#浏览器运行-index-html-看看吧" class="headerlink" title="浏览器运行 index.html 看看吧"></a>浏览器运行 <code>index.html</code> 看看吧</h3><h2 id="为什么要实现模板分离？"><a href="#为什么要实现模板分离？" class="headerlink" title="为什么要实现模板分离？"></a>为什么要实现模板分离？</h2><p>这样我们就完成模板分离的处理。好处在于当一个网站的网页特别多的时候，相同的代码又不可避免。这时候用这个方法可以起到方便管理的作用。使你的代码高效、清晰、明了！</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/08/15/2017-08-15-HTML-template-separation/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/08/15/2017-08-15-HTML-template-separation/" data-id="ckqacpkqy000nj52yg45sarjp" data-title="网页模板分离的高效方法" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2017/08/15/2017-08-15-HTML-template-separation/" data-id="ckqacpkqy000nj52yg45sarjp" data-title="网页模板分离的高效方法" class="article-share-link">Compartir</a>
       
       
       
@@ -611,34 +510,15 @@
         <blockquote>
 <p>Python 是一个高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。被称作写爬虫最好的语言之一！从今天开始让我们一起来学习吧。每天一个小例子，开心学 Python .</p>
 </blockquote>
-<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><blockquote>
-<p>这里我假设你已经安装好了 Python 开发环境，如果你不知道如何安装Python 开发环境。可以点击<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-install.html">这里</a></p>
-</blockquote>
-<h3 id="入门第一课：Hello-Python"><a href="#入门第一课：Hello-Python" class="headerlink" title="入门第一课：Hello Python"></a>入门第一课：Hello Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-comment">#!/usr/bin/python</span><br><br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Hello, Python!&quot;</span>;<br></code></pre></td></tr></table></figure>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><blockquote>
-<p>Hello Python</p>
-</blockquote>
-<h3 id="批量下载网站图片示例"><a href="#批量下载网站图片示例" class="headerlink" title="批量下载网站图片示例"></a>批量下载网站图片示例</h3><h4 id="1-1-获取整个页面数据"><a href="#1-1-获取整个页面数据" class="headerlink" title="1.1 获取整个页面数据"></a>1.1 获取整个页面数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> urllib<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2738151262&quot;</span>)<br><br><span class="hljs-built_in">print</span> html<br></code></pre></td></tr></table></figure>
-
-<h4 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h4><blockquote>
-<p>Urllib 模块提供了读取web页面数据的接口，我们可以像读取本地文件一样读取www和ftp上的数据。首先，我们定义了一个getHtml()函数:urllib.urlopen()方法用于打开一个URL地址。read()方法用于读取URL上的数据，向getHtml()函数传递一个网址，并把整个页面下载下来。执行程序就会把整个网页打印输出。</p>
-</blockquote>
-<h4 id="1-2-筛选页面中想要的数据"><a href="#1-2-筛选页面中想要的数据" class="headerlink" title="1.2 筛选页面中想要的数据"></a>1.2 筛选页面中想要的数据</h4><p>Python 提供了非常强大的正则表达式<br>假如我们百度贴吧找到了几张漂亮的壁纸，通过到前段查看工具。找到了图片的地址，如：src=”<a target="_blank" rel="noopener" href="http://imgsrc.baidu.com/forum......jpg%E2%80%9Dpic_ext=%E2%80%9Djpeg%E2%80%9D">http://imgsrc.baidu.com/forum......jpg”pic_ext=”jpeg”</a></p>
-<p><img src="http://images.cnitblog.com/i/311516/201403/020013141657112.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> urllib<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getImg</span>(<span class="hljs-params">html</span>):</span><br>    reg = <span class="hljs-string">r&#x27;src=&quot;(.+?\.jpg)&quot; pic_ext&#x27;</span><br>    imgre = re.<span class="hljs-built_in">compile</span>(reg)<br>    imglist = re.findall(imgre,html)<br>    <span class="hljs-keyword">return</span> imglist      <br>   <br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2460150866&quot;</span>)<br><span class="hljs-built_in">print</span> getImg(html)<br></code></pre></td></tr></table></figure>
-
-<p>我们又创建了getImg()函数，用于在获取的整个页面中筛选需要的图片连接。re模块主要包含了正则表达式：<br>re.compile() 可以把正则表达式编译成一个正则表达式对象.<br>re.findall() 方法读取html 中包含 imgre（正则表达式）的数据。<br>运行脚本将得到整个页面中包含图片的URL地址。</p>
-<h4 id="1-3-将页面筛选的数据保存到本地"><a href="#1-3-将页面筛选的数据保存到本地" class="headerlink" title="1.3 将页面筛选的数据保存到本地"></a>1.3 将页面筛选的数据保存到本地</h4><p>把筛选的图片地址通过for循环遍历并保存到本地，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> urllib<br><span class="hljs-keyword">import</span> re<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">url</span>):</span><br>    page = urllib.urlopen(url)<br>    html = page.read()<br>    <span class="hljs-keyword">return</span> html<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getImg</span>(<span class="hljs-params">html</span>):</span><br>    reg = <span class="hljs-string">r&#x27;src=&quot;(.+?\.jpg)&quot; pic_ext&#x27;</span><br>    imgre = re.<span class="hljs-built_in">compile</span>(reg)<br>    imglist = re.findall(imgre,html)<br>    x = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> imgurl <span class="hljs-keyword">in</span> imglist:<br>        urllib.urlretrieve(imgurl,<span class="hljs-string">&#x27;%s.jpg&#x27;</span> % x)<br>        x+=<span class="hljs-number">1</span><br><br><br>html = getHtml(<span class="hljs-string">&quot;http://tieba.baidu.com/p/2460150866&quot;</span>)<br><br><span class="hljs-built_in">print</span> getImg(html)<br></code></pre></td></tr></table></figure>
-<p>这里的核心是用到了urllib.urlretrieve()方法，直接将远程数据下载到本地。</p>
-<p>　　通过一个for循环对获取的图片连接进行遍历，为了使图片的文件名看上去更规范，对其进行重命名，命名规则通过x变量加1。保存的位置默认为程序的存放目录。</p>
-<p>程序运行完成，将在目录下看到下载到本地的文件。</p>
-<p><img src="http://images.cnitblog.com/i/311516/201403/020014265548094.png"></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/08/10/2017-08-10-StudyPythonFirstDay/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://adymilk.github.io/2017/08/10/2017-08-10-StudyPythonFirstDay/" data-id="ckqacpkqx000ij52yfcpz8ja6" data-title="学习Python系列第一天" class="article-share-link">Teilen</a>
+      <a data-url="https://adymilk.github.io/2017/08/10/2017-08-10-StudyPythonFirstDay/" data-id="ckqacpkqx000ij52yfcpz8ja6" data-title="学习Python系列第一天" class="article-share-link">Compartir</a>
       
       
       
@@ -652,11 +532,60 @@
 
 
   
+    <article id="post-2017-08-09-push-hexo-to-baidu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/09/2017-08-09-push-hexo-to-baidu/" class="article-date">
+  <time class="dt-published" datetime="2017-08-09T02:59:16.000Z" itemprop="datePublished">2017-08-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/09/2017-08-09-push-hexo-to-baidu/">hexo 向百度主动推送链接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="百度站长工具"><a href="#百度站长工具" class="headerlink" title="百度站长工具"></a>百度站长工具</h3><p>百度站长提供了自动提交和手动提交两种方式。这个我们肯定不用手动提交这个弱智的方式。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/09/2017-08-09-push-hexo-to-baidu/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://adymilk.github.io/2017/08/09/2017-08-09-push-hexo-to-baidu/" data-id="ckqacpkqw000gj52y14ixaedj" data-title="hexo 向百度主动推送链接" class="article-share-link">Compartir</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Previo</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Siguiente &raquo;</a>
   </nav>
 </section>
         <aside id="sidebar">
@@ -665,7 +594,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%9F%E8%AE%A1/" rel="tag">统计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a></li></ul>
     </div>
   </div>
 
@@ -673,20 +602,20 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2021/06/24/20210624-1-md/">Parallels Desktop 16目前最佳永久使用方法</a>
+            <a href="/2021/06/24/20210624-1/">Parallels Desktop 16目前最佳永久使用方法</a>
           </li>
         
           <li>
-            <a href="/2021/06/23/20210623-2-md/">Laravel8 配置修改不生效，缓存问题解决方案</a>
+            <a href="/2021/06/23/20210623-2/">Laravel8 配置修改不生效，缓存问题解决方案</a>
           </li>
         
           <li>
-            <a href="/2021/06/23/20210623-md/">微信公众号token 验证失败解决方案</a>
+            <a href="/2021/06/23/20210623-1/">微信公众号token 验证失败解决方案</a>
           </li>
         
           <li>
@@ -704,7 +633,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a></li></ul>
     </div>
@@ -714,7 +643,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li></ul>
     </div>
