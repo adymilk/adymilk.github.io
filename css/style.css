@@ -505,9 +505,15 @@ image {
 }
 .article {
   margin: 50px 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 10px #f3e2e2;
+  box-shadow: 5px 5px 10px #f3e2e2;
 }
 .article-inner {
   overflow: hidden;
+}
+.article-meta {
+  padding-top: 1rem;
 }
 .article-meta:before,
 .article-meta:after {
@@ -597,7 +603,8 @@ a.article-title:hover {
   margin-top: 1.6em;
   margin-bottom: 1.6em;
 }
-.article-entry video {
+.article-entry video,
+.article-entry img {
   max-width: 100%;
   height: auto;
   display: block;
