@@ -1321,6 +1321,14 @@ pre .javascript .function {
   overflow: auto;
   zoom: 1;
 }
+.tag-list li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
 .tag-list-link {
   text-decoration: none;
   color: #555;
@@ -1378,6 +1386,16 @@ pre .javascript .function {
 .widget dl dl {
   margin-left: 15px;
   list-style: disc;
+}
+.widget ul li,
+.widget ol li,
+.widget dl li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
 }
 .widget {
   line-height: 1.6em;

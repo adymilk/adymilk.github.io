@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer" />
+
+
+
+  
+
+  <title>微信小程序入门唠嗑第一课 | 詹姆斯的个人网站</title>
+
+
+
+
+
+
+
+   <meta name="keywords" content="詹姆斯个人网站" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">詹姆斯的个人网站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">热爱科技，热爱生活</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-20181126" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/11/26/20181126/" class="article-date">
+  <time class="dt-published" datetime="2018-11-26T12:33:00.000Z" itemprop="datePublished">2018-11-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      微信小程序入门唠嗑第一课
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="如何理解微信小程序"><a href="#如何理解微信小程序" class="headerlink" title="如何理解微信小程序"></a>如何理解微信小程序</h3><p>在学习微信小程序开发之前，首先我们要大致了解一个概念。微信小程序和传统安卓在手机上的程序（App) 有什么区别？</p>
+<span id="more"></span>
+
+<p><strong>传统手机APP</strong>：有独立的安装包，必须安装在手机上才可以使用！<br><strong>微信小程序</strong>：依赖于微信APP，必须在微信内部才可以使用！</p>
+<p>微信小程序其实啊，它并不是新兴产物。早在5年前的 <code>html5</code> 时代就已经开始孕育了。为啥这么说呢? 客观不要着急，你先吃点瓜子点心，且听我给你慢慢道来！</p>
+<p>如果你平时玩手机比较细心的话，你可能会发现。当我们在微信或者朋友圈点开一个链接的时候。有些链接跳转过去竟然是一个无与伦比美丽的APP，比如在微信里打开京东的网站（jd.com)<br><img src="/img/20181126-2.jpg" alt="京东"><br><strong>这是微信内部打开的京东商城</strong></p>
+<p><img src="/img/20181126-3.png" alt="京东"><br><strong>这是京东APP打开的京东商城</strong></p>
+<p>一个是微信内部打开的京东首页，一个是京东APP打开的京东首页。是不是二者几乎没有差别。我记得好像微信内部一直都有为京东提供这样一个特殊服务。（刘强东到底和马化腾做了什么PY交易，微信对京东这些年的支持从来就没断过）。从京东在微信内部这个以与众不同的平台来分析，你就会明白其实微信小程序这个如意算盘早就在谋划了。这就好像马云曾经公开针对京东说的一句能够让刘强东听了吐血的话，</p>
+<blockquote>
+<p>阿里巴巴的存在即是为了培养更多的京东</p>
+</blockquote>
+<p><strong>刘强东：nmmp。。。。</strong></p>
+<p>实际上京东和阿里是两个势均力敌的竞争对手！</p>
+<p>这也就是为什么这么多年来，微信里面只有京东网站而淘宝的网站链接每次点击都是访问失败！让你复制到浏览器打开的原因。<br>你在微信里面买东西，不管是在京东，拼夕夕，唯美会，聚美优品….什么什什么付款的从来都没有支付宝支付的选项。有时候你确实微信里没钱，想用支付宝，这就很尴尬了。（这个时候我就会打开微信朋友圈，看看谁最新发布了动态，然后找他微信借钱2333333.）</p>
+<p>好了，牛逼越哈越远了。回到我们今天的主题！微信小程序到底是不是程序？</p>
+<blockquote>
+<p>核心理念：<br>小程序是一种不需要下载安装即可使用的应用，它实现了应用『触手可及』的梦想，用户扫一扫或搜一搜即可打开应用。也体现了『用完即走』的理念，用户不关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。<br>微信创始人：张小龙</p>
+</blockquote>
+<p>我的答案：勉强算是小程序吧，但绝对不是APP！</p>
+<p>小程序这个叫法，其实就是微信内部一厢情愿的叫法。后来树大招风，店大欺客。没办法，人家在自己内部制定了一个规则，并且取名一个一个新的语言叫做<br>①WXML(WeiXin Mark Language，微信标记语言)<br>②WXSS(WeiXin Style Sheet，微信样式表)</p>
+<p>③JS作为小程序的逻辑语言(Java，小程序的主体)</p>
+<p>如果你之前的前端基础比较好的话，你对于微信小程序学习起来上手会非常快！</p>
+<h2 id="小程序简要分析"><a href="#小程序简要分析" class="headerlink" title="小程序简要分析"></a>小程序简要分析</h2><p><img src="https://ws2.sinaimg.cn/large/9ac1c132jw1f89ht2sqa0j21640p0q8y.jpg" alt="小程序目录结构分析"></p>
+<ul>
+<li>全局配置文件<br><img src="https://ws3.sinaimg.cn/large/9ac1c132jw1f89htxlj2wj20rb09sjs4.jpg" alt="全局配置文件"></li>
+</ul>
+<h2 id="小程序的优点"><a href="#小程序的优点" class="headerlink" title="小程序的优点"></a>小程序的优点</h2><ul>
+<li>比传统的 Hybird 应用在操作体验上，它具有更快、更流畅的应用体验，摆脱混合应用对浏览器性能的依赖且能够调用系统原生接口，有一定的数据缓存能力。</li>
+<li>比 React Native 类应用，更轻量级。</li>
+<li>比 Native App ，则胜在开发周期短、投入成本低、使用便捷，且依托微信庞大的用户基础和粘性，可以迅速引流，验证产品模式和用户需求。</li>
+</ul>
+<h2 id="小程序的缺点"><a href="#小程序的缺点" class="headerlink" title="小程序的缺点"></a>小程序的缺点</h2><ul>
+<li>目前限制应用包大小为 1024 kb 。</li>
+<li>微信开放接口 API 较少。</li>
+<li>仅限于小应用的能力，想要实现复杂应用能力上还不足。</li>
+<li>在多层级使用场景以及需要跳转类的需求上劣势明显。</li>
+<li>不支持 A 标签，无法打开普通网页。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>小程序在开发上不具有太高难度，更要考量的是作为产品或服务的设计和使用场景的优化上，微信小程序的真正优势在于开发成本低、更快速的迭代，可以快速测试用户需求，而不是技术上的颠覆。对于创业者和小公司来说，是一个快速启动的方式。但对于希望走的更远的企业，原生或 RN 类 APP 目前还绕不过去，微信小程序只能作为一个产品填补式的存在，当然这些还需要具体产品具体规划。</p>
+<p>通过上述信息我们可以这样认为，小程序是一个可通过 Web 技术栈开发，使用微信框架调用原生功能的类 Web 小应用，小体现在它本身的能力受微信的规则和框架的限制。这种形式仅仅在操作体验上优于传统 Hybird 开发的应用，与 React Native 开发复杂应用的能力要低太多，目前不在一个层次上。现阶段所展现的能力受限，随着用户和开发者的持续投入，微信也许会进一步释放它的能力，潜力较高。小程序如果在技术上可以获得强大的支持，对于低频应用（日历等小工具类以及其它形形色色的应用）或者应用使用场景（消费类浅层级应用使用场景）的补充，还是大有可为。</p>
+<h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><p>虽然小程序是一种类前端的代码，能够让学习者上手非常快，大大的节约了学习成本。但是要想把小程序做的出类拔萃，则需要学习者具备扎实的前端基础以及过硬的 <code>js</code> 技术。<br>小程序的开发架构也是最近比较流行的前后端分离的开发方式。后端程度提供一个数据接口为前端界面提供必要的数据支撑！前端也需要根据业务需要向后端发送数据请求！</p>
+<h2 id="微信小程序文档"><a href="#微信小程序文档" class="headerlink" title="微信小程序文档"></a>微信小程序文档</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/#%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%A8%8B%E5%BA%8F">你的第一个小程序</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.runoob.com/w3cnote/wx-xcx-repo.html">微信小程序开发资源汇总</a></li>
+</ul>
+<h2 id="待续…"><a href="#待续…" class="headerlink" title="待续…"></a>待续…</h2><p>哦，对了。给你讲个故事，从前有个人特别浪荡，他曾经说过这样一句话。</p>
+<blockquote>
+<p>如果哪一天你看到大街上一个戴着高礼帽黑礼服弹着吉他在演唱一首《当年情》的年轻人，那个人大概就是我了。请记得给我投一块钱。我这样开玩笑的和朋友说道。此时我的内心早已不能平静了。</p>
+</blockquote>
+<p>点击 <a target="_blank" rel="noopener" href="https://blog.adymilk.cn/2018/05/27/20180512/">《生活虐我千百遍，我对生活如初恋》了解更多</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://adymilk.github.io/2018/11/26/20181126/" data-id="ckqhrikr1001hh52y424jf33m" data-title="微信小程序入门唠嗑第一课" class="article-share-link">Share</a>
+      
+      
+        <a href="/2018/11/26/20181126/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2018/11/26/20181126/" itemprop="commentCount"></span>
+          Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/14/20200715-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据科学
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/20/20180720-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">手淘首页的3大核心权重</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+
+  </section>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minitab/" rel="tag">Minitab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/29/20210629-1/">调用minitab接口自动生成图表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/24/20210624-1/">Parallels Desktop 16目前最佳永久使用方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/23/20210623-2/">Laravel8 配置修改不生效，缓存问题解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/23/20210623-1/">微信公众号token 验证失败解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/20200715-1/">数据科学</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Minitab/">Minitab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'true' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "rgBgYoslSGOswjaHqVArAnPp-gzGzoHsz",
+        appKey: "zG3mb3kGasYAEy7begNCbRED",
+        placeholder: "Just go go",
+        pageSize:'10',
+        avatar:'mm',
+        lang:'zh-cn'
+    });
+</script>
+
+  </div>
+</body>
+</html>

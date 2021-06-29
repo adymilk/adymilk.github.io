@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer" />
+
+
+
+  
+
+  <title>网站性能优化篇（一） | 詹姆斯的个人网站</title>
+
+
+
+
+
+
+
+   <meta name="keywords" content="詹姆斯个人网站" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">詹姆斯的个人网站</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">热爱科技，热爱生活</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-20180601-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/06/01/20180601-1/" class="article-date">
+  <time class="dt-published" datetime="2018-06-01T03:14:56.000Z" itemprop="datePublished">2018-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网站性能优化篇（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="1）-浏览器渲染页面的过程"><a href="#1）-浏览器渲染页面的过程" class="headerlink" title="1） 浏览器渲染页面的过程"></a>1） 浏览器渲染页面的过程</h3><span id="more"></span>
+<p>从耗时的角度，浏览器请求、加载、渲染一个页面，时间花在下面五件事情上：</p>
+<blockquote>
+<ul>
+<li>1.1 DNS 查询</li>
+</ul>
+</blockquote>
+<ul>
+<li>1.2 TCP 连接</li>
+<li>1.3 HTTP 请求即响应</li>
+<li>1.4 服务器响应</li>
+<li>1.5 客户端渲染</li>
+</ul>
+<p>下面我主要从客户端渲染的角度来详细解析：</p>
+<blockquote>
+<ul>
+<li>处理 HTML 标记并构建 DOM 树。</li>
+</ul>
+</blockquote>
+<ul>
+<li>处理 CSS 标记并构建 CSSOM 树。</li>
+<li>将 DOM 与 CSSOM 合并成一个渲染树。</li>
+<li>根据渲染树来布局，以计算每个节点的几何信息。</li>
+<li>将各个节点绘制到屏幕上。</li>
+</ul>
+<p>需要明白，这五个步骤并不一定一次性顺序完成。如果 DOM 或 CSSOM 被修改，以上过程需要重复执行，这样才能计算出哪些像素需要在屏幕上进行重新渲染。实际页面中，CSS 与 JavaScript 往往会多次修改 DOM 和 CSSOM，下面就来看看它们的影响方式。</p>
+<h3 id="阻塞渲染：CSS-与-JavaScript"><a href="#阻塞渲染：CSS-与-JavaScript" class="headerlink" title="阻塞渲染：CSS 与 JavaScript"></a>阻塞渲染：CSS 与 JavaScript</h3><p>默认情况下，CSS 被视为阻塞渲染的资源，这意味着浏览器将不会渲染任何已处理的内容，直至<code>CSSOM</code>构建完毕。JavaScript 不仅可以读取和修改 DOM 属性，还可以读取和修改 CSSOM 属性。</p>
+<p>存在阻塞的 CSS 资源时，浏览器会延迟 JavaScript 的执行和 DOM 构建。另外：当浏览器遇到一个 script 标记时，DOM 构建将暂停，直至脚本完成执行。JavaScript 可以查询和修改 DOM 与 CSSOM。CSSOM 构建时，JavaScript 执行将暂停，直至 CSSOM 就绪。</p>
+<p>所以，script 标签的位置很重要。实际使用时，可以遵循下面两个原则：</p>
+<blockquote>
+<p>CSS 优先：引入顺序上，CSS 资源先于 JavaScript 资源。</p>
+</blockquote>
+<p>JavaScript 应尽量少影响 DOM 的构建。</p>
+<p>浏览器的发展日益加快（目前的 Chrome 官方稳定版是 61），具体的渲染策略会不断进化，但了解这些原理后，就能想通它进化的逻辑。下面来看看 CSS 与 JavaScript 具体会怎样阻塞资源。</p>
+<p><strong>css</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"> <span class="hljs-selector-tag">p</span> &#123; <span class="hljs-attribute">color</span>: red; &#125;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.css&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>这样的 link 标签（无论是否 inline）会被视为阻塞渲染的资源，浏览器会优先处理这些 CSS 资源，直至 CSSOM 构建完毕。</p>
+<p>渲染树（Render-Tree）的关键渲染路径中，要求同时具有 DOM 和 CSSOM，之后才会构建渲染树。即，HTML 和 CSS 都是阻塞渲染的资源。HTML 显然是必需的，因为包括我们希望显示的文本在内的内容，都在 DOM 中存放，那么可以从 CSS 上想办法。</p>
+<p>最容易想到的当然是<strong>精简 CSS 并尽快提供它</strong>。除此之外，还可以用媒体类型（media type）和媒体查询（media query）来解除对渲染的阻塞。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;print.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;print&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;other.css&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;(min-width: 30em) and (orientation: landscape)&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>第一个资源会加载并阻塞。<br>第二个资源设置了媒体类型，会加载但不会阻塞，print 声明只在打印网页时使用。<br>第三个资源提供了媒体查询，会在符合条件时阻塞渲染。</p>
+<p><strong>JavaScript</strong></p>
+<p>JavaScript 的情况比 CSS 要更复杂一些。观察下面的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Do not go gentle into that good night,<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;inline&quot;</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Old age should burn and rave at close of day;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Rage, rage against the dying of the light.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Do not go gentle into that good night,<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Old age should burn and rave at close of day;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;inline&quot;</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Rage, rage against the dying of the light.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样的 script 标签会阻塞 HTML 解析，无论是不是 inline-script。上面的 P 标签会从上到下解析，这个过程会被两段 JavaScript 分别打断一次（加载并且执行的时间段内）。</p>
+<p>所以实际工程中，我们常常将资源<strong>放到文档底部</strong>。</p>
+<p>**改变阻塞模式：<code>defer</code> 与 <code>async</code> **</p>
+<p>为什么要将 script 加载的 defer 与 async 方式放到后面呢？因为这两种方式是的出现，全是由于前面讲的那些阻塞条件的存在。换句话说，defer 与 async 方式可以改变之前的那些阻塞情形。</p>
+<p>首先，注意 async 与 defer 属性对于 inline-script 都是无效的，所以下面这个示例中三个 script 标签的代码会从上到下依次执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;!-- 按照从上到下的顺序输出 <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> --&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;1&quot;</span>);</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&quot;</span>);</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;3&quot;</span>);</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>故，下面两节讨论的内容都是针对设置了 src 属性的 script 标签。</p>
+<p>** defer **</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app1.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app2.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app3.js&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>defer 属性表示延迟执行引入的 JavaScript，即这段 JavaScript 加载时 HTML 并未停止解析，这两个过程是并行的。整个 document 解析完毕且 defer-script 也加载完成之后（这两件事情的顺序无关），会执行所有由 defer-script 加载的 JavaScript 代码，然后触发 DOMContentLoaded 事件。</p>
+<p>defer 不会改变 script 中代码的执行顺序，示例代码会按照 1、2、3 的顺序执行。所以，defer 与相比普通 script，有两点区别：载入 JavaScript 文件时不阻塞 HTML 的解析，执行阶段被放到 HTML 标签解析完成之后。</p>
+<p>** async **</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;app.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;ad.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;statistics.js&quot;</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>** document.createElement **</p>
+<p>使用 document.createElement 创建的 script 默认是异步的，示例如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;script&quot;</span>).async); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<p>所以，通过动态添加 script 标签引入 JavaScript 文件默认是不会阻塞页面的。如果想同步执行，需要将 async 属性人为设置为 false。</p>
+<p>如果使用 document.createElement 创建 link 标签会怎样呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;link&quot;</span>);<br>style.rel = <span class="hljs-string">&quot;stylesheet&quot;</span>;<br>style.href = <span class="hljs-string">&quot;index.css&quot;</span>;<br><span class="hljs-built_in">document</span>.head.appendChild(style); <span class="hljs-comment">// 阻塞？</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>document.write 与 innerHTML</strong></p>
+<p>通过 document.write 添加的 link 或 script 标签都相当于添加在 <code>document</code> 中的标签，因为它操作的是 <code>document stream</code>（所以对于 <code>loaded</code> 状态的页面使用 <code>document.write</code> 会自动调用document.open，这会覆盖原有文档内容）。即正常情况下， <code>link</code> 会阻塞渲染，<code>script</code> 会同步执行。不过这是不推荐的方式，<code>Chrome</code> 已经会显示警告，提示未来有可能禁止这样引入。如果给这种方式引入的 <code>script</code> 添加 <code>async</code> 属性，<code>Chrome</code> 会检查是否同源，对于非同源的 <code>async-script</code> 是不允许这么引入的。</p>
+<p>如果使用 <code>innerHTML</code> 引入 <code>script</code> 标签，其中的 <code>JavaScript</code> 不会执行。当然，可以通过 <code>eval() </code>来手工处理，不过不推荐。如果引入 <code>link</code> 标签，我试验过在 <code>Chrome</code> 中是可以起作用的。另外，<code>outerHTML</code>、 <code>insertAdjacentHTML()</code>应该也是相同的行为，我并没有试验。这三者应该用于文本的操作，即只使用它们添加 <code>text</code> 或普通 <code>HTMLElement</code></p>
+<p>so ,我们来看看雅虎工程师的总结</p>
+<p><img src="https://img.aotu.io/wangcainuan/2016-03-16-optimization/%E9%9B%85%E8%99%8E35%E6%9D%A1%E5%86%9B%E8%A7%84.jpg"></p>
+<h2 id="2-前端资源优化"><a href="#2-前端资源优化" class="headerlink" title="2)前端资源优化"></a>2)前端资源优化</h2><h3 id="2-1-图片资源压缩（tinypng-）"><a href="#2-1-图片资源压缩（tinypng-）" class="headerlink" title="2.1 图片资源压缩（tinypng ）"></a>2.1 图片资源压缩（tinypng ）</h3><p>图片无损压缩神站- <a target="_blank" rel="noopener" href="https://tinypng.com/">tinypng.com</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG做什么？</a></li>
+</ul>
+<p>TinyPNG使用智能有损压缩技术来减少PNG文件的文件大小。 通过有选择地减少图像中的颜色数量，需要更少的字节来存储数据。 效果几乎看不见，但是它在文件大小上造成了很大的差异！</p>
+<ul>
+<li>我为什么要使用<a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG？</a></li>
+</ul>
+<p>PNG很有用，因为它是可以存储部分透明图像的唯一广泛支持的格式。 格式使用压缩，但文件可能仍然很大。 使用TinyPNG缩小应用程序和网站的图像。 它将更快地使用更少的带宽和负载。</p>
+<p><a target="_blank" rel="noopener" href="https://tinypng.com/"><img src="/img/20180601-3.png" alt="tinypng.com"></a></p>
+<h3 id="2-2-使用雪碧图（CSS-Sprite）"><a href="#2-2-使用雪碧图（CSS-Sprite）" class="headerlink" title="2.2 使用雪碧图（CSS Sprite）"></a>2.2 使用雪碧图（CSS Sprite）</h3><p>雪碧图的概念大家一定在开发中经常听见，其实雪碧图是减小请求数的示范性代表。而且很奇妙的是，多张图片拼在一块后，总体积会比之前所有图片的体积之和小（你可以亲自试试）。这里给大家推荐一个自动化生成雪碧图的工具：<a target="_blank" rel="noopener" href="https://www.toptal.com/developers/css/sprite-generator">https://www.toptal.com/developers/css/sprite-generator</a>。只要你添加相关资源文件，他就会自动帮你生成雪碧图以及对应的 <code>CSS</code> 样式，你要做的，只是 <code>download</code> 和 <code>copy</code>。</p>
+<p><img src="/img/20180601-4.png" alt="演示"></p>
+<h3 id="2-3-使用字体图标（iconfont）"><a href="#2-3-使用字体图标（iconfont）" class="headerlink" title="2.3 使用字体图标（iconfont）"></a>2.3 使用字体图标（iconfont）</h3><p>网址：<a target="_blank" rel="noopener" href="http://www.iconfont.cn/">www.iconfont.cn/</a><br>不论是压缩后的图片，还是雪碧图，终归还是图片，只要是图片，就还是会占用大量网络传输资源。但是字体图标的出现，却让前端开发者看到了另外一个神奇的世界。我最喜欢用的是阿里矢量图标库 ，里面有大量的矢量图资源，而且你只需要像在淘宝采购一样把他们添加至购物车就能把它们带回家，整理完资源后还能自动生成CDN链接，可以说是完美的一条龙服务了。</p>
+<p><img src="/img/20180601-5.png" alt="iconfont"></p>
+<h3 id="2-4-使用-CDN-（BootCDN）"><a href="#2-4-使用-CDN-（BootCDN）" class="headerlink" title="2.4 使用 CDN （BootCDN）"></a>2.4 使用 CDN （BootCDN）</h3><p>网址：<a target="_blank" rel="noopener" href="http://www.bootcdn.cn/">www.bootcdn.cn</a><br>为什么一定要使用 <code>CDN</code>？<br>简单来讲，使用 <code>CDN</code> 可以让你的网站中引用的一些常见的资源（css &amp; js）加载的更快,更稳定。尤其是对于网站中使用了大量的静态资源，效果更加明显。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37353035">CDN 介绍参考这里</a></p>
+<h3 id="2-4-图片懒加载（jQuery-lazyload）"><a href="#2-4-图片懒加载（jQuery-lazyload）" class="headerlink" title="2.4 图片懒加载（jQuery_lazyload）"></a>2.4 图片懒加载（jQuery_lazyload）</h3><p>网址：<a target="_blank" rel="noopener" href="https://github.com/tuupola/jquery_lazyload">https://github.com/tuupola/jquery_lazyload</a></p>
+<p>通过给网站中用到的图片设置懒加载，让不在可视区域的图片延时加载，可以加快网页加载的速度。这对网站优化显得非常重要！</p>
+<h3 id="2-5-小图转-Base64"><a href="#2-5-小图转-Base64" class="headerlink" title="2.5 小图转 Base64"></a>2.5 小图转 Base64</h3><p>通过把小图转换成 <code>base64</code> 格式，直接写到 <code>HTML</code> 中。可以减少网络请求！</p>
+<h2 id="3）服务器性能优化"><a href="#3）服务器性能优化" class="headerlink" title="3）服务器性能优化"></a>3）服务器性能优化</h2><h3 id="3-1-浏览器缓存"><a href="#3-1-浏览器缓存" class="headerlink" title="3.1.浏览器缓存"></a>3.1.浏览器缓存</h3><p>我们都知道，浏览器在向服务器发起请求前，会先查询本地是否有相同的文件，如果有，就会直接拉取本地缓存，如果没有才会发起资源请求。</p>
+<p>浏览器默认的缓存是放在内存内的，但我们知道，内存里的缓存会因为进程的结束或者说浏览器的关闭而被清除，而存在硬盘里的缓存才能够被长期保留下去。很多时候，我们在network面板中各请求的size项里，会看到两种不同的状态：from memory cache 和 from disk cache，前者指缓存来自内存，后者指缓存来自硬盘。而控制缓存存放位置的，不是别人，就是我们在服务器上设置的Etag字段。在浏览器接收到服务器响应后，会检测响应头部（Header），如果有Etag字段，那么浏览器就会将本次缓存写入硬盘中。之所以拉取缓存会出现200、304两种不同的状态码，取决于浏览器是否有向服务器发起验证请求。 </p>
+<p>只有向服务器发起验证请求并确认缓存未被更新，才会返回304状态码。这里我以nginx为例，谈谈如何配置缓存:</p>
+<p>首先，我们先进入nginx的配置文档</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> vim nginxPath/conf/nginx.conf</span><br></code></pre></td></tr></table></figure>
+
+<p>在配置文档内插入如下两项：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">etag on;   //开启etag验证<br>expires 7d;    //设置缓存过期时间为7天<br><br></code></pre></td></tr></table></figure>
+<p>打开我们的网站，在chrome devtools的network面板中观察我们的请求资源，如果在响应头部看见Etag和Expires字段，就说明我们的缓存配置成功了。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/5/28/163a4d01fe069bbc?imageView2/0/w/1280/h/960/ignore-error/1" alt="缓存配置"></p>
+<h3 id="3-2-资源打包压缩"><a href="#3-2-资源打包压缩" class="headerlink" title="3.2 资源打包压缩"></a>3.2 资源打包压缩</h3><p>我们之前所作的浏览器缓存工作，只有在用户第二次访问我们的页面才能起到效果，如果要在用户首次打开页面就实现优良的性能，必须对资源进行优化。我们常将网络性能优化措施归结为三大方面：减少请求数、减小请求资源体积、提升网络传输速率。现在，让我们逐个击破：结合前端工程化思想，我们在对上线文件进行自动化打包编译时，通常都需要打包工具的协助，这里我推荐<code>webpack</code>，我通常都使用<code>Gulp</code>和<code>Grunt</code>来编译。</p>
+<h3 id="我的网站性能监测"><a href="#我的网站性能监测" class="headerlink" title="我的网站性能监测"></a>我的网站性能监测</h3><p><img src="/img/20180530-2.jpeg" alt="网站性能监测"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://adymilk.github.io/2018/06/01/20180601-1/" data-id="ckqhrikqw000wh52y4fkt5i07" data-title="网站性能优化篇（一）" class="article-share-link">Share</a>
+      
+      
+        <a href="/2018/06/01/20180601-1/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2018/06/01/20180601-1/" itemprop="commentCount"></span>
+          Comments
+        </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/02/20180602-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue-cli 3.0 初体验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/27/20180527-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">视频原理了解一下（压缩）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+  <section id="comments" class="vcomment">
+
+  </section>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ai/" rel="tag">Ai</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facebook/" rel="tag">Facebook</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/" rel="tag">IDE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instagram/" rel="tag">Instagram</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JetBrains/" rel="tag">JetBrains</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/" rel="tag">Mac OS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minitab/" rel="tag">Minitab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/" rel="tag">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/curl/" rel="tag">curl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/game/" rel="tag">game</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gif/" rel="tag">gif</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/server/" rel="tag">server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software-center/" rel="tag">software-center</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudoers/" rel="tag">sudoers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiper-js/" rel="tag">swiper.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/video/" rel="tag">video</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/" rel="tag">vpn</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/" rel="tag">vue-cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webapp/" rel="tag">webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%8E%E5%BC%BA%E5%8C%97/" rel="tag">华强北</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9/" rel="tag">压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag">命令行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%85%E8%A1%8C/" rel="tag">旅行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%9D%BF%E5%88%86%E7%A6%BB/" rel="tag">模板分离</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%98%E5%AE%9D/" rel="tag">淘宝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%9C%B3/" rel="tag">深圳</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" rel="tag">生活笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%95%86/" rel="tag">电商</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6%E7%AB%99%E9%95%BF/" rel="tag">百度站长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E8%B4%AD/" rel="tag">网购</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%98%E8%9B%9B%E7%88%AC%E8%99%AB/" rel="tag">蜘蛛爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" rel="tag">计算机视觉</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E5%AE%A2/" rel="tag">黑客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C%E7%B3%BB%E7%BB%9F/" rel="tag">黑苹果系统</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/29/20210629-1/">调用minitab接口自动生成图表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/24/20210624-1/">Parallels Desktop 16目前最佳永久使用方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/23/20210623-2/">Laravel8 配置修改不生效，缓存问题解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/23/20210623-1/">微信公众号token 验证失败解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/20200715-1/">数据科学</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Laravel/">Laravel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Minitab/">Minitab</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/">代码笔记</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/">生活笔记</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+<script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = 'true' == true;
+    var verify = 'true' == true;
+    new Valine({
+        el: '.vcomment',
+        notify: notify,
+        verify: verify,
+        appId: "rgBgYoslSGOswjaHqVArAnPp-gzGzoHsz",
+        appKey: "zG3mb3kGasYAEy7begNCbRED",
+        placeholder: "Just go go",
+        pageSize:'10',
+        avatar:'mm',
+        lang:'zh-cn'
+    });
+</script>
+
+  </div>
+</body>
+</html>
