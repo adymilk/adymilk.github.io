@@ -1128,6 +1128,31 @@ kbd {
   margin: 0.5rem 0 0;
   font-weight: 600;
 }
+.sidebar-ov-social {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+.sidebar-ov-social-item {
+  display: inline-block;
+  margin: 0.2rem;
+  text-align: center;
+  color: var(--color-gray-100);
+  background-color: #a0daff;
+  border-radius: 0.75rem;
+  padding: 0 0.25rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -o-transition: background-color 0.2s ease;
+  -ms-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+.sidebar-ov-social-item:hover {
+  color: var(--color-gray-100);
+  background-color: #4dbaff;
+}
 .sidebar-ov-feed {
   padding: 0.5rem 0;
   text-align: center;
@@ -2200,6 +2225,13 @@ kbd {
   cursor: zoom-out;
   will-change: transform;
 }
+.lazyload-block {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  min-width: 30px;
+  min-height: 30px;
+}
 .mode {
   position: relative;
   border: 0;
@@ -2364,6 +2396,7 @@ kbd {
 }
 .gallery img {
   margin-bottom: 10px;
+  width: 220px;
 }
 .exturl__icon {
   margin: 0 0.1em 0 0.3em;
@@ -2861,6 +2894,9 @@ html.nightmode {
   .post-list .post {
     margin: 0 0 0.8rem;
     padding: 0.8rem;
+  }
+  .gallery img {
+    width: 100%;
   }
   .friends-plugin__item {
     margin: 0;

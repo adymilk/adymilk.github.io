@@ -38,8 +38,8 @@ var CONFIG = {
   reward: true,
   fancybox: false,
   zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
   pjax: undefined,
   externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
   shortcuts: undefined,
@@ -48,7 +48,7 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="James Wang" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-handshake"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">James Wang</div><div class="header-banner-info__subtitle"><img src="https://v2.jinrishici.com/one.svg?font-size=20&amp;spacing=2&amp;color=white"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">完美的 Ubuntu16.04 优化方案</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-10-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">15分</span></span></div></header><div class="post-body"><p>Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。</p>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-handshake"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">图库</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/bbs/"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">留言板</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">James Wang</div><div class="header-banner-info__subtitle"><img src="https://v2.jinrishici.com/one.svg?font-size=20&amp;spacing=2&amp;color=white"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">完美的 Ubuntu16.04 优化方案</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-10-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">15分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" data-flag-title="完美的 Ubuntu16.04 优化方案"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body"><p>Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。</p>
 <span id="more"></span>
 <blockquote>
 <p>Ubuntu | 最受欢迎的免费操作系统<br>Fast, secure and stylishly simple, the Ubuntu operating system is used by 20 million people worldwide every day.</p>
@@ -71,7 +71,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 <p>Okey! 一本正经的胡说八道过后，我给大家好好介绍介绍 ubuntu 系统的优缺点，以及日常的美化工作！</p>
 </blockquote>
 <p>从 Windows 转到 Ubuntu 是在一年前。本人平时喜欢折腾写计算机系统 OR 编程之类的东西。先后自学过 HTML、CSS、JAVASCRIPT、JAVA、ANDROID、C++、C#、PHP、SHELL、PYTHON等多种编程语言! 深深的被计算机程序神奇的魅力所吸引。<br>在用 Windows 的时候。基本日常操作是通过GUI鼠标点击来完成的。然而自从接触到 Ubuntu （ Linux 系统 ），我已经忘记了使用鼠标的习惯。在 （ Linux ）Ubuntu 系统中，绝大多数操作是通过打开一个叫做终端的应用程序窗口，然后输入命令来完成的！比如我要启动 QQ ，我只需要通过快捷键 <code>Ctrl+Alt+T</code> 打开终端，然后输入一个 <code>Q</code> 再按一下 <code>Tab</code> 键 系统就可以帮我自动补全。这就是 Linux 相比较 Windows 简单高效的优势。有些同学可能疑惑了，相比较 Windows 可能还是鼠标点击一下桌面上的应用程序快捷方式更方便点。你别较真嘛，没听说过，太认真你就输了吗？哈哈哈～ 这只是给大家先简单的举个例子，后面我会说如何给应用程序创建桌面快捷方式。</p>
-<p><img src="/img/ubuntu-desktop-qq.png" alt=" ubuntu 桌面 QQ 截图"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/img/ubuntu-desktop-qq.png"  alt=" ubuntu 桌面 QQ 截图">
+      </p>
 
         <h3 id="系统的安装"   >
           <a href="#系统的安装" class="heading-link"><i class="fas fa-link"></i></a><a href="#系统的安装" class="headerlink" title="系统的安装"></a>系统的安装</h3>
@@ -103,7 +106,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
       </li>
 </ul>
 <p>点击右上角图标，打开关于这台计算机，点击安装更新：</p>
-<p><img src="https://dn-phphub.qbox.me/uploads/images/201608/31/4540/gHarcb9MnN.png"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://dn-phphub.qbox.me/uploads/images/201608/31/4540/gHarcb9MnN.png" >
+      </p>
 <ul>
 <li>
         <h4 id="设置更多的软件源"   >
@@ -111,12 +117,18 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
       </li>
 </ul>
 <p>点击右上角图标，选择系统设置，打开软件和更新，勾选上全部勾选上：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-a9bbe5749a97d244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-a9bbe5749a97d244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 
         <h4 id="安装显卡驱动"   >
           <a href="#安装显卡驱动" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装显卡驱动" class="headerlink" title="安装显卡驱动"></a>安装显卡驱动</h4>
       <p>点击右上角图标，选择系统设置，打开软件和更新，找到附加驱动：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-c1d7454d693338a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-c1d7454d693338a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 
         <h4 id="关闭swap内存交换，桌面版不需要"   >
           <a href="#关闭swap内存交换，桌面版不需要" class="heading-link"><i class="fas fa-link"></i></a><a href="#关闭swap内存交换，桌面版不需要" class="headerlink" title="关闭swap内存交换，桌面版不需要"></a>关闭swap内存交换，桌面版不需要</h4>
@@ -154,7 +166,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 
 
 <p>安装 <code>Albert</code> (非常好用)</p>
-<p><img src="http://oukfi430b.bkt.clouddn.com/ubuntu-albert%20.png"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://oukfi430b.bkt.clouddn.com/ubuntu-albert%20.png" >
+      </p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:nilarimogard/webupd8</span><br><span class="line">sudo apt-get update</span><br><span class="line">apt-get install albert</span><br></pre></td></tr></table></div></figure>
 
 <p>安装 Plank Dock：</p>
@@ -175,7 +190,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
           <a href="#修改主题" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h4>
       <p>找到下载的壁纸，选择一张喜欢的设置成背景</p>
 <p>按 <code>win</code> 键，打开搜索，搜索 <code>unity-tweak-tool</code> 并打开：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-f11edd4bf2357f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-f11edd4bf2357f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>主题选择 <code>Macbuntu-os</code></p>
 <p>图标选择 <code>Macbuntu-os</code></p>
 <p>指针选择 <code>Mac-cursors</code></p>
@@ -187,7 +205,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 <p>按 <code>win</code> 键，打开搜索，依次搜索这些软件并打开</p>
 <p>现在已经有了 <code>mac</code> 的风格了，最后我们还差一步，把这些软件设置成开机启动</p>
 <p>按 <code>win</code> 键打开搜索，搜索 <code>tweak</code> ，选择优化工具并打开：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-200e5765fc0de206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-200e5765fc0de206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>把这些软件设置成开机启动就可以啦.</p>
 
         <h3 id="实用的功能"   >
@@ -197,11 +218,20 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
           <a href="#工作区-窗口平铺" class="heading-link"><i class="fas fa-link"></i></a><a href="#工作区-窗口平铺" class="headerlink" title="工作区/窗口平铺"></a>工作区/窗口平铺</h4>
       <p>这一块主要介绍窗口管理器中的工作区、窗口平铺和热区，这是比较常用的功能。</p>
 <p>按 <code>win</code> 键打开搜索 <code>unity tweak tool</code>，打开之后进入窗口管理器下的工作区：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-541de42e79d3ed96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-541de42e79d3ed96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>设置好 <code>工作区</code> 之后，在去设置 窗口铺展，<code>窗口铺展</code> 效果：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-91c690b0c5f74de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-91c690b0c5f74de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>然后设置 <code>热区</code> ，<code>热区</code> 主要的作用是我们鼠标放到哪一个位置，触发什么样的效果：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-63481bafb16762cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-63481bafb16762cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 
         <h3 id="远程工具"   >
           <a href="#远程工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#远程工具" class="headerlink" title="远程工具#"></a>远程工具#</h3>
@@ -211,9 +241,15 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 <p>文件传输的话：</p>
 <p><code>scp ./test.txt user@hostname:/tmp`</code></p>
 <p>还可以使用可视化的远程文件管理：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-2f10f28570bad7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-2f10f28570bad7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>连上之后默认在用户的家目录，使用 <code>ctrl + L</code>  可以到我们想要的任何目录：</p>
-<p><img   src="http://upload-images.jianshu.io/upload_images/1772607-3f39ea7d27bfadf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" style="" ></p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-3f39ea7d27bfadf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 <p>就可以对远程服务器进行管理和编辑了</p>
 
         <h3 id="安装一些必备的软件"   >
@@ -283,7 +319,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
           安装一些必备的软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#shadowsocks-qt5"><span class="toc-number">6.1.</span> <span class="toc-text">
           shadowsocks-qt5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1"><span class="toc-number">6.2.</span> <span class="toc-text">
           微信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#QQ"><span class="toc-number">6.3.</span> <span class="toc-text">
-          QQ</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">James Wang</p></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="924114103@qq.com" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">53</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">61</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+          QQ</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://timemachine.icu/assets/241601814382_.pic_hd.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">James Wang</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/adymilk" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/adymilk" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">53</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">61</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.json';
 
@@ -570,10 +606,10 @@ if (Array.isArray(assistSearchList)) {
     notify: true,
     verify: true,
     placeholder: 'Just go go',
-    avatar: 'mp',
+    avatar: 'wavatar',
     meta: guest_info,
     pageSize: '10' || 10,
-    visitor: false,
+    visitor: true,
     recordIP: true,
     lang: 'zh-cn' || 'zh-cn',
     path: window.location.pathname

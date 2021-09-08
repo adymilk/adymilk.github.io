@@ -47,8 +47,8 @@ var CONFIG = {
   reward: true,
   fancybox: false,
   zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
   pjax: undefined,
   externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
   shortcuts: undefined,
@@ -57,7 +57,7 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="James Wang" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-handshake"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">James Wang</div><div class="header-banner-info__subtitle"><img src="https://v2.jinrishici.com/one.svg?font-size=20&amp;spacing=2&amp;color=white"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Git recipes in Chinese. 高质量的Git中文教程.</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-08-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">11分</span></span></div></header><div class="post-body">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-handshake"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">图库</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/bbs/"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">留言板</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">James Wang</div><div class="header-banner-info__subtitle"><img src="https://v2.jinrishici.com/one.svg?font-size=20&amp;spacing=2&amp;color=white"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Git recipes in Chinese. 高质量的Git中文教程.</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-08-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">11分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2017/08/04/2017-08-04-what-is-git/" data-flag-title="Git recipes in Chinese. 高质量的Git中文教程."><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body">
         <h1 id="Git-图解"   >
           <a href="#Git-图解" class="heading-link"><i class="fas fa-link"></i></a><a href="#Git-图解" class="headerlink" title="Git 图解"></a>Git 图解</h1>
       <blockquote>
@@ -71,7 +71,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 
         <h2 id="基本用法"   >
           <a href="#基本用法" class="heading-link"><i class="fas fa-link"></i></a><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2>
-      <p><img src="http://marklodato.github.io/visual-git-guide/basic-usage.svg" alt="enter image description here"></p>
+      <p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/basic-usage.svg"  alt="enter image description here">
+      </p>
 <p>上面的四条命令在工作目录、stage 缓存(也叫做索引)和 commit 历史之间复制文件。</p>
 <ul>
 <li><code>git add files</code> 把工作目录中的文件加入 stage 缓存</li>
@@ -80,7 +83,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 <li><code>git checkout -- files</code> 把文件从 stage 缓存复制到工作目录，用来丢弃本地修改</li>
 </ul>
 <p>你可以用 <code>git reset -p</code>、<code>git checkout -p</code> 或 <code>git add -p</code> 进入交互模式，也可以跳过 stage 缓存直接从  commit历史取出文件或者直接提交代码。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/basic-usage-2.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/basic-usage-2.svg"  alt="enter image description here">
+      </p>
 <ul>
 <li><code>git commit -a </code> 相当于运行 <code>git add</code> 把所有当前目录下的文件加入 stage 缓存再运行 <code>git commit</code>。</li>
 <li><code>git commit files</code> 进行一次包含最后一次提交加上工作目录中文件快照的提交，并且文件被添加到 stage 缓存。</li>
@@ -90,7 +96,10 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
         <h2 id="约定"   >
           <a href="#约定" class="heading-link"><i class="fas fa-link"></i></a><a href="#约定" class="headerlink" title="约定"></a>约定</h2>
       <p>后文中以下面的形式使用图片：</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/conventions.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/conventions.svg"  alt="enter image description here">
+      </p>
 <p>绿色的5位字符表示提交的 ID，分别指向父节点。分支用橙色显示，分别指向特定的提交。当前分支由附在其上的 <code>_HEAD_</code> 标识。</p>
 <p>这张图片里显示最后 5 次提交，<code>_ed489_</code> 是最新提交。 <code>_master_</code> 分支指向此次提交，另一个 <code>_maint_</code> 分支指向祖父提交节点。</p>
 
@@ -100,70 +109,124 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
         <h3 id="Diff"   >
           <a href="#Diff" class="heading-link"><i class="fas fa-link"></i></a><a href="#Diff" class="headerlink" title="Diff"></a>Diff</h3>
       <p>有许多种方法查看两次提交之间的变动，下面是其中一些例子。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/diff.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/diff.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="Commit"   >
           <a href="#Commit" class="heading-link"><i class="fas fa-link"></i></a><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h3>
       <p>提交时，Git 用 stage 缓存中的文件创建一个新的提交，并把此时的节点设为父节点。然后把当前分支指向新的提交节点。下图中，当前分支是 <code>_master_</code>。</p>
 <p>在运行命令之前，<code>_master_</code> 指向 <code>_ed489_</code>，提交后，<code>_master_</code> 指向新的节点<code>_f0cec_</code> 并以 <code>_ed489_</code> 作为父节点。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/commit-master.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/commit-master.svg"  alt="enter image description here">
+      </p>
 <p>即便当前分支是某次提交的祖父节点，Git 会同样操作。下图中，在 <code>_master_</code> 分支的祖父节点 <code>_maint_</code> 分支进行一次提交，生成了 <code>_1800b_</code>。</p>
 <p>这样，<code>_maint_ </code>分支就不再是 <code>_master_</code> 分支的祖父节点。此时，<a href="#merge">merge</a> 或者 <a href="#rebase">rebase</a> 是必须的。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/commit-maint.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/commit-maint.svg"  alt="enter image description here">
+      </p>
 <p>如果想更改一次提交，使用 <code>git commit --amend</code>。Git 会使用与当前提交相同的父节点进行一次新提交，旧的提交会被取消。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/commit-amend.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/commit-amend.svg"  alt="enter image description here">
+      </p>
 <p>另一个例子是<a href="#detached">分离HEAD提交</a>，在后面的章节中介绍。</p>
 
         <h3 id="Checkout"   >
           <a href="#Checkout" class="heading-link"><i class="fas fa-link"></i></a><a href="#Checkout" class="headerlink" title="Checkout"></a>Checkout</h3>
       <p><code>git checkout</code> 命令用于从历史提交（或者 stage 缓存）中拷贝文件到工作目录，也可用于切换分支。</p>
 <p>当给定某个文件名（或者打开 <code>-p</code> 选项，或者文件名和-p选项同时打开）时，Git 会从指定的提交中拷贝文件到 stage 缓存和工作目录。比如，<code>git checkout HEAD~ foo.c</code> 会将提交节点 <code>_HEAD~_</code>（即当前提交节点的父节点）中的 <code>foo.c</code> 复制到工作目录并且加到 stage 缓存中。如果命令中没有指定提交节点，则会从 stage 缓存中拷贝内容。注意当前分支不会发生变化。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/checkout-files.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/checkout-files.svg"  alt="enter image description here">
+      </p>
 <p>当不指定文件名，而是给出一个（本地）分支时，那么 <code>_HEAD_</code> 标识会移动到那个分支（也就是说，我们「切换」到那个分支了），然后 stage 缓存和工作目录中的内容会和 <code>_HEAD_</code> 对应的提交节点一致。新提交节点（下图中的 <code>a47c3</code>）中的所有文件都会被复制（到 stage 缓存和工作目录中）；只存在于老的提交节点（<code>ed489</code>）中的文件会被删除；不属于上述两者的文件会被忽略，不受影响。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/checkout-branch.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/checkout-branch.svg"  alt="enter image description here">
+      </p>
 <p>如果既没有指定文件名，也没有指定分支名，而是一个标签、远程分支、SHA-1 值或者是像 <code>_master~3_</code> 类似的东西，就得到一个匿名分支，称作 <code>_detached HEAD_</code>（被分离的 <code>_HEAD_</code> 标识）。这样可以很方便地在历史版本之间互相切换。比如说你想要编译 1.6.6.1 版本的 Git，你可以运行 <code>git checkout v1.6.6.1</code>（这是一个标签，而非分支名），编译，安装，然后切换回另一个分支，比如说 <code>git checkout master</code>。然而，当提交操作涉及到「分离的 HEAD」时，其行为会略有不同，详情见在<a href="#detached">下面</a>。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/checkout-detached.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/checkout-detached.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="HEAD-标识处于分离状态时的提交操作"   >
           <a href="#HEAD-标识处于分离状态时的提交操作" class="heading-link"><i class="fas fa-link"></i></a><a href="#HEAD-标识处于分离状态时的提交操作" class="headerlink" title="HEAD 标识处于分离状态时的提交操作"></a>HEAD 标识处于分离状态时的提交操作</h3>
       <p>当 <code>_HEAD_</code> 处于分离状态（不依附于任一分支）时，提交操作可以正常进行，但是不会更新任何已命名的分支。你可以认为这是在更新一个匿名分支。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/commit-detached.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/commit-detached.svg"  alt="enter image description here">
+      </p>
 <p>一旦此后你切换到别的分支，比如说 <code>_master_</code>，那么这个提交节点（可能）再也不会被引用到，然后就会被丢弃掉了。注意这个命令之后就不会有东西引用 <code>_2eecb_</code>。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/checkout-after-detached.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/checkout-after-detached.svg"  alt="enter image description here">
+      </p>
 <p>但是，如果你想保存这个状态，可以用命令 <code>git checkout -b name</code> 来创建一个新的分支。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/checkout-b-detached.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/checkout-b-detached.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="Reset"   >
           <a href="#Reset" class="heading-link"><i class="fas fa-link"></i></a><a href="#Reset" class="headerlink" title="Reset"></a>Reset</h3>
       <p><code>git reset</code> 命令把当前分支指向另一个位置，并且有选择的变动工作目录和索引。也用来在从历史commit历史中复制文件到索引，而不动工作目录。</p>
 <p>如果不给选项，那么当前分支指向到那个提交。如果用 <code>--hard</code> 选项，那么工作目录也更新，如果用 <code>--soft</code> 选项，那么都不变。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/reset-commit.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/reset-commit.svg"  alt="enter image description here">
+      </p>
 <p>如果没有给出提交点的版本号，那么默认用 <code>_HEAD_</code>。这样，分支指向不变，但是索引会回滚到最后一次提交，如果用 <code>--hard</code> 选项，工作目录也同样。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/reset.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/reset.svg"  alt="enter image description here">
+      </p>
 <p>如果给了文件名(或者 <code>-p</code> 选项), 那么工作效果和带文件名的<a href="#checkout">checkout</a>差不多，除了索引被更新。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/reset-files.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/reset-files.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="Merge"   >
           <a href="#Merge" class="heading-link"><i class="fas fa-link"></i></a><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3>
       <p><code>git merge</code> 命令把不同分支合并起来。合并前，索引必须和当前提交相同。如果另一个分支是当前提交的祖父节点，那么合并命令将什么也不做。</p>
 <p>另一种情况是如果当前提交是另一个分支的祖父节点，就导致 <code>_fast-forward_</code> 合并。指向只是简单的移动，并生成一个新的提交。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/merge-ff.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/merge-ff.svg"  alt="enter image description here">
+      </p>
 <p>否则就是一次真正的合并。默认把当前提交（<code>_ed489_</code> 如下所示）和另一个提交（<code>_33104_</code>）以及他们的共同祖父节点（<code>_b325c_</code>）进行一次<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Three-way_merge" >三方合并</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。结果是先保存当前目录和索引，然后和父节点 <code>_33104_</code> 一起做一次新提交。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/merge.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/merge.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="Cherry-Pick"   >
           <a href="#Cherry-Pick" class="heading-link"><i class="fas fa-link"></i></a><a href="#Cherry-Pick" class="headerlink" title="Cherry Pick"></a>Cherry Pick</h3>
       <p><code>git cherry-pick</code> 命令「复制」一个提交节点并在当前分支做一次完全一样的新提交。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/cherry-pick.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/cherry-pick.svg"  alt="enter image description here">
+      </p>
 
         <h3 id="Rebase"   >
           <a href="#Rebase" class="heading-link"><i class="fas fa-link"></i></a><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3>
       <p><code>git rebase</code> 是合并命令的另一种选择。合并把两个父分支合并进行一次提交，提交历史不是线性的。rebase 在当前分支上重演另一个分支的历史，提交历史是线性的。</p>
 <p>本质上，这是线性化的自动的 <a href="#cherry-pick">cherry-pick</a>。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/rebase.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/rebase.svg"  alt="enter image description here">
+      </p>
 <p>上面的命令都在 <code>_topic_</code> 分支中进行，而不是 <code>_master_</code> 分支，在 <code>_master_</code> 分支上重演，并且把分支指向新的节点。注意旧提交没有被引用，将被回收。</p>
 <p>要限制回滚范围，使用 <code>--onto</code> 选项。下面的命令在 <code>_master_</code> 分支上重演当前分支从 <code>_169a6_</code> 以来的最近几个提交，即 <code>_2c33a_</code>。</p>
-<p><img src="http://marklodato.github.io/visual-git-guide/rebase-onto.svg" alt="enter image description here"></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://marklodato.github.io/visual-git-guide/rebase-onto.svg"  alt="enter image description here">
+      </p>
 <p>同样有 <code>git rebase --interactive</code> 让你更方便的完成一些复杂操作，比如丢弃、重排、修改、合并提交。</p>
 <blockquote>
 <p>这篇文章是<a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/"><strong>「git-recipes」</strong></a>的一部分，点击 <a target="_blank" rel="noopener" href="https://github.com/geeeeeeeeek/git-recipes/wiki/"><strong>目录</strong></a> 查看所有章节。</p>
@@ -183,7 +246,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
           Reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Merge"><span class="toc-number">1.3.6.</span> <span class="toc-text">
           Merge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cherry-Pick"><span class="toc-number">1.3.7.</span> <span class="toc-text">
           Cherry Pick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rebase"><span class="toc-number">1.3.8.</span> <span class="toc-text">
-          Rebase</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">James Wang</p></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="924114103@qq.com" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">53</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">61</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+          Rebase</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://timemachine.icu/assets/241601814382_.pic_hd.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">James Wang</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/adymilk" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/adymilk" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">53</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">61</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.json';
 
@@ -470,10 +533,10 @@ if (Array.isArray(assistSearchList)) {
     notify: true,
     verify: true,
     placeholder: 'Just go go',
-    avatar: 'mp',
+    avatar: 'wavatar',
     meta: guest_info,
     pageSize: '10' || 10,
-    visitor: false,
+    visitor: true,
     recordIP: true,
     lang: 'zh-cn' || 'zh-cn',
     path: window.location.pathname
