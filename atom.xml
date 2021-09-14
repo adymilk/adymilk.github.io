@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>James Wang</title>
+  <title>恒哥的个人网站</title>
   
-  <subtitle>中文技术博客</subtitle>
+  <subtitle>James Wang&#39;s Personal Website </subtitle>
   <link href="https://adymilk.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.gitee.io/"/>
