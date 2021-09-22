@@ -1,40 +1,623 @@
-extends ./_layout.pug
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#54bcff"><link rel="manifest" href="/manifest.json?v=2.6.2"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完美的 Ubuntu16.04 优化方案">
+<meta property="og:url" content="https://adymilk.gitee.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/index.html">
+<meta property="og:site_name" content="恒哥的个人网站">
+<meta property="og:description" content="Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://adymilk.gitee.io/img/ubuntu-desktop-qq.png">
+<meta property="og:image" content="https://dn-phphub.qbox.me/uploads/images/201608/31/4540/gHarcb9MnN.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-a9bbe5749a97d244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-c1d7454d693338a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://oukfi430b.bkt.clouddn.com/ubuntu-albert%20.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-f11edd4bf2357f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-200e5765fc0de206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-541de42e79d3ed96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-91c690b0c5f74de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-63481bafb16762cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-2f10f28570bad7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1772607-3f39ea7d27bfadf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2017-10-19T12:27:40.000Z">
+<meta property="article:modified_time" content="2021-06-24T05:58:41.502Z">
+<meta property="article:author" content="王恒">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="开源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://adymilk.gitee.io/img/ubuntu-desktop-qq.png"><title>完美的 Ubuntu16.04 优化方案 | 恒哥的个人网站</title><link ref="canonical" href="https://adymilk.gitee.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-2865988826734713" async=""></script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"dark","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-block content
-  // Just used to judge whether it is an article page
-  div#is-post
-  div.post
-    include ./_mixins/post-header.pug
-    include ./_mixins/gallery.pug
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="恒哥的个人网站" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/friends/"><span class="header-nav-submenu-item__icon"><i class="fas fa-handshake"></i></span><span class="header-nav-submenu-item__text">友链</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/gallery/"><span class="header-nav-submenu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-submenu-item__text">图库</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/bbs/"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">留言板</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">恒哥的个人网站</div><div class="header-banner-info__subtitle"><img src="https://v2.jinrishici.com/one.svg?font-size=20&amp;spacing=2&amp;color=white"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">完美的 Ubuntu16.04 优化方案</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2017-10-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-24</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">15分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/" data-flag-title="完美的 Ubuntu16.04 优化方案"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body"><p>Ubuntu 到底怎么样？来，听听人家官网的妹子是怎样介绍的。</p>
+<span id="more"></span>
+<blockquote>
+<p>Ubuntu | 最受欢迎的免费操作系统<br>Fast, secure and stylishly simple, the Ubuntu operating system is used by 20 million people worldwide every day.</p>
+</blockquote>
+<!-- more -->
 
-    +postHeader(page)
+<ul>
+<li>老子看不懂英文，说人话！</li>
+</ul>
+<blockquote>
+<p>快速，安全，简单时尚，Ubuntu操作系统，每天全球有2000万人使用。</p>
+</blockquote>
+<p>这能说明啥？Windows 可是拥有全球百分之八十的系统用户！</p>
+<p>ok!</p>
+<blockquote>
+<p>Ubuntu Kylin 中国制造，为中国用户量身定制。<br>Ubuntu Kylin 是专门为中国市场打造的免费桌面操作系统。它包括 Ubuntu 用户熟识的各种功能，并配有必须的中文软件及程序。与竞争对手不同，Ubuntu Kylin 的用户界面专门为中国用户设计，配上最新支持触摸屏以及 HiDPI 高清显示屏的特征，它可以在各种不同硬件上完美运行。作为 2013 年开始的 Ubuntu 项目的一部分，最新版的 Ubuntu Kylin 将提供五年的支持服务, 确保您的电脑在未来几年能安全顺畅地使用。</p>
+</blockquote>
+<p>这么说到是有点意思了！那你继续说说这个系统到底咋样啊！</p>
+<blockquote>
+<p>Okey! 一本正经的胡说八道过后，我给大家好好介绍介绍 ubuntu 系统的优缺点，以及日常的美化工作！</p>
+</blockquote>
+<p>从 Windows 转到 Ubuntu 是在一年前。本人平时喜欢折腾写计算机系统 OR 编程之类的东西。先后自学过 HTML、CSS、JAVASCRIPT、JAVA、ANDROID、C++、C#、PHP、SHELL、PYTHON等多种编程语言! 深深的被计算机程序神奇的魅力所吸引。<br>在用 Windows 的时候。基本日常操作是通过GUI鼠标点击来完成的。然而自从接触到 Ubuntu （ Linux 系统 ），我已经忘记了使用鼠标的习惯。在 （ Linux ）Ubuntu 系统中，绝大多数操作是通过打开一个叫做终端的应用程序窗口，然后输入命令来完成的！比如我要启动 QQ ，我只需要通过快捷键 <code>Ctrl+Alt+T</code> 打开终端，然后输入一个 <code>Q</code> 再按一下 <code>Tab</code> 键 系统就可以帮我自动补全。这就是 Linux 相比较 Windows 简单高效的优势。有些同学可能疑惑了，相比较 Windows 可能还是鼠标点击一下桌面上的应用程序快捷方式更方便点。你别较真嘛，没听说过，太认真你就输了吗？哈哈哈～ 这只是给大家先简单的举个例子，后面我会说如何给应用程序创建桌面快捷方式。</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/img/ubuntu-desktop-qq.png"  alt=" ubuntu 桌面 QQ 截图">
+      </p>
 
-    div.post-body
-      if page.photos && page.photos.length
-        +gallery(page)
-      != page.content
+        <h3 id="系统的安装"   >
+          <a href="#系统的安装" class="heading-link"><i class="fas fa-link"></i></a><a href="#系统的安装" class="headerlink" title="系统的安装"></a>系统的安装</h3>
+      <ul>
+<li>
+        <h4 id="安装ubuntu16-04桌面版"   >
+          <a href="#安装ubuntu16-04桌面版" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装ubuntu16-04桌面版" class="headerlink" title="安装ubuntu16.04桌面版"></a>安装ubuntu16.04桌面版</h4>
+      </li>
+</ul>
+<p>ubuntu16.04的安装还是比较人性化的，在你安装的时候，会自动从你的最大空余磁盘分出来50G左右用于安装ubuntu系统，并且可以选择和我们的windows系统共存，这是比较令人欣喜的。所以我们完全可以把自己的电脑装成双系统，windows系统用来玩游戏，ubuntu系统用来做开发，随时可以很方便的切换。</p>
+<ul>
+<li>
+        <h4 id="制作ubuntu系统安装盘"   >
+          <a href="#制作ubuntu系统安装盘" class="heading-link"><i class="fas fa-link"></i></a><a href="#制作ubuntu系统安装盘" class="headerlink" title="制作ubuntu系统安装盘#"></a>制作ubuntu系统安装盘#</h4>
+      </li>
+</ul>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.ubuntu.com/download/desktop" >ubuntu16.04下载地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2016-04/130520.htm" >图文教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>在windows下，我们使用一些工具，把ubuntu系统写到u盘里，做成启动盘，写成功之后关闭电脑，设置为u盘启动，或直接打开快捷启动项，选择u盘，接着就会进入ubuntu的安装界面的了，在最左边的语言选择那里选择中文，之后，只要你认识中文，基本都一步一步往下走，都能安装成功。</p>
+<p>安装的时候最需要注意的就是选择与你的 <code>windows</code> 系统共存这一项，一定要仔细</p>
+<p>制作u盘启动，我一般使用的工具是ultraiso (自行百度下载)</p>
+<p>使用的步骤是：点击文件-&gt;打开，选择你本地ubuntu16.04镜像，然后点击启动-&gt;写入磁盘镜像，选择你的u盘，点击开始写入，静静等待进度条走到100%</p>
 
-    footer.post-footer
-      if theme.post_widget.end_text.enable
-        div.post-ending.ending
-          div.ending__text= __('post.end')
+        <h3 id="安装成功之后的一些优化"   >
+          <a href="#安装成功之后的一些优化" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装成功之后的一些优化" class="headerlink" title="安装成功之后的一些优化"></a>安装成功之后的一些优化</h3>
+      <ul>
+<li>
+        <h4 id="检查更新，确保系统最新"   >
+          <a href="#检查更新，确保系统最新" class="heading-link"><i class="fas fa-link"></i></a><a href="#检查更新，确保系统最新" class="headerlink" title="检查更新，确保系统最新"></a>检查更新，确保系统最新</h4>
+      </li>
+</ul>
+<p>点击右上角图标，打开关于这台计算机，点击安装更新：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://dn-phphub.qbox.me/uploads/images/201608/31/4540/gHarcb9MnN.png" >
+      </p>
+<ul>
+<li>
+        <h4 id="设置更多的软件源"   >
+          <a href="#设置更多的软件源" class="heading-link"><i class="fas fa-link"></i></a><a href="#设置更多的软件源" class="headerlink" title="设置更多的软件源"></a>设置更多的软件源</h4>
+      </li>
+</ul>
+<p>点击右上角图标，选择系统设置，打开软件和更新，勾选上全部勾选上：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-a9bbe5749a97d244.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 
-      if page.copyright === true || (isShowCC && theme.creative_commons.post)
-        include ./_partials/widgets/copyright.pug
+        <h4 id="安装显卡驱动"   >
+          <a href="#安装显卡驱动" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装显卡驱动" class="headerlink" title="安装显卡驱动"></a>安装显卡驱动</h4>
+      <p>点击右上角图标，选择系统设置，打开软件和更新，找到附加驱动：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-c1d7454d693338a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
 
-      if theme.post_widget.tags
-        if page.tags && page.tags.length > 0
-          div.post-tags
-            each tag in page.tags.data
-              span.post-tags-item
-                span.post-tags-item__icon
-                  i(class=theme.icon.post_tags)
-                a.post-tags-item__link(href=tag.permalink)= tag.name
+        <h4 id="关闭swap内存交换，桌面版不需要"   >
+          <a href="#关闭swap内存交换，桌面版不需要" class="heading-link"><i class="fas fa-link"></i></a><a href="#关闭swap内存交换，桌面版不需要" class="headerlink" title="关闭swap内存交换，桌面版不需要"></a>关闭swap内存交换，桌面版不需要</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line"># 最后一行加入：</span><br><span class="line">vm.swappiness=0</span><br></pre></td></tr></table></div></figure>
 
-      if theme.post_widget.share.enable
-        include ./_partials/widgets/share.pug
 
-      if isShowReward
-        include ./_partials/widgets/reward.pug
+        <h3 id="安装mac主题【资料来源于网络】"   >
+          <a href="#安装mac主题【资料来源于网络】" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装mac主题【资料来源于网络】" class="headerlink" title="安装mac主题【资料来源于网络】"></a>安装mac主题【资料来源于网络】</h3>
+      
+        <h4 id="一些安装前的准备"   >
+          <a href="#一些安装前的准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#一些安装前的准备" class="headerlink" title="一些安装前的准备"></a>一些安装前的准备</h4>
+      <p>切换到 <code>root</code> 用户：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></div></figure>
 
-      include ./_partials/widgets/paginator.pug
+<p>更新源：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="下载一些必要的工具"   >
+          <a href="#下载一些必要的工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#下载一些必要的工具" class="headerlink" title="下载一些必要的工具"></a>下载一些必要的工具</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 下载工具</span><br><span class="line">apt-get install wget</span><br><span class="line"></span><br><span class="line"># 抓取工具</span><br><span class="line">apt-get install curl</span><br><span class="line"></span><br><span class="line"># 编辑器之神</span><br><span class="line">apt-get install vim</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="安装主题"   >
+          <a href="#安装主题" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4>
+      <p>下载mac壁纸：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http://pan.baidu.com/s/1skQCq2T</span><br><span class="line"></span><br><span class="line"># 添加源</span><br><span class="line">add-apt-repository ppa:noobslab/macbuntu</span><br><span class="line"></span><br><span class="line"># 更新源</span><br><span class="line">apt-get update</span><br></pre></td></tr></table></div></figure>
+
+<p>下载图标和主题</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 下载图标</span><br><span class="line"></span><br><span class="line">apt-get install macbuntu-os-icons-lts-v7</span><br><span class="line"></span><br><span class="line"># 下载主题</span><br><span class="line">apt-get install macbuntu-os-ithemes-lts-v7</span><br><span class="line"></span><br><span class="line"># 卸载命令</span><br><span class="line">cd /usr/share/icons/mac-cursors &amp;&amp; sudo ./uninstall-mac-cursors.sh</span><br><span class="line">apt-get remove macbuntu-os-icons-lts-v7 macbuntu-os-ithemes-lts-v7</span><br></pre></td></tr></table></div></figure>
+
+
+<p>安装 Slingscold：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/apps</span><br><span class="line">sudo apt-get update</span><br><span class="line">apt-get install slingscold</span><br></pre></td></tr></table></div></figure>
+
+
+<p>安装 <code>Albert</code> (非常好用)</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://oukfi430b.bkt.clouddn.com/ubuntu-albert%20.png" >
+      </p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:nilarimogard/webupd8</span><br><span class="line">sudo apt-get update</span><br><span class="line">apt-get install albert</span><br></pre></td></tr></table></div></figure>
+
+<p>安装 Plank Dock：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装plank</span><br><span class="line">apt-get install plank</span><br><span class="line"></span><br><span class="line"># 安装plank主题</span><br><span class="line">apt-get install macbuntu-os-plank-theme-lts-v7</span><br></pre></td></tr></table></div></figure>
+
+<p>替换面板上的Ubuntu Desk为Mac OS：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd &amp;&amp; wget -O Mac.po http://drive.noobslab.com/data/Mac/change-name-on-panel/mac.po</span><br><span class="line">cd /usr/share/locale/en/LC_MESSAGES</span><br><span class="line">sudo msgfmt -o unity.mo ~/Mac.porm ~/Mac.po</span><br><span class="line"></span><br><span class="line"># 还原默认</span><br><span class="line">cd &amp;&amp; wget -O Ubuntu.po http://drive.noobslab.com/data/Mac/change-name-on-panel/ubuntu.po</span><br><span class="line">cd /usr/share/locale/en/LC_MESSAGES</span><br><span class="line">msgfmt -o unity.mo ~/Ubuntu.po</span><br><span class="line">rm ~/Ubuntu.po</span><br></pre></td></tr></table></div></figure>
+
+<p>修改启动器的logo:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/apple/launcher_bfb.png</span><br><span class="line">mv launcher_bfb.png /usr/share/unity/icons/</span><br><span class="line"></span><br><span class="line"># 恢复默认</span><br><span class="line">wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/ubuntu/launcher_bfb.png</span><br><span class="line">mv launcher_bfb.png /usr/share/unity/icons/</span><br></pre></td></tr></table></div></figure>
+
+<p>安装修改工具:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unity-tweak-tool</span><br><span class="line">apt-get install gnome-tweak-tool</span><br></pre></td></tr></table></div></figure>
+
+
+
+        <h4 id="修改主题"   >
+          <a href="#修改主题" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h4>
+      <p>找到下载的壁纸，选择一张喜欢的设置成背景</p>
+<p>按 <code>win</code> 键，打开搜索，搜索 <code>unity-tweak-tool</code> 并打开：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-f11edd4bf2357f40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>主题选择 <code>Macbuntu-os</code></p>
+<p>图标选择 <code>Macbuntu-os</code></p>
+<p>指针选择 <code>Mac-cursors</code></p>
+<p>回到主界面，进入启动器里面设置启动器隐藏，会隐藏掉左边的启动器栏（看个人喜好）</p>
+<blockquote>
+<p>这里没有下载 <code>mac</code> 的字体，感觉 <code>mac</code> 的字体和某些软件的兼容不是很好，不如用 <code>ubuntu</code> 的字体</p>
+</blockquote>
+<p>打开 <code>Slingscold</code> 和 <code>Albert</code> 以及 <code>plank</code> #</p>
+<p>按 <code>win</code> 键，打开搜索，依次搜索这些软件并打开</p>
+<p>现在已经有了 <code>mac</code> 的风格了，最后我们还差一步，把这些软件设置成开机启动</p>
+<p>按 <code>win</code> 键打开搜索，搜索 <code>tweak</code> ，选择优化工具并打开：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-200e5765fc0de206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>把这些软件设置成开机启动就可以啦.</p>
+
+        <h3 id="实用的功能"   >
+          <a href="#实用的功能" class="heading-link"><i class="fas fa-link"></i></a><a href="#实用的功能" class="headerlink" title="实用的功能"></a>实用的功能</h3>
+      
+        <h4 id="工作区-窗口平铺"   >
+          <a href="#工作区-窗口平铺" class="heading-link"><i class="fas fa-link"></i></a><a href="#工作区-窗口平铺" class="headerlink" title="工作区/窗口平铺"></a>工作区/窗口平铺</h4>
+      <p>这一块主要介绍窗口管理器中的工作区、窗口平铺和热区，这是比较常用的功能。</p>
+<p>按 <code>win</code> 键打开搜索 <code>unity tweak tool</code>，打开之后进入窗口管理器下的工作区：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-541de42e79d3ed96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>设置好 <code>工作区</code> 之后，在去设置 窗口铺展，<code>窗口铺展</code> 效果：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-91c690b0c5f74de4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>然后设置 <code>热区</code> ，<code>热区</code> 主要的作用是我们鼠标放到哪一个位置，触发什么样的效果：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-63481bafb16762cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+
+        <h3 id="远程工具"   >
+          <a href="#远程工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#远程工具" class="headerlink" title="远程工具#"></a>远程工具#</h3>
+      <p>如果是 <code>ssh</code> 链接远程服务器的话，linux自带命令：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname</span><br></pre></td></tr></table></div></figure>
+
+<p>文件传输的话：</p>
+<p><code>scp ./test.txt user@hostname:/tmp`</code></p>
+<p>还可以使用可视化的远程文件管理：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-2f10f28570bad7de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>连上之后默认在用户的家目录，使用 <code>ctrl + L</code>  可以到我们想要的任何目录：</p>
+<p>
+        <img     class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="http://upload-images.jianshu.io/upload_images/1772607-3f39ea7d27bfadf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"  style="" >
+      </p>
+<p>就可以对远程服务器进行管理和编辑了</p>
+
+        <h3 id="安装一些必备的软件"   >
+          <a href="#安装一些必备的软件" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装一些必备的软件" class="headerlink" title="安装一些必备的软件"></a>安装一些必备的软件</h3>
+      
+        <h4 id="shadowsocks-qt5"   >
+          <a href="#shadowsocks-qt5" class="heading-link"><i class="fas fa-link"></i></a><a href="#shadowsocks-qt5" class="headerlink" title="shadowsocks-qt5"></a>shadowsocks-qt5</h4>
+      <p><code>Ubuntu</code>  通过PPA源安装，仅支持Ubuntu 14.04或更高版本。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C" >使用手册参考这里</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+
+        <h4 id="微信"   >
+          <a href="#微信" class="heading-link"><i class="fas fa-link"></i></a><a href="#微信" class="headerlink" title="微信"></a>微信</h4>
+      <p>To clone and run this repository you’ll need Git and Node.js (which comes with npm) installed on your computer. From your command line:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Clone this repository</span><br><span class="line">git clone https://github.com/geeeeeeeeek/electronic-wechat.git</span><br><span class="line"># Go into the repository</span><br><span class="line">cd electronic-wechat</span><br><span class="line"># Install dependencies and run the app</span><br><span class="line">npm install &amp;&amp; npm start</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p>如果慢的话用 <code>cnpm</code></p>
+</blockquote>
+<p>To pack into an app, simply type one of these:</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm run build:osx</span><br><span class="line">npm run build:linux</span><br><span class="line">npm run build:win32</span><br><span class="line">npm run build:win64</span><br></pre></td></tr></table></div></figure>
+
+
+
+        <h4 id="QQ"   >
+          <a href="#QQ" class="heading-link"><i class="fas fa-link"></i></a><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h4>
+      <p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://geekhelp.cn/2016/12/05/linux-qq/" >方法来源于该博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>安装CrossOver之前需要先添加对32位库的支持</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg –add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install lib32z1 lib32ncurses5</span><br></pre></td></tr></table></div></figure>
+<p>下载 <code>CrossOver deb</code> 安装包：</p>
+<blockquote>
+<p>CrossOver 大小123.33MB：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://obl1kak28.bkt.clouddn.com/CrossOver.tar.gz" >戳我</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>下载完成后解压。你将会看到这三个文件：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CrossOver</span><br><span class="line">  |---- crossover-15.deb</span><br><span class="line">  |---- crossover-15-free.deb</span><br><span class="line">  |---- deepin-crossover.deb</span><br></pre></td></tr></table></div></figure>
+
+<p>安装顺序</p>
+<p>先安装crossover-15.deb，然后再安装crossover-15-free.deb，接着再安装上 deepin-crossover.deb。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i crossover-15.deb</span><br><span class="line">dpkg -i crossover-15-free.deb</span><br><span class="line">dpkg -i deepin-crossover.deb</span><br></pre></td></tr></table></div></figure>
+
+<p>其他依赖问题：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></div></figure>
+
+<p>QQ 8.1 安装包</p>
+<blockquote>
+<p>QQ 8.1(89.98MB)：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://obl1kak28.bkt.clouddn.com/app.deb" >戳我</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>安装完毕后可以在/usr/share/applications路径下找到QQ快捷方式，拖到桌面还是docky上随你喜好。双击启动QQ</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://adymilk.gitee.io">王恒</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://adymilk.gitee.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/">https://adymilk.gitee.io/2017/10/19/2017-08-04-Install-Beautiful-Ubuntu/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.gitee.io/tags/ubuntu/">ubuntu</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.gitee.io/tags/%E5%BC%80%E6%BA%90/">开源</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/img/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/img/wechatPay.jpg"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2018/05/18/20180518-1/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Linux 桌面版录制GIF动画</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2017/10/07/Linux%20%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3WIFI%E5%AF%86%E7%A0%81/"><span class="paginator-prev__text">Linux 暴力破解WIFI密码</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">
+          系统的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ubuntu16-04%E6%A1%8C%E9%9D%A2%E7%89%88"><span class="toc-number">1.1.</span> <span class="toc-text">
+          安装ubuntu16.04桌面版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%B6%E4%BD%9Cubuntu%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%9B%98"><span class="toc-number">1.2.</span> <span class="toc-text">
+          制作ubuntu系统安装盘#</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%B9%8B%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">
+          安装成功之后的一些优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0%EF%BC%8C%E7%A1%AE%E4%BF%9D%E7%B3%BB%E7%BB%9F%E6%9C%80%E6%96%B0"><span class="toc-number">2.1.</span> <span class="toc-text">
+          检查更新，确保系统最新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9B%B4%E5%A4%9A%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-number">2.2.</span> <span class="toc-text">
+          设置更多的软件源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="toc-number">2.3.</span> <span class="toc-text">
+          安装显卡驱动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%97%ADswap%E5%86%85%E5%AD%98%E4%BA%A4%E6%8D%A2%EF%BC%8C%E6%A1%8C%E9%9D%A2%E7%89%88%E4%B8%8D%E9%9C%80%E8%A6%81"><span class="toc-number">2.4.</span> <span class="toc-text">
+          关闭swap内存交换，桌面版不需要</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mac%E4%B8%BB%E9%A2%98%E3%80%90%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%E4%BA%8E%E7%BD%91%E7%BB%9C%E3%80%91"><span class="toc-number">3.</span> <span class="toc-text">
+          安装mac主题【资料来源于网络】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">
+          一些安装前的准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%80%E4%BA%9B%E5%BF%85%E8%A6%81%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">3.2.</span> <span class="toc-text">
+          下载一些必要的工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-number">3.3.</span> <span class="toc-text">
+          安装主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-number">3.4.</span> <span class="toc-text">
+          修改主题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">
+          实用的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8C%BA-%E7%AA%97%E5%8F%A3%E5%B9%B3%E9%93%BA"><span class="toc-number">4.1.</span> <span class="toc-text">
+          工作区&#x2F;窗口平铺</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">5.</span> <span class="toc-text">
+          远程工具#</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%80%E4%BA%9B%E5%BF%85%E5%A4%87%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">
+          安装一些必备的软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#shadowsocks-qt5"><span class="toc-number">6.1.</span> <span class="toc-text">
+          shadowsocks-qt5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1"><span class="toc-number">6.2.</span> <span class="toc-text">
+          微信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#QQ"><span class="toc-number">6.3.</span> <span class="toc-text">
+          QQ</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://timemachine.icu/assets/241601814382_.pic_hd.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">James Wang</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/adymilk" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/adymilk" target="_blank" rel="noopener" data-popover="微博" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="924114103" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="/atom.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email 订阅</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">55</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">62</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'rgBgYoslSGOswjaHqVArAnPp-gzGzoHsz',
+    appKey: 'zG3mb3kGasYAEy7begNCbRED',
+    notify: true,
+    verify: true,
+    placeholder: '点击留言评论',
+    avatar: 'wavatar',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: true,
+    recordIP: true,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
