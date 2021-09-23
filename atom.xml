@@ -6,7 +6,7 @@
   <link href="https://adymilk.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.gitee.io/"/>
-  <updated>2021-09-15T03:10:27.932Z</updated>
+  <updated>2021-09-23T07:21:58.165Z</updated>
   <id>https://adymilk.gitee.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识 Go 语言-真是太强大了</title>
+    <link href="https://adymilk.gitee.io/2021/09/23/20210923-1/"/>
+    <id>https://adymilk.gitee.io/2021/09/23/20210923-1/</id>
+    <published>2021-09-23T07:10:09.000Z</published>
+    <updated>2021-09-23T07:21:58.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>golang与C/C++的简单比较</p><p>优点：</p><ul><li>良好的跨平台，可交叉编译</li><li>简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件</li><li>静态编译，没有动态库的依赖，部署方便，编出来只有一个可执行程序</li><li>语法简单易学</li><li>天生支持并发，goroutine和channel，适合服务器编程<br>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/dbb82af19d6f47c98c1c983d4b029511.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </li></ul>        <h2 id="只需要几行代码即可实现一个服务器"   >          <a href="#只需要几行代码即可实现一个服务器" class="heading-link"><i class="fas fa-link"></i></a><a href="#只需要几行代码即可实现一个服务器" class="headerlink" title="只需要几行代码即可实现一个服务器"></a>只需要几行代码即可实现一个服务器</h2>      <figure class="highlight go"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">http.Handle(<span class="string">&quot;/&quot;</span>, http.FileServer(http.Dir(<span class="string">&quot;.&quot;</span>)))</span><br><span class="line">http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure><p>在Mac上编译可运行在Linux, Windows上的GO程序demo</p>        <h2 id="编译运行在-amd64位-windows系统"   >          <a href="#编译运行在-amd64位-windows系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译运行在-amd64位-windows系统" class="headerlink" title="编译运行在 amd64位 windows系统"></a>编译运行在 amd64位 windows系统</h2>      <figure class="highlight go"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=windows  <span class="keyword">go</span> build </span><br><span class="line"></span><br></pre></td></tr></table></div></figure>        <h2 id="编译运行在-amd64位-linux系统"   >          <a href="#编译运行在-amd64位-linux系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译运行在-amd64位-linux系统" class="headerlink" title="编译运行在 amd64位 linux系统"></a>编译运行在 amd64位 linux系统</h2>      <figure class="highlight go"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=linux GOARCH=amd64 <span class="keyword">go</span> build</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></div></figure>        <h2 id="windows-程序效果演示"   >          <a href="#windows-程序效果演示" class="heading-link"><i class="fas fa-link"></i></a><a href="#windows-程序效果演示" class="headerlink" title="windows 程序效果演示"></a>windows 程序效果演示</h2>      <p>双击<code>exe</code>程序,即可打开终端<br>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/d23272b6e0b441fb922c62bd9793dfd0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p>        <h2 id="此时服务已启动，默认端口是8080"   >          <a href="#此时服务已启动，默认端口是8080" class="heading-link"><i class="fas fa-link"></i></a><a href="#此时服务已启动，默认端口是8080" class="headerlink" title="此时服务已启动，默认端口是8080"></a>此时服务已启动，默认端口是8080</h2>      <p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/7138d36aecbd4682b365262f685cb80e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p>        <h2 id="打开-localhost-8080-查看效果"   >          <a href="#打开-localhost-8080-查看效果" class="heading-link"><i class="fas fa-link"></i></a><a href="#打开-localhost-8080-查看效果" class="headerlink" title="打开 localhost:8080 查看效果"></a>打开 localhost:8080 查看效果</h2>      <p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/0f87a847afb54858a3ac99089d96e29a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;golang与C/C++的简单比较&lt;/p&gt;
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;良好的跨平台，可交叉编译&lt;/li&gt;
+&lt;li&gt;简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件&lt;/li&gt;
+&lt;li&gt;静态编译，没有动态库的依赖，部署方便，编出来只有一个</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>交管12123真乃中国最垃圾App</title>
@@ -438,29 +463,6 @@
     
     
     <category term="生活笔记" scheme="https://adymilk.gitee.io/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信小程序入门唠嗑第一课</title>
-    <link href="https://adymilk.gitee.io/2018/11/26/20181126/"/>
-    <id>https://adymilk.gitee.io/2018/11/26/20181126/</id>
-    <published>2018-11-26T12:33:00.000Z</published>
-    <updated>2021-06-24T05:56:06.307Z</updated>
-    
-    <content type="html"><![CDATA[        <h3 id="如何理解微信小程序"   >          <a href="#如何理解微信小程序" class="heading-link"><i class="fas fa-link"></i></a><a href="#如何理解微信小程序" class="headerlink" title="如何理解微信小程序"></a>如何理解微信小程序</h3>      <p>在学习微信小程序开发之前，首先我们要大致了解一个概念。微信小程序和传统安卓在手机上的程序（App) 有什么区别？</p><span id="more"></span><p><strong>传统手机APP</strong>：有独立的安装包，必须安装在手机上才可以使用！<br><strong>微信小程序</strong>：依赖于微信APP，必须在微信内部才可以使用！</p><p>微信小程序其实啊，它并不是新兴产物。早在5年前的 <code>html5</code> 时代就已经开始孕育了。为啥这么说呢? 客观不要着急，你先吃点瓜子点心，且听我给你慢慢道来！</p><p>如果你平时玩手机比较细心的话，你可能会发现。当我们在微信或者朋友圈点开一个链接的时候。有些链接跳转过去竟然是一个无与伦比美丽的APP，比如在微信里打开京东的网站（jd.com)<br>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="/img/20181126-2.jpg"  alt="京东">      <br><strong>这是微信内部打开的京东商城</strong></p><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="/img/20181126-3.png"  alt="京东">      <br><strong>这是京东APP打开的京东商城</strong></p><p>一个是微信内部打开的京东首页，一个是京东APP打开的京东首页。是不是二者几乎没有差别。我记得好像微信内部一直都有为京东提供这样一个特殊服务。（刘强东到底和马化腾做了什么PY交易，微信对京东这些年的支持从来就没断过）。从京东在微信内部这个以与众不同的平台来分析，你就会明白其实微信小程序这个如意算盘早就在谋划了。这就好像马云曾经公开针对京东说的一句能够让刘强东听了吐血的话，</p><blockquote><p>阿里巴巴的存在即是为了培养更多的京东</p></blockquote><p><strong>刘强东：nmmp。。。。</strong></p><p>实际上京东和阿里是两个势均力敌的竞争对手！</p><p>这也就是为什么这么多年来，微信里面只有京东网站而淘宝的网站链接每次点击都是访问失败！让你复制到浏览器打开的原因。<br>你在微信里面买东西，不管是在京东，拼夕夕，唯美会，聚美优品….什么什什么付款的从来都没有支付宝支付的选项。有时候你确实微信里没钱，想用支付宝，这就很尴尬了。（这个时候我就会打开微信朋友圈，看看谁最新发布了动态，然后找他微信借钱2333333.）</p><p>好了，牛逼越哈越远了。回到我们今天的主题！微信小程序到底是不是程序？</p><blockquote><p>核心理念：<br>小程序是一种不需要下载安装即可使用的应用，它实现了应用『触手可及』的梦想，用户扫一扫或搜一搜即可打开应用。也体现了『用完即走』的理念，用户不关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。<br>微信创始人：张小龙</p></blockquote><p>我的答案：勉强算是小程序吧，但绝对不是APP！</p><p>小程序这个叫法，其实就是微信内部一厢情愿的叫法。后来树大招风，店大欺客。没办法，人家在自己内部制定了一个规则，并且取名一个一个新的语言叫做<br>①WXML(WeiXin Mark Language，微信标记语言)<br>②WXSS(WeiXin Style Sheet，微信样式表)</p><p>③JS作为小程序的逻辑语言(Java，小程序的主体)</p><p>如果你之前的前端基础比较好的话，你对于微信小程序学习起来上手会非常快！</p>        <h2 id="小程序简要分析"   >          <a href="#小程序简要分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#小程序简要分析" class="headerlink" title="小程序简要分析"></a>小程序简要分析</h2>      <p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://ws2.sinaimg.cn/large/9ac1c132jw1f89ht2sqa0j21640p0q8y.jpg"  alt="小程序目录结构分析">      </p><ul><li>全局配置文件<br>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://ws3.sinaimg.cn/large/9ac1c132jw1f89htxlj2wj20rb09sjs4.jpg"  alt="全局配置文件">      </li></ul>        <h2 id="小程序的优点"   >          <a href="#小程序的优点" class="heading-link"><i class="fas fa-link"></i></a><a href="#小程序的优点" class="headerlink" title="小程序的优点"></a>小程序的优点</h2>      <ul><li>比传统的 Hybird 应用在操作体验上，它具有更快、更流畅的应用体验，摆脱混合应用对浏览器性能的依赖且能够调用系统原生接口，有一定的数据缓存能力。</li><li>比 React Native 类应用，更轻量级。</li><li>比 Native App ，则胜在开发周期短、投入成本低、使用便捷，且依托微信庞大的用户基础和粘性，可以迅速引流，验证产品模式和用户需求。</li></ul>        <h2 id="小程序的缺点"   >          <a href="#小程序的缺点" class="heading-link"><i class="fas fa-link"></i></a><a href="#小程序的缺点" class="headerlink" title="小程序的缺点"></a>小程序的缺点</h2>      <ul><li>目前限制应用包大小为 1024 kb 。</li><li>微信开放接口 API 较少。</li><li>仅限于小应用的能力，想要实现复杂应用能力上还不足。</li><li>在多层级使用场景以及需要跳转类的需求上劣势明显。</li><li>不支持 A 标签，无法打开普通网页。</li></ul>        <h2 id="总结"   >          <a href="#总结" class="heading-link"><i class="fas fa-link"></i></a><a href="#总结" class="headerlink" title="总结"></a>总结</h2>      <p>小程序在开发上不具有太高难度，更要考量的是作为产品或服务的设计和使用场景的优化上，微信小程序的真正优势在于开发成本低、更快速的迭代，可以快速测试用户需求，而不是技术上的颠覆。对于创业者和小公司来说，是一个快速启动的方式。但对于希望走的更远的企业，原生或 RN 类 APP 目前还绕不过去，微信小程序只能作为一个产品填补式的存在，当然这些还需要具体产品具体规划。</p><p>通过上述信息我们可以这样认为，小程序是一个可通过 Web 技术栈开发，使用微信框架调用原生功能的类 Web 小应用，小体现在它本身的能力受微信的规则和框架的限制。这种形式仅仅在操作体验上优于传统 Hybird 开发的应用，与 React Native 开发复杂应用的能力要低太多，目前不在一个层次上。现阶段所展现的能力受限，随着用户和开发者的持续投入，微信也许会进一步释放它的能力，潜力较高。小程序如果在技术上可以获得强大的支持，对于低频应用（日历等小工具类以及其它形形色色的应用）或者应用使用场景（消费类浅层级应用使用场景）的补充，还是大有可为。</p>        <h2 id="学习方法"   >          <a href="#学习方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2>      <p>虽然小程序是一种类前端的代码，能够让学习者上手非常快，大大的节约了学习成本。但是要想把小程序做的出类拔萃，则需要学习者具备扎实的前端基础以及过硬的 <code>js</code> 技术。<br>小程序的开发架构也是最近比较流行的前后端分离的开发方式。后端程度提供一个数据接口为前端界面提供必要的数据支撑！前端也需要根据业务需要向后端发送数据请求！</p>        <h2 id="微信小程序文档"   >          <a href="#微信小程序文档" class="heading-link"><i class="fas fa-link"></i></a><a href="#微信小程序文档" class="headerlink" title="微信小程序文档"></a>微信小程序文档</h2>      <ul><li><span class="exturl"><a class="exturl__link"   href="https://developers.weixin.qq.com/miniprogram/dev/#%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%A8%8B%E5%BA%8F" >你的第一个小程序</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li><li><span class="exturl"><a class="exturl__link"   href="http://www.runoob.com/w3cnote/wx-xcx-repo.html" >微信小程序开发资源汇总</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li></ul>        <h2 id="待续…"   >          <a href="#待续…" class="heading-link"><i class="fas fa-link"></i></a><a href="#待续…" class="headerlink" title="待续…"></a>待续…</h2>      <p>哦，对了。给你讲个故事，从前有个人特别浪荡，他曾经说过这样一句话。</p><blockquote><p>如果哪一天你看到大街上一个戴着高礼帽黑礼服弹着吉他在演唱一首《当年情》的年轻人，那个人大概就是我了。请记得给我投一块钱。我这样开玩笑的和朋友说道。此时我的内心早已不能平静了。</p></blockquote><p>点击 <span class="exturl"><a class="exturl__link"   href="https://blog.adymilk.cn/2018/05/27/20180512/" >《生活虐我千百遍，我对生活如初恋》了解更多</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>]]></content>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;如何理解微信小程序&quot;   &gt;
-          &lt;a href=&quot;#如何理解微信小程序&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#如何理解微信小程序&quot; class=&quot;headerlink&quot; title=&quot;如何理解微信小程序&quot;&gt;&lt;/a&gt;如何理解微信小程序&lt;/h3&gt;
-      &lt;p&gt;在学习微信小程序开发之前，首先我们要大致了解一个概念。微信小程序和传统安卓在手机上的程序（App) 有什么区别？&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="代码笔记" scheme="https://adymilk.gitee.io/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="微信小程序" scheme="https://adymilk.gitee.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
