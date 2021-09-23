@@ -1,16 +1,16 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#54bcff"><link rel="manifest" href="/manifest.json?v=2.6.2"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="golang与C&#x2F;C++的简单比较 优点：  良好的跨平台，可交叉编译 简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件 静态编译，没有动态库的依赖，部署方便，编出来只有一个可执行程序 语法简单易学 天生支持并发，goroutine和channel，适合服务器编程                                      只需要几行代码即可实现一个服务器">
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#54bcff"><link rel="manifest" href="/manifest.json?v=2.6.2"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="golang与C&#x2F;C++的简单比较 优点：  良好的跨平台，可交叉编译 简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件 静态编译，没有动态库的依赖，部署方便，编出来只有一个可执行程序 语法简单易学 天生支持并发，goroutine和channel，适合服务器编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识 Go 语言-真是太强大了">
 <meta property="og:url" content="https://adymilk.gitee.io/2021/09/23/20210923-1/index.html">
 <meta property="og:site_name" content="恒哥的个人网站">
-<meta property="og:description" content="golang与C&#x2F;C++的简单比较 优点：  良好的跨平台，可交叉编译 简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件 静态编译，没有动态库的依赖，部署方便，编出来只有一个可执行程序 语法简单易学 天生支持并发，goroutine和channel，适合服务器编程                                      只需要几行代码即可实现一个服务器">
+<meta property="og:description" content="golang与C&#x2F;C++的简单比较 优点：  良好的跨平台，可交叉编译 简单的工程管理，通过文件夹系统管理，没有类似Makefile的工程管理文件 静态编译，没有动态库的依赖，部署方便，编出来只有一个可执行程序 语法简单易学 天生支持并发，goroutine和channel，适合服务器编程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/dbb82af19d6f47c98c1c983d4b029511.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/d23272b6e0b441fb922c62bd9793dfd0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/7138d36aecbd4682b365262f685cb80e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/0f87a847afb54858a3ac99089d96e29a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2021-09-23T07:10:09.000Z">
-<meta property="article:modified_time" content="2021-09-23T07:21:58.165Z">
+<meta property="article:modified_time" content="2021-09-23T07:24:23.899Z">
 <meta property="article:author" content="王恒">
 <meta property="article:tag" content="恒哥的个人网站">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"><lin
 <li>天生支持并发，goroutine和channel，适合服务器编程<br>
         <img     class="lazyload lazyload-gif"
           src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/dbb82af19d6f47c98c1c983d4b029511.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">
-      </li>
+      <span id="more"></span></li>
 </ul>
 
         <h2 id="只需要几行代码即可实现一个服务器"   >
