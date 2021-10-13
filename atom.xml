@@ -6,7 +6,7 @@
   <link href="https://adymilk.github.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.github.io/"/>
-  <updated>2021-10-13T07:40:08.407Z</updated>
+  <updated>2021-10-13T09:05:33.254Z</updated>
   <id>https://adymilk.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>尝试对 Docker 使用 SQL Server</title>
+    <link href="https://adymilk.github.io/2021/10/13/20211013-2/"/>
+    <id>https://adymilk.github.io/2021/10/13/20211013-2/</id>
+    <published>2021-10-13T09:03:36.000Z</published>
+    <updated>2021-10-13T09:05:33.254Z</updated>
+    
+    <content type="html"><![CDATA[<p>尝试对 Docker 使用 SQL Server 容器映像后，你可能想知道如何 Docker 是如何用于改进开发和测试的。 下面的视频介绍如何在持续集成和部署方案中使用 Docker。</p><span id="more"></span><p><video src='https://sec.ch9.ms/ch9/2c97/8e3dd09f-f597-46b7-bb7e-0acddf142c97/CONN17T152_mid.mp4' controls></video></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;尝试对 Docker 使用 SQL Server 容器映像后，你可能想知道如何 Docker 是如何用于改进开发和测试的。 下面的视频介绍如何在持续集成和部署方案中使用 Docker。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Laravel Jetstream 入门教程</title>
@@ -452,27 +469,6 @@
     
     
     <category term="Mac" scheme="https://adymilk.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Laravel8 配置修改不生效，缓存问题解决方案</title>
-    <link href="https://adymilk.github.io/2021/06/23/20210623-2/"/>
-    <id>https://adymilk.github.io/2021/06/23/20210623-2/</id>
-    <published>2021-06-23T03:35:30.000Z</published>
-    <updated>2021-06-24T04:16:36.580Z</updated>
-    
-    <content type="html"><![CDATA[<p>Laravel 发布到服务器上之后，后面修改了配置后，页面读取的还是旧的配置。 最终问题解决是通过执行如下命令清除配置缓存</p><span id="more"></span><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">php artisan config:clear</span><br><span class="line"></span><br></pre></td></tr></table></div></figure><p><span class="exturl"><a class="exturl__link"   href="https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading" >https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><p>这个问题在官网文档已经说明，仔细阅读文档</p><blockquote><p>When deploying your application to production, you should make sure that you run the config:cache Artisan command during your deployment process:</p></blockquote><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan config:cache</span><br><span class="line"></span><br></pre></td></tr></table></div></figure><blockquote><p>If you are building a large application with many routes, you should make sure that you are running the route:cache Artisan command during your deployment process:</p></blockquote><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan route:cache</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;Laravel 发布到服务器上之后，后面修改了配置后，页面读取的还是旧的配置。 最终问题解决是通过执行如下命令清除配置缓存&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Laravel" scheme="https://adymilk.github.io/categories/Laravel/"/>
-    
-    
-    <category term="Laravel" scheme="https://adymilk.github.io/tags/Laravel/"/>
     
   </entry>
   
