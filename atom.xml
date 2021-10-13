@@ -6,7 +6,7 @@
   <link href="https://adymilk.github.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.github.io/"/>
-  <updated>2021-10-13T09:05:33.254Z</updated>
+  <updated>2021-10-13T09:06:24.046Z</updated>
   <id>https://adymilk.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://adymilk.github.io/2021/10/13/20211013-2/"/>
     <id>https://adymilk.github.io/2021/10/13/20211013-2/</id>
     <published>2021-10-13T09:03:36.000Z</published>
-    <updated>2021-10-13T09:05:33.254Z</updated>
+    <updated>2021-10-13T09:06:24.046Z</updated>
     
     <content type="html"><![CDATA[<p>尝试对 Docker 使用 SQL Server 容器映像后，你可能想知道如何 Docker 是如何用于改进开发和测试的。 下面的视频介绍如何在持续集成和部署方案中使用 Docker。</p><span id="more"></span><p><video src='https://sec.ch9.ms/ch9/2c97/8e3dd09f-f597-46b7-bb7e-0acddf142c97/CONN17T152_mid.mp4' controls></video></p>]]></content>
     
@@ -30,6 +30,10 @@
     
     
     
+    <category term="代码笔记" scheme="https://adymilk.github.io/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Docker" scheme="https://adymilk.github.io/tags/Docker/"/>
     
   </entry>
   
@@ -182,12 +186,14 @@
     <link href="https://adymilk.github.io/2021/09/08/20210908-9/"/>
     <id>https://adymilk.github.io/2021/09/08/20210908-9/</id>
     <published>2021-09-08T07:01:44.000Z</published>
-    <updated>2021-10-09T08:47:19.472Z</updated>
+    <updated>2021-10-13T09:09:13.630Z</updated>
     
-    <content type="html"><![CDATA[<p><video src='https://macz-down.macsc.com/video/202108/parallelsdesktop06_macll.mp4' autoplay loop controlls></video></p><span id="more"></span><blockquote><p>一款运行快速、操作简单、功能强大的应用程序，无需重启即可在您的 Intel 或 Apple M1 Mac 上运行 Windows。包含 30 多种一键式工具，可简化 Mac 和 Windows 上的日常任务。</p></blockquote><blockquote><p>无需重启在 Mac 上运行 Windows.<br>访问 Microsoft Office for Windows 和 Internet Explorer<br>在您的 Mac 上运行超过 200,000 个 Windows 应用程序而不会有性能问题<br>在 Mac 虚拟机中跨多个操作系统开发和测试<br>在 Mac 和 Windows 之间无缝转移和分享内容<br>融合模式：隐藏 Windows 桌面，像使用 Mac 应用程序一样使用 Windows 应用程序<br>快速、强大、便捷<br>可运行数千种 Windows 应用程序，如 Microsoft Office、Internet Explorer、Access、Quicken、QuickBooks、Visual Studio，甚至支持对图像要求较高的游戏和 CAD 项目，而不影响任何性能且无需重启。</p></blockquote><video src='https://www.parallels.cn/fileadmin/res/video/pd/pd17/drag_and_drop.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'></video>        <h2 id="支持-Apple-M1-芯片"   >          <a href="#支持-Apple-M1-芯片" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持-Apple-M1-芯片" class="headerlink" title="支持 Apple M1 芯片"></a>支持 Apple M1 芯片</h2>      <p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/4d3f1c68492e4b12bee685ddfbac704f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p>        <h2 id="破解教程点这里"   >          <a href="#破解教程点这里" class="heading-link"><i class="fas fa-link"></i></a><a href="#破解教程点这里" class="headerlink" title="破解教程点这里 "></a>破解教程<a href="/2021/06/24/20210624-1/">点这里 </a></h2>      ]]></content>
+    <content type="html"><![CDATA[<blockquote><p>一款运行快速、操作简单、功能强大的应用程序，无需重启即可在您的 Intel 或 Apple M1 Mac 上运行 Windows。包含 30 多种一键式工具，可简化 Mac 和 Windows 上的日常任务。</p></blockquote><span id="more"></span><p><video src='https://macz-down.macsc.com/video/202108/parallelsdesktop06_macll.mp4' controls></video></p><blockquote><p>无需重启在 Mac 上运行 Windows.<br>访问 Microsoft Office for Windows 和 Internet Explorer<br>在您的 Mac 上运行超过 200,000 个 Windows 应用程序而不会有性能问题<br>在 Mac 虚拟机中跨多个操作系统开发和测试<br>在 Mac 和 Windows 之间无缝转移和分享内容<br>融合模式：隐藏 Windows 桌面，像使用 Mac 应用程序一样使用 Windows 应用程序<br>快速、强大、便捷<br>可运行数千种 Windows 应用程序，如 Microsoft Office、Internet Explorer、Access、Quicken、QuickBooks、Visual Studio，甚至支持对图像要求较高的游戏和 CAD 项目，而不影响任何性能且无需重启。</p></blockquote><video src='https://www.parallels.cn/fileadmin/res/video/pd/pd17/drag_and_drop.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'></video>        <h2 id="支持-Apple-M1-芯片"   >          <a href="#支持-Apple-M1-芯片" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持-Apple-M1-芯片" class="headerlink" title="支持 Apple M1 芯片"></a>支持 Apple M1 芯片</h2>      <p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/4d3f1c68492e4b12bee685ddfbac704f.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p>        <h2 id="破解教程点这里"   >          <a href="#破解教程点这里" class="heading-link"><i class="fas fa-link"></i></a><a href="#破解教程点这里" class="headerlink" title="破解教程点这里 "></a>破解教程<a href="/2021/06/24/20210624-1/">点这里 </a></h2>      ]]></content>
     
     
-    <summary type="html">&lt;p&gt;&lt;video src=&#39;https://macz-down.macsc.com/video/202108/parallelsdesktop06_macll.mp4&#39; autoplay loop controlls&gt;&lt;/video&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;一款运行快速、操作简单、功能强大的应用程序，无需重启即可在您的 Intel 或 Apple M1 Mac 上运行 Windows。包含 30 多种一键式工具，可简化 Mac 和 Windows 上的日常任务。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
