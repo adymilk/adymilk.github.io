@@ -6,7 +6,7 @@
   <link href="https://adymilk.github.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.github.io/"/>
-  <updated>2021-10-15T01:54:30.081Z</updated>
+  <updated>2021-10-21T07:57:20.909Z</updated>
   <id>https://adymilk.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel Jetstream 入门教程</title>
+    <link href="https://adymilk.github.io/2021/10/21/20211021-1/"/>
+    <id>https://adymilk.github.io/2021/10/21/20211021-1/</id>
+    <published>2021-10-21T07:40:34.000Z</published>
+    <updated>2021-10-21T07:57:20.909Z</updated>
+    
+    <content type="html"><![CDATA[<p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/b09aafdd250a4c568197d5d11f78745a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;" >      </p>        <h2 id="laravel-Jetstream-是什么？"   >          <a href="#laravel-Jetstream-是什么？" class="heading-link"><i class="fas fa-link"></i></a><a href="#laravel-Jetstream-是什么？" class="headerlink" title="laravel Jetstream 是什么？"></a>laravel Jetstream 是什么？</h2>      <p>这是 Laravel 提供的一个可选的软件快速开发包。该软件开发包内部提供了登陆、注册、邮件认证、等软件开发的基本功能。可以帮助开发者快速集成系统功能，加速软件开发的效率。该软件开发包可以通过 Composer 引入。所以使用这个开发包之前，您需要有laravel 环境。</p><span id="more"></span>        <h2 id="开始使用-Laravel-Jetstream"   >          <a href="#开始使用-Laravel-Jetstream" class="heading-link"><i class="fas fa-link"></i></a><a href="#开始使用-Laravel-Jetstream" class="headerlink" title="开始使用-Laravel-Jetstream"></a>开始使用-Laravel-Jetstream</h2>              <h3 id="开始安装-Laravel"   >          <a href="#开始安装-Laravel" class="heading-link"><i class="fas fa-link"></i></a><a href="#开始安装-Laravel" class="headerlink" title="开始安装 Laravel"></a>开始安装 Laravel</h3>      <p>运行如下命令 ，<span class="exturl"><a class="exturl__link"   href="https://laravel.com/docs/8.x#installation-via-composer" >官网文档点我</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project laravel/laravel example-app</span><br></pre></td></tr></table></div></figure>        <h3 id="配置数据库相关信息"   >          <a href="#配置数据库相关信息" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置数据库相关信息" class="headerlink" title="配置数据库相关信息"></a>配置数据库相关信息</h3>      <p>编辑Laravel项目根目录下的.env 文件，</p><figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=mysql</span><br><span class="line">DB_HOST=127.0.0.1</span><br><span class="line">DB_PORT=3306</span><br><span class="line">DB_DATABASE=api.spc</span><br><span class="line">DB_USERNAME=root</span><br><span class="line">DB_PASSWORD=root</span><br></pre></td></tr></table></div></figure>        <h3 id="安装-Jetstream-开发包"   >          <a href="#安装-Jetstream-开发包" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装-Jetstream-开发包" class="headerlink" title="安装 Jetstream 开发包"></a>安装 Jetstream 开发包</h3>      <p><span class="exturl"><a class="exturl__link"   href="https://jetstream.laravel.com/2.x/installation.html#installing-jetstream" >官方文档点我</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer <span class="keyword">require</span> laravel/jetstream</span><br></pre></td></tr></table></div></figure>        <h3 id="安装-Jetstream-模版"   >          <a href="#安装-Jetstream-模版" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装-Jetstream-模版" class="headerlink" title="安装 Jetstream 模版"></a>安装 Jetstream 模版</h3>      <figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan jetstream:install inertia --teams</span><br></pre></td></tr></table></div></figure>        <h3 id="最后安装编译模版文件"   >          <a href="#最后安装编译模版文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#最后安装编译模版文件" class="headerlink" title="最后安装编译模版文件"></a>最后安装编译模版文件</h3>      <figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run dev</span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></div></figure>        <h3 id="启动服务器"   >          <a href="#启动服务器" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3>      <p>laravel 项目根目录执行如下代码，</p><figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan serve</span><br></pre></td></tr></table></div></figure>        <h3 id="打开网站"   >          <a href="#打开网站" class="heading-link"><i class="fas fa-link"></i></a><a href="#打开网站" class="headerlink" title="打开网站"></a>打开网站</h3>      <p>浏览器输入 <span class="exturl"><a class="exturl__link"   href="http://127.0.0.1:8000/" >http://127.0.0.1:8000</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 即可打开网站</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;
+        &lt;img     class=&quot;lazyload lazyload-gif&quot;
+          src=&quot;/images/loading.svg&quot; data-src=&quot;https://img-blog.csdnimg.cn/b09aafdd250a4c568197d5d11f78745a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16&quot;  style=&quot;width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;&quot; &gt;
+      &lt;/p&gt;
+
+        &lt;h2 id=&quot;laravel-Jetstream-是什么？&quot;   &gt;
+          &lt;a href=&quot;#laravel-Jetstream-是什么？&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#laravel-Jetstream-是什么？&quot; class=&quot;headerlink&quot; title=&quot;laravel Jetstream 是什么？&quot;&gt;&lt;/a&gt;laravel Jetstream 是什么？&lt;/h2&gt;
+      &lt;p&gt;这是 Laravel 提供的一个可选的软件快速开发包。该软件开发包内部提供了登陆、注册、邮件认证、等软件开发的基本功能。可以帮助开发者快速集成系统功能，加速软件开发的效率。该软件开发包可以通过 Composer 引入。所以使用这个开发包之前，您需要有laravel 环境。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="代码笔记" scheme="https://adymilk.github.io/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Laravel" scheme="https://adymilk.github.io/tags/Laravel/"/>
+    
+    <category term="php" scheme="https://adymilk.github.io/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>PHPer你到底想要什么样的出路</title>
@@ -437,30 +467,6 @@
     <summary type="html">&lt;p&gt;laravel 模型取出来的时间和数据库存储的时间不一致&lt;/p&gt;
 &lt;p&gt;laravel 8 默认的时区是 美国时间，需要手动在.ENV 这样增加配置&lt;/p&gt;
 &lt;figure class=&quot;highlight php&quot;&gt;&lt;div class=&quot;table-container&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;APP_TIMEZONE=PRC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Minitab" scheme="https://adymilk.github.io/categories/Minitab/"/>
-    
-    
-    <category term="Minitab" scheme="https://adymilk.github.io/tags/Minitab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Minitab 二次开发实时生成控制图</title>
-    <link href="https://adymilk.github.io/2021/06/29/20210629-1/"/>
-    <id>https://adymilk.github.io/2021/06/29/20210629-1/</id>
-    <published>2021-06-29T07:05:29.000Z</published>
-    <updated>2021-09-07T07:46:36.853Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>minitab 是一个非常不错的数据分析软件，简单易用，功能强大！有兴趣可以<span class="exturl"><a class="exturl__link"   href="https://www.minitab.com/zh-cn/support/downloads/" >下载试用</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p></blockquote><p>本文将介绍如何通过调用 Minitab 接口实现实时spc 控制图</p><span id="more"></span><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://techmax.com.cn/uploadfile/2021/0226/20210226105352646.jpg" >      </p><video src='https://techmax.com.cn/public/spc.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'></video>]]></content>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;minitab 是一个非常不错的数据分析软件，简单易用，功能强大！有兴趣可以&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.minitab.com/zh-cn/support/downloads/&quot; &gt;下载试用&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;本文将介绍如何通过调用 Minitab 接口实现实时spc 控制图&lt;/p&gt;</summary>
     
     
     
