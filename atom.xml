@@ -6,7 +6,7 @@
   <link href="https://adymilk.github.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.github.io/"/>
-  <updated>2021-10-21T07:57:20.909Z</updated>
+  <updated>2021-10-28T02:44:10.953Z</updated>
   <id>https://adymilk.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苹果电脑开盖唤醒后没有声音【解决方案】</title>
+    <link href="https://adymilk.github.io/2021/10/28/20211028-Mac%20%E7%94%B5%E8%84%91%E5%BC%80%E7%9B%96%E5%94%A4%E9%86%92%E5%90%8E%E6%B2%A1%E6%9C%89%E5%A3%B0%E9%9F%B3%E3%80%90%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%91/"/>
+    <id>https://adymilk.github.io/2021/10/28/20211028-Mac%20%E7%94%B5%E8%84%91%E5%BC%80%E7%9B%96%E5%94%A4%E9%86%92%E5%90%8E%E6%B2%A1%E6%9C%89%E5%A3%B0%E9%9F%B3%E3%80%90%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E3%80%91/</id>
+    <published>2021-10-28T02:40:34.000Z</published>
+    <updated>2021-10-28T02:44:10.953Z</updated>
+    
+    <content type="html"><![CDATA[<p>        <img     class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://img-blog.csdnimg.cn/5b3b5faa8796487fa40950d615151246.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16"  style="width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;"  alt="在这里插入图片描述">      </p><p>Mac合上盖子再打开后没声音了？这么诡异的问题，也不知道苹果是怎么想的。迟迟不给解决！</p><p>下面我给出两个解决方案！</p><span id="more"></span>        <h2 id="重启进程"   >          <a href="#重启进程" class="heading-link"><i class="fas fa-link"></i></a><a href="#重启进程" class="headerlink" title="重启进程"></a>重启进程</h2>      <p>“command+空格“打开”聚焦搜索“，输入“活动监视器“，回车进入，在活动监视器右上方搜索窗口输入“coreaudiod“，选中下方搜索结果，再点击左上角那个叉号，就可以重启这个进程了，Mac声音就恢复了。</p><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://pic2.zhimg.com/80/v2-17912f3e4a5460eeaae541966c371a61_1440w.jpg" >      </p><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://pic2.zhimg.com/80/v2-a1590c1a55ade6d4dbf1d671d9294459_1440w.jpg" >      </p>        <h2 id="命令修复"   >          <a href="#命令修复" class="heading-link"><i class="fas fa-link"></i></a><a href="#命令修复" class="headerlink" title="命令修复"></a>命令修复</h2>      <p>打开Mac终端，输入下述命令</p><figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo killall coreaudiod</span><br></pre></td></tr></table></div></figure><p>回车，这时Mac会要你输入密码，直接输入再回车即可。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;
+        &lt;img     class=&quot;lazyload lazyload-gif&quot;
+          src=&quot;/images/loading.svg&quot; data-src=&quot;https://img-blog.csdnimg.cn/5b3b5faa8796487fa40950d615151246.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,x_16&quot;  style=&quot;width: image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,tepx;height: t_Q1NETiBA5bCP5p6rdmlw,size_20,color_FFFFFF,t_70,g_se,px;&quot;  alt=&quot;在这里插入图片描述&quot;&gt;
+      &lt;/p&gt;
+&lt;p&gt;Mac合上盖子再打开后没声音了？这么诡异的问题，也不知道苹果是怎么想的。迟迟不给解决！&lt;/p&gt;
+&lt;p&gt;下面我给出两个解决方案！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="代码笔记" scheme="https://adymilk.github.io/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Laravel" scheme="https://adymilk.github.io/tags/Laravel/"/>
+    
+    <category term="php" scheme="https://adymilk.github.io/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel Jetstream 入门教程</title>
@@ -444,29 +472,6 @@
     
     
     <summary type="html">&lt;p&gt;laravel socket 实现万物互联&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Minitab" scheme="https://adymilk.github.io/categories/Minitab/"/>
-    
-    
-    <category term="Minitab" scheme="https://adymilk.github.io/tags/Minitab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Laravel 模型取出来的时间和数据库存储的时间不一致</title>
-    <link href="https://adymilk.github.io/2021/07/09/20210903-1/"/>
-    <id>https://adymilk.github.io/2021/07/09/20210903-1/</id>
-    <published>2021-07-09T07:05:29.000Z</published>
-    <updated>2021-09-08T04:12:49.282Z</updated>
-    
-    <content type="html"><![CDATA[<p>laravel 模型取出来的时间和数据库存储的时间不一致</p><p>laravel 8 默认的时区是 美国时间，需要手动在.ENV 这样增加配置</p><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">APP_TIMEZONE=PRC</span><br><span class="line"></span><br></pre></td></tr></table></div></figure><span id="more"></span>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;laravel 模型取出来的时间和数据库存储的时间不一致&lt;/p&gt;
-&lt;p&gt;laravel 8 默认的时区是 美国时间，需要手动在.ENV 这样增加配置&lt;/p&gt;
-&lt;figure class=&quot;highlight php&quot;&gt;&lt;div class=&quot;table-container&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;APP_TIMEZONE=PRC&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;</summary>
     
     
     
