@@ -12,3 +12,5 @@ Disallow: /fancybox/
 
 Sitemap: https://adymilk.github.io/sitemap.xml
 Sitemap: https://adymilk.github.io/baidusitemap.xml
+Sitemap: https://adymilk.gitee.io/sitemap.xml
+Sitemap: https://adymilk.gitee.io/baidusitemap.xml
