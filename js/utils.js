@@ -241,6 +241,7 @@ Stun.utils = Stun.$u = {
     }
     return codes[code]
   },
+
   /**
    * "Alert" component
    * @param {String} status The Status of message. Values: success / info / warning / error.
