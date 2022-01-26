@@ -6,7 +6,7 @@
   <link href="https://adymilk.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://adymilk.gitee.io/"/>
-  <updated>2021-10-28T02:44:10.953Z</updated>
+  <updated>2022-01-26T02:18:44.475Z</updated>
   <id>https://adymilk.gitee.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac上Laravel 自带部署工具-Valet</title>
+    <link href="https://adymilk.gitee.io/2022/01/24/20220124-1_laravel%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E9%83%A8%E7%BD%B2/"/>
+    <id>https://adymilk.gitee.io/2022/01/24/20220124-1_laravel%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E9%83%A8%E7%BD%B2/</id>
+    <published>2022-01-24T02:08:15.000Z</published>
+    <updated>2022-01-26T02:18:44.475Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Mac 上安装Laravel 项目的体验可以说是非常的爽了，相比windows 搭建本地开发环境通常的选择是phpstudy 、宝塔或者其他的第三方集成开发环境工具。但是在Mac上一切都变得非常简单。</p><span id="more"></span><p>在mac上做开发，brew 是我们经常用到的安装工具。他就像是Mac上的软件商店，你可以通过它在命令行安装软件。Laravel Valet 高明之处就在于完全取代了传统的图形化工具，仅仅通过几句命令就可以自动的把你的项目部署在服务器上，你的项目直接可以通过项目名称.test 就可以访问了。</p><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="http://tva1.sinaimg.cn/thumbnail/00674Nvvgy1gyopwgbwswj31d40fg1cs.jpg"  alt="image.png">      </p><p>Mac M1 如果遇到这个报错，需要用这个命令安装</p><figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch -arm64 brew install xx软件</span><br></pre></td></tr></table></div></figure><blockquote><p>Laravel Valet 是 macOS 极简主义者的开发环境。 Laravel Valet 将您的 Mac 配置为在您的机器启动时始终在后台运行 Nginx。然后，使用 DnsMasq，Valet 代理 *.test 域上的所有请求，以指向安装在本地计算机上的站点。 </p></blockquote><p>换句话说，Valet 是一个超快的 Laravel 开发环境，它使用大约 7 MB 的 RAM。 Valet 不是 Sail 或 Homestead 的完全替代品，但如果您想要灵活的基础知识、喜欢极速或在 RAM 有限的机器上工作，它提供了一个很好的选择。</p><p>composer 全局安装laravel 安装器</p><figure class="highlight php"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer <span class="keyword">global</span> <span class="keyword">require</span> laravel/installer</span><br></pre></td></tr></table></div></figure><!-- more -->        <h3 id="MacBook"   >          <a href="#MacBook" class="heading-link"><i class="fas fa-link"></i></a><a href="#MacBook" class="headerlink" title="MacBook"></a>MacBook</h3>              <h1 id="For-zsh"   >          <a href="#For-zsh" class="heading-link"><i class="fas fa-link"></i></a><a href="#For-zsh" class="headerlink" title="For zsh:"></a>For zsh:</h1>      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;$HOME/.composer/vendor/bin:$PATH&quot;&#x27; &gt;&gt;  ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></div></figure>        <h1 id="For-Bash"   >          <a href="#For-Bash" class="heading-link"><i class="fas fa-link"></i></a><a href="#For-Bash" class="headerlink" title="For Bash:"></a>For Bash:</h1>      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;$HOME/.composer/vendor/bin:$PATH&quot;&#x27; &gt;&gt;  ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></div></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;在Mac 上安装Laravel 项目的体验可以说是非常的爽了，相比windows 搭建本地开发环境通常的选择是phpstudy 、宝塔或者其他的第三方集成开发环境工具。但是在Mac上一切都变得非常简单。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="代码笔记" scheme="https://adymilk.gitee.io/categories/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Laravel" scheme="https://adymilk.gitee.io/tags/Laravel/"/>
+    
+    <category term="Valet" scheme="https://adymilk.gitee.io/tags/Valet/"/>
+    
+  </entry>
   
   <entry>
     <title>苹果电脑开盖唤醒后没有声音【解决方案】</title>
@@ -458,27 +481,6 @@
     
     
     <category term="Laravel" scheme="https://adymilk.gitee.io/tags/Laravel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>laravel socket 实现万物互联</title>
-    <link href="https://adymilk.gitee.io/2021/09/07/20210901/"/>
-    <id>https://adymilk.gitee.io/2021/09/07/20210901/</id>
-    <published>2021-09-07T07:05:29.000Z</published>
-    <updated>2021-09-07T07:46:33.904Z</updated>
-    
-    <content type="html"><![CDATA[<p>laravel socket 实现万物互联</p><span id="more"></span><p>        <img   class="lazyload lazyload-gif"          src="/images/loading.svg" data-src="https://ably.com/packs/media/assets/home/publish-subscribe-with-presence-76e2a9920ed917be3f9e2157d624239f.svg" >      </p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;laravel socket 实现万物互联&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Minitab" scheme="https://adymilk.gitee.io/categories/Minitab/"/>
-    
-    
-    <category term="Minitab" scheme="https://adymilk.gitee.io/tags/Minitab/"/>
     
   </entry>
   
