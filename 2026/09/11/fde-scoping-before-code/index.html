@@ -1,0 +1,537 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="这篇文章讲的不是「我用了什么技术」，而是「我在哪几个岔路口选了哪条路、放弃了什么」。前者可以在任何一份 JD 里读到，后者才是 FDE 岗位真正的敲门砖。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FDE 的第一性问题：在写代码之前划定边界">
+<meta property="og:url" content="https://adymilk.github.io/2026/09/11/fde-scoping-before-code/index.html">
+<meta property="og:site_name" content="王恒 · Forward Deployed Engineer">
+<meta property="og:description" content="这篇文章讲的不是「我用了什么技术」，而是「我在哪几个岔路口选了哪条路、放弃了什么」。前者可以在任何一份 JD 里读到，后者才是 FDE 岗位真正的敲门砖。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-11T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-11T08:45:16.427Z">
+<meta property="article:author" content="王恒">
+<meta property="article:tag" content="FDE">
+<meta property="article:tag" content="客户现场">
+<meta property="article:tag" content="系统设计">
+<meta property="article:tag" content="SPC">
+<meta name="twitter:card" content="summary"><title>FDE 的第一性问题：在写代码之前划定边界 | 王恒 · Forward Deployed Engineer</title><link ref="canonical" href="https://adymilk.github.io/2026/09/11/fde-scoping-before-code/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"dark","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="王恒 · Forward Deployed Engineer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/works/"><span class="header-nav-menu-item__icon"><i class="fas fa-cubes"></i></span><span class="header-nav-menu-item__text">作品与证据</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/resume/"><span class="header-nav-menu-item__icon"><i class="fas fa-id-card"></i></span><span class="header-nav-menu-item__text">简历</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">技术笔记</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background-image: url(https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1920&amp;q=70); background-position: center; background-size: cover;"><div class="header-hero"><h1 class="header-hero__name">王恒<span class="header-hero__name-en">James Wang</span></h1><p class="header-hero__title">Forward Deployed Engineer</p><p class="header-hero__oneliner">工业软件与智能制造：从客户现场的业务问题，做到能落地的产品与系统。</p><div class="header-hero__links"><a class="header-hero__btn header-hero__btn--primary" href="/works/">作品与证据</a><a class="header-hero__btn" href="/resume/">简历</a><a class="header-hero__btn" href="https://github.com/adymilk" target="_blank" rel="noopener">GitHub</a></div><p class="header-hero__meta">上海</p></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">FDE 的第一性问题：在写代码之前划定边界</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2026-09-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2026-09-11</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">3.2k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">16分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2026/09/11/fde-scoping-before-code/" data-flag-title="FDE 的第一性问题：在写代码之前划定边界"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body"><blockquote>
+<p>这篇文章讲的不是「我用了什么技术」，而是「我在哪几个岔路口选了哪条路、<br>放弃了什么」。前者可以在任何一份 JD 里读到，后者才是 FDE 岗位真正的敲门砖。</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h2 id="一、约束"   >
+          <a href="#一、约束" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、约束" class="headerlink" title="一、约束"></a>一、约束</h2>
+      <p>2020 年前后，我在做一个工业质量分析方向的系统。要做的事说起来很朴素：<br>让质量工程师在浏览器里看到统计过程控制（SPC）图，而不是每个人在自己电脑上<br>打开 Minitab 手动跑一遍。</p>
+<p>朴素的需求，撞上一个不朴素的约束：</p>
+<p><strong>Minitab 只开放 C# 的 COM 组件接口，而 COM 组件无法被 Web 程序调用。</strong></p>
+<p>就这么一句话。它决定了后面所有的事情。</p>
+<p>我先说结论：<strong>这个约束是资产，不是障碍。</strong> 如果 Minitab 当年开放的是一个<br>REST API，我很可能会写出一个糟糕得多的系统 —— 因为那样一来，把分析逻辑<br>散落到 Web 层就变得「顺手」了，而顺手往往是架构事故的开始。</p>
+<p>约束把选择空间砍到只剩两条路，逼着我必须把理由想清楚。</p>
+<hr>
+
+        <h2 id="二、决策一：桥接，还是重写？"   >
+          <a href="#二、决策一：桥接，还是重写？" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、决策一：桥接，还是重写？" class="headerlink" title="二、决策一：桥接，还是重写？"></a>二、决策一：桥接，还是重写？</h2>
+      <p>摆在面前的是两个备选，而不是一个。</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th></th>
+<th>备选 A：用 C# 重写分析逻辑</th>
+<th>备选 B：COM 桥接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>做法</strong></td>
+<td>自己实现 X̄-R 控制图、判异规则、过程能力指数</td>
+<td>保留 Minitab 作为分析引擎，只解决「怎么调它」</td>
+</tr>
+<tr>
+<td><strong>代价 1</strong></td>
+<td>必须重新验证统计正确性</td>
+<td>绑定 Windows + Minitab 授权</td>
+</tr>
+<tr>
+<td><strong>代价 2</strong></td>
+<td>客户已有的历史报告与新系统对不上</td>
+<td>引入一个额外的进程边界要维护</td>
+</tr>
+<tr>
+<td><strong>代价 3</strong></td>
+<td>判异规则（Nelson rules）等细节的复现风险</td>
+<td>单机 COM 组件，无法水平扩展</td>
+</tr>
+</tbody></table></div>
+<p>我选了 B。</p>
+<p><strong>选 B 的理由不是「重写太难」——那是个偷懒的理由，也不是个技术判断。</strong></p>
+<p>真正的理由是：<strong>在统计与质量领域，输出正确性是由参考实现定义的。</strong></p>
+<p>X̄ 控制图的控制限公式（X̄ ± 3σ/√n）谁都写得出来。但「一个点子连续 9 点落在<br>中心线同侧」算不算异常、「子组大小不齐时怎么处理」、「缺失值参与不参与移动极差<br>计算」——这些细节，Minitab 有它自己的答案。而这些答案，是质量部门过去几年<br><strong>已经在用的</strong>答案。</p>
+<p>所以备选 A 的 1 号代价不是我多花几个人月写代码，而是：<strong>我必须重新证明我的<br>实现是对的，而这个证明的成本远高于编码本身。</strong> 每一处细节差异都会表现为<br>「系统出的图和 Minitab 出的图对不上」，而现场没有人和你讨论公式，他们只会说<br>「这系统不准」。</p>
+<p>这就是 FDE 与普通后端工程师在这里的分野。后者评估的是<strong>实现成本</strong>，前者必须<br>同时评估<strong>验证成本</strong>和<strong>信任成本</strong>。选 B 的真正含义是：不要去替换客户已经信任<br>的东西，而是让它进入客户的新的工作流。</p>
+<blockquote>
+<p>我在别的场合把这个原则总结成一句话：<br><strong>新系统要嵌入既有信任结构，而不是要求人们重新建立信任。</strong></p>
+</blockquote>
+<hr>
+
+        <h2 id="三、决策二：同步等待，还是异步取结果？"   >
+          <a href="#三、决策二：同步等待，还是异步取结果？" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、决策二：同步等待，还是异步取结果？" class="headerlink" title="三、决策二：同步等待，还是异步取结果？"></a>三、决策二：同步等待，还是异步取结果？</h2>
+      <p>选定了「桥接」，下一个问题立刻浮出来：Web 请求打过来，怎么把结果拿回去？</p>
+<p>这里我做了第二个选择：<strong>不返回结果，返回一个 <code>OrderID</code>。</strong></p>
+<p>流程是这样的：</p>
+<ol>
+<li>前端调用 Web 接口，传一个唯一标识 <code>OrderID</code> —— 本质上就是向数据库写一条记录</li>
+<li>Windows 服务持续轮询这个 HTTP 接口取任务</li>
+<li>服务拿到任务和参数后，调用 Minitab COM 组件做分析，生成图表与文字说明</li>
+<li>前端循环查询这个 <code>OrderID</code>，拿到结果</li>
+</ol>
+<p>用现在的话说，这是一张<strong>手写的任务表</strong>；用更刺耳的话说，这是我手搓的一个<br>没有持久化保障、没有重试、没有死信队列的消息队列。</p>
+<p>但我今天仍然认为当时的判断是对的。理由是：</p>
+<p><strong>同步调用的代价是隐性的，而它的隐性恰好落在我控制不了的地方。</strong><br>一个 HTTP 请求会阻塞在一个 COM 组件上。COM 组件的实例化几乎注定了分析是<br>串行的。那么：</p>
+<ul>
+<li>并发用户数被 Minitab 的实例数<strong>硬锁死</strong></li>
+<li>请求超时时间变成了系统吞吐量的天花板</li>
+<li>一个慢查询会连带拖垮所有请求</li>
+</ul>
+<p>异步的代价则是显性的、可数的：多一次状态查询、要处理结果过期、前端要多写<br>一个轮询循环。</p>
+<p><strong>把代价从「不可控」挪到「可枚举」，这是我喜欢异步的唯一理由。</strong></p>
+<p>这里有个我后来才想明白的点：同步调用不是「没有队列」，它只是<strong>把队列藏了<br>起来</strong> —— 藏在 Web 服务器的连接池里、藏在用户等待的进度条里、藏在 Nginx 的<br>超时配置里。异步做的不过是把这个队列<strong>摆到桌面上</strong>，让它变成一张你能看见、<br>能查询、能清理的表。</p>
+<blockquote>
+<p><strong>显式的排队比隐式的排队好。</strong> 因为隐式队列不会告诉你它满了，<br>它只会在某个下午突然集体超时。</p>
+</blockquote>
+<hr>
+
+        <h2 id="四、决策三：把参数交给谁？"   >
+          <a href="#四、决策三：把参数交给谁？" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、决策三：把参数交给谁？" class="headerlink" title="四、决策三：把参数交给谁？"></a>四、决策三：把参数交给谁？</h2>
+      <p>这是三个决策里最像「产品问题」的那个，也是我现在回看认为<strong>最有价值</strong>的一个。</p>
+<p>接口里我暴露了三个可调参数：<strong>分析类型、子组大小、判异原则</strong>。</p>
+<p>技术上看，这只是三个入参。但它实际上回答了 scoping 里最关键的问题 ——<br><strong>哪些判断权属于系统，哪些判断权属于人？</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>交给谁</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分析类型</td>
+<td>使用者</td>
+<td>测什么、看什么图，是业务问题</td>
+</tr>
+<tr>
+<td>子组大小</td>
+<td>使用者</td>
+<td>取决于抽样方案，由现场工艺决定</td>
+</tr>
+<tr>
+<td>判异原则</td>
+<td>使用者</td>
+<td>取决于质量标准和客户要求</td>
+</tr>
+</tbody></table></div>
+<p>三个都交出去了。这意味着系统是<strong>工具</strong>，不是<strong>黑盒</strong>。</p>
+<p>我当时没有意识到这个取舍的份量，只是觉得「参数当然要能传」。现在回看，<br>这条线画对了，理由是：</p>
+<p><strong>我没有任何依据替现场的质量工程师决定该用哪条判异规则。</strong> 那取决于他们的<br>客户是谁、执行的是什么标准、这批零件用在什么地方。系统一旦替他们选了，<br>系统就从「工具」变成了「需要被推翻的权威」。</p>
+<p>这就是 FDE 意义上的 <strong>out of scope</strong>：</p>
+<ul>
+<li><strong>In scope</strong>：把 Minitab 的分析能力搬到浏览器里，让现场不必在每台机器上装软件</li>
+<li><strong>Out of scope</strong>：替使用者决定统计口径</li>
+</ul>
+<p><strong>划出去的部分，才是这个系统能被接受的原因。</strong></p>
+<p>我见过太多项目死在「我们做得比客户要求的更多」上。多做的那部分不是礼物，<br>是负债 —— 因为客户要为它负责，而它不在客户的控制范围内。</p>
+<hr>
+
+        <h2 id="五、决策四：我漏掉的那一个"   >
+          <a href="#五、决策四：我漏掉的那一个" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、决策四：我漏掉的那一个" class="headerlink" title="五、决策四：我漏掉的那一个"></a>五、决策四：我漏掉的那一个</h2>
+      <p>前面三个决策，今天回看我都还认。但有第四个，我当年<strong>根本没做</strong>。</p>
+<p>原始的记录里，关于这件事只有一句话：</p>
+<blockquote>
+<p>「写了一个 Windows 服务，<strong>开机后自动运行</strong>」</p>
+</blockquote>
+<p>没有失败重试。没有日志。没有告警。没有 Minitab 进程崩溃或被占用之后的恢复。<br>没有「服务挂了谁来知道」的答案。</p>
+<p><strong>「开机自启」不是生产就绪，它只是「能被启动」。</strong></p>
+<p>这是一个长驻的、单点的、独占一个桌面软件授权的后台进程。它一旦挂掉：</p>
+<ul>
+<li>前端会一直轮询，一直查不到结果，用户看到的是一个永远转的圈</li>
+<li>没有人会收到通知</li>
+<li>很可能要等到有人抱怨「系统坏了」才发现</li>
+</ul>
+<p><strong>这是我今天会完全重做的部分，也是这个案例里最有价值的失败记录。</strong></p>
+<p>我现在会在交付前就问完这几个问题：</p>
+<ol>
+<li><strong>它怎么失败？</strong> —— Minitab 没启动、被别的进程占用、COM 调用超时、内存泄漏</li>
+<li><strong>失败之后怎么被知道？</strong> —— 轮询任务超时算不算告警？心跳谁在收？</li>
+<li><strong>失败之后怎么恢复？</strong> —— 服务重启够不够？那批丢失的任务谁补偿？</li>
+<li><strong>交接给谁？</strong> —— 现场的人怎么判断「是系统坏了还是 Minitab 坏了」？</li>
+</ol>
+<p>这四个问题没有一个和算法有关。但它们决定了这个系统是「一个能跑的 demo」<br>还是「一个能交给别人用的东西」。</p>
+<blockquote>
+<p>FDE 交付的不是代码，是<strong>一个别人敢依赖的东西</strong>。<br>可靠性面不是上线之后补的，它是 scoping 的一部分。</p>
+</blockquote>
+<hr>
+
+        <h2 id="六、我从这一个项目里提炼出的四条"   >
+          <a href="#六、我从这一个项目里提炼出的四条" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、我从这一个项目里提炼出的四条" class="headerlink" title="六、我从这一个项目里提炼出的四条"></a>六、我从这一个项目里提炼出的四条</h2>
+      <p>写到这里，把这四条单独拎出来。它们和第几行代码无关，可以迁移到任何一次交付。</p>
+<p><strong>1. 先写「不做什么」。</strong><br>in-scope 的清单谁都会写。真正定义系统的是 out-of-scope 那张纸。<br>每一条「不做」，都是一次主动的信任让渡。</p>
+<p><strong>2. 没有备选和代价的，不叫决策，叫偏好。</strong><br>「我们用 COM 桥接」是偏好；「桥接 vs 重写，前者的代价是绑定 Windows<br>和单机授权，后者的代价是重新验证统计正确性，我选前者」才是决策。<br>面试官和客户都只对后者感兴趣，因为只有后者可以被质疑。</p>
+<p><strong>3. 评估成本时，把「验证成本」和「信任成本」算进去。</strong><br>实现成本是最容易估的，也是唯一一个被默认估了的。<br>但一个能跑的实现，和一个<strong>被相信</strong>的实现，中间隔着的是验证成本。</p>
+<p><strong>4. 显式的丑陋胜过隐式的优雅。</strong><br>一张长得像任务表的数据库表，比一个藏在连接池里的隐性队列好维护得多。<br>把系统里本来就存在的排队、重试、状态，明明白白地画出来。</p>
+<hr>
+
+        <h2 id="七、关于本文的证据说明"   >
+          <a href="#七、关于本文的证据说明" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、关于本文的证据说明" class="headerlink" title="七、关于本文的证据说明"></a>七、关于本文的证据说明</h2>
+      <p>本站的案例都标注证据等级。这一篇我也标：</p>
+<span class="ev ev--show" title="原始技术事实可核实，但量化结果缺失"><span class="ev__dot"></span>L1 展示<span class="ev__note">原始技术事实可核实，但量化结果缺失</span></span>
+
+<p><strong>可以被核实的事实</strong>（来自我 2020–2021 年的两份原始技术笔记，现已归档进本仓库<br>的 git 历史）：Minitab 仅开放 C# COM 接口、COM 无法被 Web 直接调用、Windows<br>服务开机自启并轮询 HTTP 接口、接口参数含分析类型/子组大小/判异原则、前端以<br><code>OrderID</code> 轮询取结果、服务调用 COM 组件生成图表与文字说明。</p>
+<p><strong>我不能提供的</strong>：这次交付的<strong>量化结果</strong>。</p>
+<p>原始笔记里只有技术描述，没有「原来 ___ 分钟/次 → 现在 ___ 秒/次」这类对比<br>基线。我<strong>不会</strong>为了让这篇文章更好看而补一个数字上去 —— 编造一个听起来合理<br>的量化结果，比承认没有量化结果要严重得多。</p>
+<p>同时我暂不标注客户与部署细节，因为那部分我无法在本文范围内给出可核实的<br>依据。这一案例的目标等级是 <strong>L2（可复现）</strong>：脱敏数据 + 命令 + 版本 +<br>预期输出齐备，让别人能重跑。补齐后会更新这里的等级。</p>
+<blockquote>
+<p>一个标成 L1 但每句话都能被追问的案例，比一个标成 L3 但经不起追问的案例<br>更有说服力。<strong>可信度比规模重要。</strong></p>
+</blockquote>
+<hr>
+<hr>
+
+        <h2 id="十一、后来发生的另一件事"   >
+          <a href="#十一、后来发生的另一件事" class="heading-link"><i class="fas fa-link"></i></a><a href="#十一、后来发生的另一件事" class="headerlink" title="十一、后来发生的另一件事"></a>十一、后来发生的另一件事</h2>
+      <p>写这篇文章时我意识到，本文讲的是<strong>接入层</strong>的取舍 ——<br>「一个分析能力怎么进系统」。</p>
+<p>但还有一层更靠上的问题：<strong>所有分析能力怎么共享同一份数据？</strong><br>那个决定比本文这个更大，代价也更贵 —— 因为我们最终选择的是<br>「不把数据搬进平台」，而这条路的默认答案恰好是最省事的那一个。</p>
+<p>→ <a href="/2026/09/11/dont-move-the-data/">不搬数据：一次 SPC 数据架构的取舍</a></p>
+<p><strong>接入层解决的是「单个能力怎么进来」；架构层解决的是「数据形状由谁定义」。</strong><br>后者是前者的前提 —— 如果数据形状不统一，接进来的能力越多，系统越乱。</p>
+<hr>
+<p><strong>相关阅读</strong>：<a href="/works/">作品与证据</a> · <a href="/resume/">简历</a></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://adymilk.github.io">王恒</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://adymilk.github.io/2026/09/11/fde-scoping-before-code/">https://adymilk.github.io/2026/09/11/fde-scoping-before-code/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/FDE/">FDE</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/%E5%AE%A2%E6%88%B7%E7%8E%B0%E5%9C%BA/">客户现场</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/SPC/">SPC</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/img/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/img/wechatPay.jpg"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2026/09/11/dont-move-the-data/"><span class="paginator-prev__text">不搬数据：一次 SPC 数据架构的取舍</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.</span> <span class="toc-text">
+          一、约束</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%86%B3%E7%AD%96%E4%B8%80%EF%BC%9A%E6%A1%A5%E6%8E%A5%EF%BC%8C%E8%BF%98%E6%98%AF%E9%87%8D%E5%86%99%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">
+          二、决策一：桥接，还是重写？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%86%B3%E7%AD%96%E4%BA%8C%EF%BC%9A%E5%90%8C%E6%AD%A5%E7%AD%89%E5%BE%85%EF%BC%8C%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5%E5%8F%96%E7%BB%93%E6%9E%9C%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">
+          三、决策二：同步等待，还是异步取结果？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%86%B3%E7%AD%96%E4%B8%89%EF%BC%9A%E6%8A%8A%E5%8F%82%E6%95%B0%E4%BA%A4%E7%BB%99%E8%B0%81%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">
+          四、决策三：把参数交给谁？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%86%B3%E7%AD%96%E5%9B%9B%EF%BC%9A%E6%88%91%E6%BC%8F%E6%8E%89%E7%9A%84%E9%82%A3%E4%B8%80%E4%B8%AA"><span class="toc-number">5.</span> <span class="toc-text">
+          五、决策四：我漏掉的那一个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%88%91%E4%BB%8E%E8%BF%99%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E9%87%8C%E6%8F%90%E7%82%BC%E5%87%BA%E7%9A%84%E5%9B%9B%E6%9D%A1"><span class="toc-number">6.</span> <span class="toc-text">
+          六、我从这一个项目里提炼出的四条</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87%E7%9A%84%E8%AF%81%E6%8D%AE%E8%AF%B4%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">
+          七、关于本文的证据说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%90%8E%E6%9D%A5%E5%8F%91%E7%94%9F%E7%9A%84%E5%8F%A6%E4%B8%80%E4%BB%B6%E4%BA%8B"><span class="toc-number">8.</span> <span class="toc-text">
+          十一、后来发生的另一件事</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/img/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">工业软件与智能制造：从客户现场的业务问题，做到能落地的产品与系统。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/adymilk" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2026</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.2</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-arrow-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'rgBgYoslSGOswjaHqVArAnPp-gzGzoHsz',
+    appKey: 'zG3mb3kGasYAEy7begNCbRED',
+    notify: true,
+    verify: true,
+    placeholder: '点击留言评论',
+    avatar: 'wavatar',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: true,
+    recordIP: true,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

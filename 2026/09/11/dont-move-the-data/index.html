@@ -1,0 +1,734 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="技术选型里最难的部分从来不是「选什么」，而是主动决定不做什么 ——以及当有人问「为什么不走那条更省事的路」时，你能不能答上来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不搬数据：一次 SPC 数据架构的取舍">
+<meta property="og:url" content="https://adymilk.github.io/2026/09/11/dont-move-the-data/index.html">
+<meta property="og:site_name" content="王恒 · Forward Deployed Engineer">
+<meta property="og:description" content="技术选型里最难的部分从来不是「选什么」，而是主动决定不做什么 ——以及当有人问「为什么不走那条更省事的路」时，你能不能答上来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-11T01:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-11T08:44:57.620Z">
+<meta property="article:author" content="王恒">
+<meta property="article:tag" content="FDE">
+<meta property="article:tag" content="客户现场">
+<meta property="article:tag" content="系统设计">
+<meta property="article:tag" content="SPC">
+<meta name="twitter:card" content="summary"><title>不搬数据：一次 SPC 数据架构的取舍 | 王恒 · Forward Deployed Engineer</title><link ref="canonical" href="https://adymilk.github.io/2026/09/11/dont-move-the-data/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"dark","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="王恒 · Forward Deployed Engineer" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/works/"><span class="header-nav-menu-item__icon"><i class="fas fa-cubes"></i></span><span class="header-nav-menu-item__text">作品与证据</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/resume/"><span class="header-nav-menu-item__icon"><i class="fas fa-id-card"></i></span><span class="header-nav-menu-item__text">简历</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">技术笔记</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-angle-double-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/about/"><span class="header-nav-submenu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-submenu-item__text">关于</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background-image: url(https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1920&amp;q=70); background-position: center; background-size: cover;"><div class="header-hero"><h1 class="header-hero__name">王恒<span class="header-hero__name-en">James Wang</span></h1><p class="header-hero__title">Forward Deployed Engineer</p><p class="header-hero__oneliner">工业软件与智能制造：从客户现场的业务问题，做到能落地的产品与系统。</p><div class="header-hero__links"><a class="header-hero__btn header-hero__btn--primary" href="/works/">作品与证据</a><a class="header-hero__btn" href="/resume/">简历</a><a class="header-hero__btn" href="https://github.com/adymilk" target="_blank" rel="noopener">GitHub</a></div><p class="header-hero__meta">上海</p></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">不搬数据：一次 SPC 数据架构的取舍</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2026-09-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2026-09-11</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.9k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">14分</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2026/09/11/dont-move-the-data/" data-flag-title="不搬数据：一次 SPC 数据架构的取舍"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body"><blockquote>
+<p>技术选型里最难的部分从来不是「选什么」，而是<strong>主动决定不做什么</strong> ——<br>以及当有人问「为什么不走那条更省事的路」时，你能不能答上来。</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h2 id="一、先说结论"   >
+          <a href="#一、先说结论" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、先说结论" class="headerlink" title="一、先说结论"></a>一、先说结论</h2>
+      <p>我们在做工业质量分析平台（SPC）时，遇到过一个问题：<strong>数据怎么进来。</strong></p>
+<p>默认答案是 ETL：把客户的数据抽出来、洗干净、装进平台自己的库，然后在平台里<br>分析。这是成熟方案，工期可估，出了问题也好排查。</p>
+<p><strong>我们没有那么做。</strong></p>
+<p>我们做的是：数据留在客户的库里，平台带着分析能力走过去。</p>
+<p>这个决定后来改变了整个产品的架构形态。而它当时之所以难，不是因为技术上<br>更复杂 —— 而是因为<strong>走默认路径永远不需要向任何人解释</strong>。</p>
+<p>下面把这个决定完整拆开。</p>
+<hr>
+
+        <h2 id="二、场景：数据不在一个地方"   >
+          <a href="#二、场景：数据不在一个地方" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、场景：数据不在一个地方" class="headerlink" title="二、场景：数据不在一个地方"></a>二、场景：数据不在一个地方</h2>
+      <p>制造业客户的质量数据，从来不是集中在一个库里的。</p>
+<div class="pro-fig">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title">
+  <title id="fig1-title">客户现场的数据分散在三类来源：企业数据库、工业现场设备、以及各种数据通信方式</title>
+
+  <!-- 三个来源分组 -->
+  <rect class="fig-box" x="16" y="22" width="252" height="76" rx="6"/>
+  <text class="fig-label" x="34" y="48">企业数据库</text>
+  <text class="fig-label--sm" x="34" y="70">SQL Server · MySQL · Oracle</text>
+  <text class="fig-label--sm" x="34" y="86">PostgreSQL · MES · ERP</text>
+
+  <rect class="fig-box" x="16" y="112" width="252" height="76" rx="6"/>
+  <text class="fig-label" x="34" y="138">工业现场</text>
+  <text class="fig-label--sm" x="34" y="160">PLC · CMM · 传感器</text>
+  <text class="fig-label--sm" x="34" y="176">测量设备 · SCADA</text>
+
+  <rect class="fig-box" x="16" y="202" width="252" height="76" rx="6"/>
+  <text class="fig-label" x="34" y="228">数据通信</text>
+  <text class="fig-label--sm" x="34" y="250">MQTT · OPC-UA · TCP/UDP</text>
+  <text class="fig-label--sm" x="34" y="266">HTTP / Web API · Excel / CSV</text>
+
+  <!-- 汇聚总线：多条来源汇入一条干道 -->
+  <path class="fig-line" d="M268 60 H320 M268 150 H320 M268 240 H320"/>
+  <path class="fig-line" d="M320 60 V240"/>
+  <path class="fig-line--accent" d="M320 150 H382"/>
+  <path class="fig-arrow--accent" d="M382 150 l-9 -5.5 v11 z"/>
+
+  <!-- 平台 -->
+  <rect class="fig-box--accent" x="392" y="98" width="312" height="104" rx="6"/>
+  <text class="fig-label" x="548" y="140" text-anchor="middle">工业质量分析平台</text>
+  <text class="fig-label--sm" x="548" y="164" text-anchor="middle">SPC 分析 · 控制图 · 异常识别</text>
+  <text class="fig-label--sm" x="548" y="182" text-anchor="middle">报警 · 过程能力 · 报告</text>
+</svg>
+<p class="pro-fig__caption">
+  数据源不是「一个数据库」，而是三类完全不同的东西 ——
+  它们的访问方式、稳定性、权限模型都不一样。
+</p>
+</div>
+
+<p><strong>这三类东西的差异，比它们看起来的要大得多：</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th></th>
+<th>查询方式</th>
+<th>稳定性</th>
+<th>谁在管</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>企业数据库</td>
+<td>SQL，可能有连接数限制</td>
+<td>稳定，但可能禁止外部直连</td>
+<td>DBA / IT 部门</td>
+</tr>
+<tr>
+<td>工业现场设备</td>
+<td>专有协议，可能需要网关</td>
+<td>会断、会重启、会换型号</td>
+<td>设备 / 自动化部门</td>
+</tr>
+<tr>
+<td>数据通信</td>
+<td>推 / 拉模型不同</td>
+<td>取决于网络</td>
+<td>网络 / 安全部门</td>
+</tr>
+</tbody></table></div>
+<p><strong>这里的模糊点不是「怎么连」，而是「连上之后，数据放在哪」。</strong></p>
+<hr>
+
+        <h2 id="三、两条路线，成本差一个量级"   >
+          <a href="#三、两条路线，成本差一个量级" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、两条路线，成本差一个量级" class="headerlink" title="三、两条路线，成本差一个量级"></a>三、两条路线，成本差一个量级</h2>
+      <p>「把数据接进来做分析」这句话，可以指两种截然不同的架构：</p>
+<div class="pro-fig">
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title">
+  <title id="fig2-title">路线 A 用 ETL 把数据复制进平台再分析；路线 B 让分析能力直接走到客户数据上</title>
+
+  <!-- 路线 A：复制 -->
+<p>  <text class="fig-label--muted" x="16" y="52">A</text><br>  <text class="fig-label--muted" x="16" y="72">复制</text><br>  <rect class="fig-box--muted" x="70" y="30" width="150" height="52" rx="6"/><br>  <text class="fig-label--muted" x="145" y="61" text-anchor="middle">客户数据库</text><br>  <path class="fig-line--muted" d="M220 56 H288"/><br>  <path class="fig-arrow--muted" d="M288 56 l-9 -5 v10 z"/><br>  <text class="fig-label--muted" x="254" y="46" text-anchor="middle">ETL</text><br>  <rect class="fig-box--muted" x="290" y="30" width="150" height="52" rx="6"/><br>  <text class="fig-label--muted" x="365" y="61" text-anchor="middle">平台数据库</text><br>  <path class="fig-line--muted" d="M440 56 H508"/><br>  <path class="fig-arrow--muted" d="M508 56 l-9 -5 v10 z"/><br>  <rect class="fig-box--muted" x="510" y="30" width="150" height="52" rx="6"/><br>  <text class="fig-label--muted" x="585" y="61" text-anchor="middle">SPC 分析</text></p>
+  <path class="fig-line--muted" d="M30 108 H730"/>
+
+  <!-- 路线 B：走过去 -->
+<p>  <text class="fig-label--accent" x="16" y="170">B</text><br>  <text class="fig-label--accent" x="16" y="190">走过去</text><br>  <rect class="fig-box--accent" x="70" y="148" width="150" height="52" rx="6"/><br>  <text class="fig-label" x="145" y="179" text-anchor="middle">客户数据库</text><br>  <path class="fig-line--accent" d="M280 174 H288"/><br>  <path class="fig-arrow--accent" d="M272 174 l9 -5 v10 z"/><br>  <text class="fig-label--accent" x="284" y="164" text-anchor="middle">按需读取 · 增量</text><br>  <rect class="fig-box--accent" x="330" y="148" width="180" height="52" rx="6"/><br>  <text class="fig-label" x="420" y="179" text-anchor="middle">数据访问层</text><br>  <path class="fig-line--accent" d="M510 174 H558"/><br>  <path class="fig-arrow--accent" d="M558 174 l-9 -5 v10 z"/><br>  <rect class="fig-box--accent" x="560" y="148" width="150" height="52" rx="6"/><br>  <text class="fig-label" x="635" y="179" text-anchor="middle">SPC 分析</text><br></svg></p>
+<p class="pro-fig__caption">
+  A 的终点是「平台里有一份数据」；B 的终点是「平台能算客户的数据」。
+  看起来只是数据放在哪，实际上决定了后面所有事。
+</p>
+</div>
+
+
+        <h3 id="A-的三个代价"   >
+          <a href="#A-的三个代价" class="heading-link"><i class="fas fa-link"></i></a><a href="#A-的三个代价" class="headerlink" title="A 的三个代价"></a>A 的三个代价</h3>
+      <div class="pro-fig">
+<svg viewBox="0 0 760 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title">
+  <title id="fig3-title">ETL 复制的三个代价：存储与成本翻倍、同步时效滞后、以及数据可能不允许出库</title>
+
+  <rect class="fig-box--muted" x="14" y="30" width="228" height="112" rx="6"/>
+  <text class="fig-num" x="34" y="58">01</text>
+  <text class="fig-label" x="58" y="58">存储与成本翻倍</text>
+  <text class="fig-label--sm" x="34" y="84">客户库里已有的历史检测数据</text>
+  <text class="fig-label--sm" x="34" y="102">要在平台里再存一份，且要持续</text>
+  <text class="fig-label--sm" x="34" y="120">保持同步</text>
+
+  <rect class="fig-box--muted" x="266" y="30" width="228" height="112" rx="6"/>
+  <text class="fig-num" x="286" y="58">02</text>
+  <text class="fig-label" x="310" y="58">时效性滞后</text>
+  <text class="fig-label--sm" x="286" y="84">每一次历史追溯，都要等一次</text>
+  <text class="fig-label--sm" x="286" y="102">搬运完成 —— 而质量分析经常</text>
+  <text class="fig-label--sm" x="286" y="120">要查很久以前的数据</text>
+
+  <rect class="fig-box--muted" x="518" y="30" width="228" height="112" rx="6"/>
+  <text class="fig-num" x="538" y="58">03</text>
+  <text class="fig-label" x="562" y="58">可能根本不允许</text>
+  <text class="fig-label--sm" x="538" y="84">数据出库。内网隔离、合规要求、</text>
+  <text class="fig-label--sm" x="538" y="102">甲方 IT 政策 —— 这些在工业现场</text>
+  <text class="fig-label--sm" x="538" y="120">是常态，不是例外</text>
+</svg>
+<p class="pro-fig__caption">
+  前两个是工程代价，可以估算；第三个是<strong>前提性的</strong> —— 它不是「更难做」，
+  而是「在某些客户那里根本做不了」。
+</p>
+</div>
+
+<p><strong>第三条才是决定性的。</strong> 前两条是成本问题，第三条是可行性问题。<br>一个方案的代价如果是「在某些客户那完全不可用」，那它就不是一个通用架构。</p>
+<hr>
+
+        <h2 id="四、边界：明确划掉什么"   >
+          <a href="#四、边界：明确划掉什么" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、边界：明确划掉什么" class="headerlink" title="四、边界：明确划掉什么"></a>四、边界：明确划掉什么</h2>
+      <p>这一步在项目里最容易被跳过，但它恰恰是 FDE 面试里权重最高的考点 ——<br><strong>先划清范围，再谈方案。</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th></th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>In scope</strong></td>
+<td>一个统一的数据访问层 + 标准化测量事件模型 + 多分析引擎共享同一份数据</td>
+</tr>
+<tr>
+<td><strong>Out of scope</strong></td>
+<td>把客户的<strong>全部历史数据</strong>复制进平台</td>
+</tr>
+<tr>
+<td><strong>Out of scope</strong></td>
+<td>为每一个数据源写一条独立的分析链路</td>
+</tr>
+<tr>
+<td><strong>Out of scope</strong></td>
+<td>要求客户改造网络或数据库以适配平台</td>
+</tr>
+</tbody></table></div>
+<p>最后一条值得单独说：<strong>工业软件的部署方案是产品的一部分，不是实施阶段的临时问题。</strong><br>互联网软件可以要求用户升级浏览器；工业软件不能要求客户改网络架构。</p>
+<hr>
+
+        <h2 id="五、目标架构"   >
+          <a href="#五、目标架构" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、目标架构" class="headerlink" title="五、目标架构"></a>五、目标架构</h2>
+      <p>确定「不搬数据」之后，架构形态就基本确定了：</p>
+<div class="pro-fig">
+<svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title">
+  <title id="fig4-title">架构链路：客户原始数据经数据访问层标准化为统一测量事件，再由多个分析引擎共享</title>
+
+  <rect class="fig-box" x="30" y="72" width="124" height="58" rx="6"/>
+  <text class="fig-label" x="92" y="98" text-anchor="middle">客户原始</text>
+  <text class="fig-label" x="92" y="116" text-anchor="middle">数据</text>
+
+  <path class="fig-line" d="M154 101 H172"/>
+  <path class="fig-arrow" d="M172 101 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box--accent" x="174" y="72" width="136" height="58" rx="6"/>
+  <text class="fig-label--accent" x="242" y="98" text-anchor="middle">数据访问层</text>
+  <text class="fig-label--sm" x="242" y="116" text-anchor="middle">按需 · 增量</text>
+
+  <path class="fig-line" d="M310 101 H328"/>
+  <path class="fig-arrow" d="M328 101 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box--accent" x="330" y="72" width="136" height="58" rx="6"/>
+  <text class="fig-label--accent" x="398" y="98" text-anchor="middle">统一测量</text>
+  <text class="fig-label--accent" x="398" y="116" text-anchor="middle">事件</text>
+
+  <path class="fig-line" d="M466 101 H484"/>
+  <path class="fig-arrow" d="M484 101 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box" x="486" y="72" width="116" height="58" rx="6"/>
+  <text class="fig-label" x="544" y="98" text-anchor="middle">分析引擎</text>
+  <text class="fig-label--sm" x="544" y="116" text-anchor="middle">多套</text>
+
+  <path class="fig-line" d="M602 101 H620"/>
+  <path class="fig-arrow" d="M620 101 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box" x="622" y="72" width="112" height="58" rx="6"/>
+  <text class="fig-label" x="678" y="98" text-anchor="middle">控制图</text>
+  <text class="fig-label--sm" x="678" y="116" text-anchor="middle">CPK · 报警</text>
+
+  <!-- 关键性质：一次采集、一次标准化、多引擎共享 -->
+  <path class="fig-line--accent" d="M330 150 H466"/>
+  <text class="fig-label--accent" x="398" y="172" text-anchor="middle">一次采集 · 一次标准化 · 多引擎共享</text>
+  <path class="fig-line--accent" d="M398 130 V144"/>
+  <path class="fig-line--accent" d="M330 144 H466"/>
+</svg>
+<p class="pro-fig__caption">
+  关键不是这条线本身，而是中间那两个方框 ——
+  它们是<strong>唯一</strong>知道「原始数据长什么样」的地方。
+</p>
+</div>
+
+<p>用当时的话总结这次升级的原则：</p>
+<blockquote>
+<p><strong>能直接用，就不搬；需要持续分析，就增量；需要实时，就走数据流；<br>一次采集、一次标准化、多分析引擎共享。</strong></p>
+</blockquote>
+<p>第一条改变的是数据的位置，后三条改变的是<strong>数据的形状</strong> —— 而这才是真正<br>难的部分。见下一节。</p>
+<hr>
+
+        <h2 id="六、第二个决策：口径只能有一个"   >
+          <a href="#六、第二个决策：口径只能有一个" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、第二个决策：口径只能有一个" class="headerlink" title="六、第二个决策：口径只能有一个"></a>六、第二个决策：口径只能有一个</h2>
+      <p>系统里<strong>同时存在 Python 和 Minitab 两套分析引擎</strong>。它们的算法实现不同、<br>调用方式不同、部署要求也不同。</p>
+<p>如果让它们各自去取数，会出现一个很隐蔽的问题：</p>
+<div class="pro-fig">
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title">
+  <title id="fig5-title">对比两种做法：引擎各自取数会导致口径不一致；统一测量事件保证结果一致</title>
+
+  <!-- 左：各自取数 -->
+<p>  <text class="fig-label--muted" x="24" y="28">各自取数</text><br>  <rect class="fig-box--muted" x="24" y="40" width="300" height="44" rx="6"/><br>  <text class="fig-label--muted" x="174" y="68" text-anchor="middle">客户数据源</text></p>
+  <path class="fig-line--muted" d="M110 84 V124 M214 84 V124"/>
+  <path class="fig-arrow--muted" d="M110 124 l-4.5 -8 h9 z"/>
+  <path class="fig-arrow--muted" d="M214 124 l-4.5 -8 h9 z"/>
+
+  <rect class="fig-box--muted" x="40" y="126" width="140" height="44" rx="6"/>
+  <text class="fig-label--muted" x="110" y="154" text-anchor="middle">Python 取数</text>
+  <rect class="fig-box--muted" x="190" y="126" width="140" height="44" rx="6"/>
+  <text class="fig-label--muted" x="260" y="154" text-anchor="middle">Minitab 取数</text>
+
+  <path class="fig-line--muted" d="M110 170 V210 M260 170 V210"/>
+  <path class="fig-arrow--muted" d="M110 210 l-4.5 -8 h9 z"/>
+  <path class="fig-arrow--muted" d="M260 210 l-4.5 -8 h9 z"/>
+
+  <rect class="fig-box--muted" x="40" y="212" width="140" height="44" rx="6"/>
+  <text class="fig-label--muted" x="110" y="240" text-anchor="middle">口径 A</text>
+  <rect class="fig-box--muted" x="190" y="212" width="140" height="44" rx="6"/>
+  <text class="fig-label--muted" x="260" y="240" text-anchor="middle">口径 B</text>
+
+<p>  <text class="fig-label--muted" x="174" y="288" text-anchor="middle">同一份数据，两套结果</text><br>  <text class="fig-label--muted" x="174" y="308" text-anchor="middle">—— 而它们本该一模一样</text></p>
+  <!-- 分隔 -->
+  <path class="fig-line--muted" d="M372 24 V300"/>
+
+  <!-- 右：统一取数 -->
+<p>  <text class="fig-label--accent" x="410" y="28">统一取数</text><br>  <rect class="fig-box--accent" x="410" y="40" width="320" height="44" rx="6"/><br>  <text class="fig-label" x="570" y="68" text-anchor="middle">客户数据源</text></p>
+  <path class="fig-line--accent" d="M570 84 V124"/>
+  <path class="fig-arrow--accent" d="M570 124 l-4.5 -8 h9 z"/>
+
+  <rect class="fig-box--accent" x="450" y="126" width="240" height="44" rx="6"/>
+  <text class="fig-label--accent" x="570" y="154" text-anchor="middle">统一测量事件</text>
+
+  <path class="fig-line--accent" d="M510 170 V210 M630 170 V210"/>
+  <path class="fig-arrow--accent" d="M510 210 l-4.5 -8 h9 z"/>
+  <path class="fig-arrow--accent" d="M630 210 l-4.5 -8 h9 z"/>
+
+  <rect class="fig-box--accent" x="440" y="212" width="140" height="44" rx="6"/>
+  <text class="fig-label--accent" x="510" y="240" text-anchor="middle">口径一致</text>
+  <rect class="fig-box--accent" x="560" y="212" width="140" height="44" rx="6"/>
+  <text class="fig-label--accent" x="630" y="240" text-anchor="middle">口径一致</text>
+
+<p>  <text class="fig-label--accent" x="570" y="288" text-anchor="middle">换引擎不改口径</text><br>  <text class="fig-label--accent" x="570" y="308" text-anchor="middle">—— 数据形状只有一个</text><br></svg></p>
+<p class="pro-fig__caption">
+  在质量分析里，「同一份数据算出两个不同的过程能力指数」是灾难 ——
+  客户不会和你讨论哪套算法对，他会说「这系统不准」。
+</p>
+</div>
+
+<p>所以第二个决策是：<strong>统一分析接口，让不同引擎共享标准化测量数据。</strong><br>引擎各写各的，但<strong>数据形状只有一个</strong>。</p>
+<p>代价是明确的前期成本：要建模、要定义「统一测量事件」到底长什么样、<br>要说服各引擎的维护方改接口。这比「各自取数」贵得多。</p>
+<p><strong>但它买的是一种不会随时间劣化的性质。</strong> 各自取数在第一个月是更快的，<br>在第 N 个数据源接入时才开始变慢 —— 而那时候改已经来不及了。</p>
+<hr>
+
+        <h2 id="七、为什么这个决定难"   >
+          <a href="#七、为什么这个决定难" class="heading-link"><i class="fas fa-link"></i></a><a href="#七、为什么这个决定难" class="headerlink" title="七、为什么这个决定难"></a>七、为什么这个决定难</h2>
+      <p>回头看，这个决定技术上并不复杂。它难在三个地方：</p>
+<p><strong>1. 默认路径不需要解释。</strong><br>ETL 是行业惯例。选它，没有人会问你为什么。<br>选「不搬数据」，你要向每一层解释：为什么不用更成熟的方案？</p>
+<p><strong>2. 它的收益是「不会发生的事」。</strong><br>ETL 的痛（存储、时效、出库限制）在方案评审时都还没发生。<br>你要为一个<strong>尚不存在的问题</strong>提前付出架构成本。</p>
+<p><strong>3. 它假设了一个经常不成立的前提。</strong><br>默认复制隐含地假设：数据的所有权和使用权可以分离。<br>在工业现场，这个假设经常是错的 —— 数据可能几个亿、客户库里还在持续写入、<br>网络不通外网、甚至有合规要求不允许出库。</p>
+<blockquote>
+<p><strong>把「复制」从一个默认动作，降级成一个需要论证的动作</strong> ——<br>这是我在这件事里学到的最有用的东西。</p>
+</blockquote>
+<hr>
+
+        <h2 id="八、结果"   >
+          <a href="#八、结果" class="heading-link"><i class="fas fa-link"></i></a><a href="#八、结果" class="headerlink" title="八、结果"></a>八、结果</h2>
+      <p><strong>架构演进的方向与原则是可以核实的</strong>（本文第五节）。<br>但要按本站的证据纪律说清楚：<strong>我无法提供量化结果。</strong></p>
+<p>原始材料里没有留下对比基线 —— 没有「查询耗时从 X 降到 Y」，<br>也没有「支撑了 N 个客户」。我不会为了这一节好看而补一个数字上去。</p>
+<span class="ev ev--show" title="架构演进方向明确；量化协作基线缺失"><span class="ev__dot"></span>L1 展示<span class="ev__note">架构演进方向明确；量化协作基线缺失</span></span>
+
+<p><strong>可以说的定性结果是：</strong> 这套架构让「接入一个新数据源」不再意味着<br>「为它单独写一条分析链路」，而是「为它写一个适配器」——<br>后者的工作量和前者不是一个量级。</p>
+<hr>
+
+        <h2 id="九、复盘：我现在的判断方式"   >
+          <a href="#九、复盘：我现在的判断方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#九、复盘：我现在的判断方式" class="headerlink" title="九、复盘：我现在的判断方式"></a>九、复盘：我现在的判断方式</h2>
+      <p>这件事之后，我在做架构决策时会先问三个问题：</p>
+<p><strong>① 这个方案的代价，是「更难做」还是「做不到」？</strong><br>更难做可以估算、可以投入；做不到是硬约束，必须优先处理。</p>
+<p><strong>② 这个方案假设了什么前提？</strong><br>如果前提不成立，方案还成立吗？ETL 假设「数据可以出库」——<br>这个前提在工业现场经常不成立。</p>
+<p><strong>③ 如果 12 个月后数据量翻十倍，这个决定还成立吗？</strong><br>各自取数在第一个月是对的；统一事件在第 12 个月是对的。<br><strong>要选那个在第 12 个月仍然对的。</strong></p>
+<hr>
+
+        <h2 id="十、和另一个案例的关系"   >
+          <a href="#十、和另一个案例的关系" class="heading-link"><i class="fas fa-link"></i></a><a href="#十、和另一个案例的关系" class="headerlink" title="十、和另一个案例的关系"></a>十、和另一个案例的关系</h2>
+      <p>这个决定和本站另一个案例（Minitab COM 桥接）是同一条线上的两件事：</p>
+<div class="pro-fig">
+<svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title">
+  <title id="fig6-title">一次决策链的五个环节：场景、模糊点、边界、决策、复盘</title>
+
+  <path class="fig-arrow" d="M28 62 l14 0 -0 0 z"/>
+  <rect class="fig-box" x="14" y="46" width="132" height="50" rx="6"/>
+  <text class="fig-label" x="80" y="76" text-anchor="middle">场景</text>
+
+  <path class="fig-line" d="M146 71 H162"/>
+  <path class="fig-arrow" d="M162 71 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box" x="164" y="46" width="132" height="50" rx="6"/>
+  <text class="fig-label" x="230" y="76" text-anchor="middle">模糊点</text>
+
+  <path class="fig-line" d="M296 71 H312"/>
+  <path class="fig-arrow" d="M312 71 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box" x="314" y="46" width="132" height="50" rx="6"/>
+  <text class="fig-label" x="380" y="76" text-anchor="middle">边界</text>
+
+  <path class="fig-line" d="M446 71 H462"/>
+  <path class="fig-arrow" d="M462 71 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box--accent" x="464" y="46" width="132" height="50" rx="6"/>
+  <text class="fig-label--accent" x="530" y="76" text-anchor="middle">决策</text>
+
+  <path class="fig-line" d="M596 71 H612"/>
+  <path class="fig-arrow" d="M612 71 l-8 -4.5 v9 z"/>
+
+  <rect class="fig-box" x="614" y="46" width="132" height="50" rx="6"/>
+  <text class="fig-label" x="680" y="76" text-anchor="middle">复盘</text>
+
+  <text class="fig-label--sm" x="380" y="126" text-anchor="middle">
+    本文完整走了一遍这条链 —— 面试官要读的正是它，而不是技术栈
+  </text>
+</svg>
+<p class="pro-fig__caption">
+  两篇文章是同一个模式：约束 → 模糊 → 划边界 → 在 ≥2 个备选里取舍 → 复盘。
+</p>
+</div>
+
+<ul>
+<li><a href="/2026/09/11/dont-move-the-data/">不搬数据：一次 SPC 数据架构的取舍</a>（本文，架构层）</li>
+<li><a href="/2026/09/11/fde-scoping-before-code/">Minitab COM 桥接：当约束只剩两条路</a>（接入层）</li>
+</ul>
+<p><strong>接入层解决的是「单个分析能力怎么进系统」；<br>架构层解决的是「所有分析能力怎么共享同一份数据」。</strong><br>后者是前者的前提 —— 如果数据形状不统一，接进来的能力越多，系统越乱。</p>
+<hr>
+
+        <h2 id="关于本文的证据"   >
+          <a href="#关于本文的证据" class="heading-link"><i class="fas fa-link"></i></a><a href="#关于本文的证据" class="headerlink" title="关于本文的证据"></a>关于本文的证据</h2>
+      <span class="ev ev--show" title="架构演进方向明确；量化协作基线缺失"><span class="ev__dot"></span>L1 展示<span class="ev__note">架构演进方向明确；量化协作基线缺失</span></span>
+
+<p><strong>可以被核实的</strong>：本文描述的架构演进方向（从 ETL 复制到数据访问层 +<br>统一测量事件）与取舍原则，来自我实际参与的产品工作，原始表述存档在<br>本站仓库的 <code>tools/RESUME-SOURCE.md</code>。</p>
+<p><strong>我不能提供的</strong>：量化结果、客户名称与部署细节。<br>前者原始材料里没有，后者需要确认能否公开。</p>
+<p><strong>关于文中的图</strong>：全部是我为本文绘制的<strong>解释性示意图</strong>，<br>用来表达架构逻辑，不是产品截图，也不含客户数据。它们用内联 SVG 绘制，<br>因此能跟随明暗模式，也不需要依赖任何外部图床 ——<br>这一点我特意做过：本站另一个案例的演示视频曾外链在第三方服务器上，<br>后来那个链接失效了。</p>
+<p><strong>相关阅读</strong>：<a href="/works/">作品与证据</a> · <a href="/resume/">简历</a></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://adymilk.github.io">王恒</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://adymilk.github.io/2026/09/11/dont-move-the-data/">https://adymilk.github.io/2026/09/11/dont-move-the-data/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/FDE/">FDE</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/%E5%AE%A2%E6%88%B7%E7%8E%B0%E5%9C%BA/">客户现场</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://adymilk.github.io/tags/SPC/">SPC</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/img/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/img/wechatPay.jpg"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2026/09/11/fde-scoping-before-code/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">FDE 的第一性问题：在写代码之前划定边界</span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E8%AF%B4%E7%BB%93%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">
+          一、先说结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9C%BA%E6%99%AF%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9C%B0%E6%96%B9"><span class="toc-number">2.</span> <span class="toc-text">
+          二、场景：数据不在一个地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%A4%E6%9D%A1%E8%B7%AF%E7%BA%BF%EF%BC%8C%E6%88%90%E6%9C%AC%E5%B7%AE%E4%B8%80%E4%B8%AA%E9%87%8F%E7%BA%A7"><span class="toc-number">3.</span> <span class="toc-text">
+          三、两条路线，成本差一个量级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E7%9A%84%E4%B8%89%E4%B8%AA%E4%BB%A3%E4%BB%B7"><span class="toc-number">3.1.</span> <span class="toc-text">
+          A 的三个代价</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BE%B9%E7%95%8C%EF%BC%9A%E6%98%8E%E7%A1%AE%E5%88%92%E6%8E%89%E4%BB%80%E4%B9%88"><span class="toc-number">4.</span> <span class="toc-text">
+          四、边界：明确划掉什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%9B%AE%E6%A0%87%E6%9E%B6%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">
+          五、目标架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%86%B3%E7%AD%96%EF%BC%9A%E5%8F%A3%E5%BE%84%E5%8F%AA%E8%83%BD%E6%9C%89%E4%B8%80%E4%B8%AA"><span class="toc-number">6.</span> <span class="toc-text">
+          六、第二个决策：口径只能有一个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B8%AA%E5%86%B3%E5%AE%9A%E9%9A%BE"><span class="toc-number">7.</span> <span class="toc-text">
+          七、为什么这个决定难</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%BB%93%E6%9E%9C"><span class="toc-number">8.</span> <span class="toc-text">
+          八、结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%A4%8D%E7%9B%98%EF%BC%9A%E6%88%91%E7%8E%B0%E5%9C%A8%E7%9A%84%E5%88%A4%E6%96%AD%E6%96%B9%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">
+          九、复盘：我现在的判断方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%92%8C%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">10.</span> <span class="toc-text">
+          十、和另一个案例的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E6%96%87%E7%9A%84%E8%AF%81%E6%8D%AE"><span class="toc-number">11.</span> <span class="toc-text">
+          关于本文的证据</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/img/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">工业软件与智能制造：从客户现场的业务问题，做到能落地的产品与系统。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/adymilk" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_ch" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2026</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>王恒</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.2</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-arrow-up"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'rgBgYoslSGOswjaHqVArAnPp-gzGzoHsz',
+    appKey: 'zG3mb3kGasYAEy7begNCbRED',
+    notify: true,
+    verify: true,
+    placeholder: '点击留言评论',
+    avatar: 'wavatar',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: true,
+    recordIP: true,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
